@@ -1,0 +1,7 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/infost490sp2501/public_html/
+    - /bin/cp -r css $DEPLOYPATH
+    - /bin/cp -r media $DEPLOYPATH
+    - /bin/cp -r * $DEPLOYPATH
