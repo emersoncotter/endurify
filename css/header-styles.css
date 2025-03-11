@@ -1,0 +1,157 @@
+    /* Style the top navigation bar */
+    .navbar {
+        display: flex;
+        background-color: #F5F5F5;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+    
+      }
+      
+      /* Style the navigation bar links */
+      .navbar a {  
+        padding: 14px 12px;
+        text-decoration: none;
+        text-align: center;
+      }
+      
+      /* Change color on hover */
+      .navbar a:hover {
+        background: rgb(47,137,252);
+        background: linear-gradient(0deg, rgba(47,137,252,1) 0%, rgba(48,227,159,1) 70%);
+        
+        background-size: 100%;
+        background-repeat: repeat;
+      
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent; 
+        -moz-background-clip: text;
+        -moz-text-fill-color: transparent;
+    
+        text-decoration: underline;
+      }
+        /* Left Navbar column */
+      .navbar .navbar-left {
+        flex: 30%;
+        /* background-color: #f1f1f1; */
+        padding: 20px;
+        justify-content: left;
+        align-content: center;
+        text-align: left;
+      }
+    
+      .navbar .navbar-left img {
+        height: 30px;
+      }
+
+      .navbar .navbar-left .responsive {
+        display: none;
+      }
+
+      .navbar .navmain .responsive {
+        display: none;
+      }
+      
+        /* Main Navbar column */
+        .navbar .navmain {
+            flex: 40%;
+            /* background-color: white; */
+            padding: 20px;
+            justify-content: center;
+            align-content: center;
+            text-align: center;
+        }
+    
+        .navbar .navmain #hidden {
+          display: none;
+        }
+      
+        /* Login/Profile column */
+        .navbar .user {
+                flex: 30%;
+                /* background-color: white; */
+                padding: 20px;
+                justify-content: right;
+                align-content: center;
+                text-align: right;
+            }
+    
+    .button {
+        border-radius: 8px;
+        border-width: 0px;
+        color: #ffffff;
+        background: #338acd;
+        padding: 10px 20px 10px 20px;
+        text-decoration: none;
+        cursor: pointer;
+        }
+        
+        .button:hover {
+        background: #1c659c;
+        text-decoration: none;
+        transition: 0.5s;
+        }
+  
+  /* Responsive layout - when the screen is less than 700px wide, make the two columns stack on top of each other instead of next to each other */
+  @media screen and (max-width: 850px) {
+    .navbar {   
+      flex-direction: column;
+    }
+
+    .adaptive-navbar {
+        display: flex;
+
+    }
+    
+    .navbar .navbar-left .responsive {
+        display: inline;
+        padding: 10px;
+      }
+      
+      .navbar .navmain .responsive {
+        display: inline;
+      }
+
+    .navbar .toggle{
+        display: none;
+        padding: 50px;
+    }
+
+    .navbar .adaptive-left {
+        flex: 10%;
+        justify-content: center;
+        align-content: center;
+        text-align: center;
+    }
+
+    .navbar .adaptive-middle {
+      justify-content: center;
+      align-content: center;
+      text-align: center;
+      flex: 90%;
+    }
+
+    .navbar .adaptive-middle img {
+        height: 25px;
+    }
+
+    .navbar .navmain a {
+      padding: 5px 10px;
+    }
+
+    .navbar .navmain {
+      padding: 0px 0px 10px 0px;
+      padding-left: 10%;
+    }
+
+    .navbar .user {
+      display: none;
+    }
+  }
+
+  @media screen and (max-width: 450px) {
+    .navbar .navmain {
+        padding-left: 0%;
+      }
+  }

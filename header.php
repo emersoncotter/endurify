@@ -15,20 +15,54 @@ if(!isset($_SESSION["user_name"])) {
 <head>
 	<meta charset="utf-8">
 	<title></title>
+    <link rel="stylesheet" href="css/header-styles.css">
 	<link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
+    
 	<!-- Navigation Bar -->
 <div class="navbar">
- <div class="logo">
-    <img src="media/logo.png" alt="Endurify Logo">
- </div>
- <div class="navmain">
-    <div class="gradient-text">
-        <a href="#">Home</a>
-        <a href="features.php">Features</a>
-        <a href="about.php">About Us</a>
+ <div class="navbar-left">
+    <div class="adaptive-navbar">
+        <!-- Initially Hidden Hamburger Icon -->
+        <div class="adaptive-left">
+            <a href="javascript:void(0);" class="icon gradient-text responsive" onclick="toggleMenu()">
+                <i class="fa fa-bars"></i>
+            </a>
+
+            <script>
+                function toggleMenu() {
+                    var x = document.getElementById("navmain");
+                    x.classList.toggle("toggle");
+                }
+                </script>
+
+        </div>
+
+        <!-- Always Visible Logo -->
+        <div class="adaptive-middle">
+            <img src="media/logo.png" alt="Endurify Logo">
+        </div>
+        
+        
     </div>
+ </div>
+ <div class="navmain toggle" id="navmain">
+        <a class="gradient-text" href="#">Home</a>
+        <a class="gradient-text" href="features.php">Features</a>
+        <a class="gradient-text" href="about.php">About Us</a>
+        <!-- Initially hidden Get Started Button -->
+            <?php
+                if (empty($_SESSION['username'])) {
+                    // show get started
+                    echo '<button class="button responsive" onclick="location.href=\'signin.php\';">Get Started</button>';
+                }
+                else {
+                    // Dashboard Button Appears
+                    echo '<button class="button" type="button responsive" onclick="location.href=\'dashboard.php\';">Dashboard</button>';
+                }  
+            ?>
  </div>
 <div class="user">
     <?php
@@ -39,31 +73,11 @@ if(!isset($_SESSION["user_name"])) {
         echo '<button class="button" onclick="location.href=\'signup.php\';">Sign Up</button>';
     }
     else {
-    // welcome user
-    echo "<p>Welcome back, ".$_SESSION['first_name']."!</p>";
-
-    if($_SESSION['admin'] == 1) {
-    // show admin page button if administrator
-    echo '<button class="button" type="button" onclick="location.href=\'admin.php\';">Admin</button>';
-    } else {
-    // show cart button if normal user
-        if(count($_SESSION['cart']) > 0) {
-            echo '<button class="button" type="button" onclick="location.href=\'cart.php\';">Cart ('.count($_SESSION['cart']).')</button>';
-        } else {
-            echo '<button class="button" type="button" onclick="location.href=\'cart.php\';">Cart</button>';
-        }
-    }
-
-    // show log out button
-    echo '<button class="button" type="button" onclick="location.href=\'logout.php\';">Log Out</button>';
-
-
-
+    // Dashboard Button Appears
+    echo '<button class="button" type="button" onclick="location.href=\'dashboard.php\';">Dashboard</button>';
     }  
     ?>
 </div>
-  
- 
 </div>
 </body>
 </html>
