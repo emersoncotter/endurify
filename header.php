@@ -25,7 +25,7 @@ if(!isset($_SESSION["user_name"])) {
 <div class="navbar">
  <div class="navbar-left">
     <div class="adaptive-navbar">
-        <!-- Initially Hidden Hamburger Icon -->
+        <!-- Initially Hidden Hamburger Icon ☰ -->
         <div class="adaptive-left">
             <a href="javascript:void(0);" class="icon gradient-text responsive" onclick="toggleMenu()">
                 <i class="fa fa-bars"></i>
@@ -45,7 +45,12 @@ if(!isset($_SESSION["user_name"])) {
             <img src="media/logo.png" alt="Endurify Logo">
         </div>
         
-        
+        <!-- Initially Hidden Login Icon -->
+        <div class="adaptive-right">
+        <a href="signin.php" class="icon gradient-text responsive">
+                <i class="fa fa-user"></i>
+            </a>
+        </div>
     </div>
  </div>
  <div class="navmain toggle" id="navmain">

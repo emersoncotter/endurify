@@ -6,7 +6,6 @@
         top: 0;
         left: 0;
         right: 0;
-    
       }
       
       /* Style the navigation bar links */
@@ -16,58 +15,57 @@
         text-align: center;
       }
       
-      /* Change color on hover */
-      .navbar a:hover {
-        background: rgb(47,137,252);
-        background: linear-gradient(0deg, rgba(47,137,252,1) 0%, rgba(48,227,159,1) 70%);
-        
-        background-size: 100%;
-        background-repeat: repeat;
-      
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent; 
-        -moz-background-clip: text;
-        -moz-text-fill-color: transparent;
-    
-        text-decoration: underline;
-      }
+            /* Change color on hover */
+            .navbar a:hover {
+                background: rgb(47,137,252);
+                background: linear-gradient(0deg, rgba(47,137,252,1) 0%, rgba(48,227,159,1) 70%);
+                
+                background-size: 100%;
+                background-repeat: repeat;
+            
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent; 
+                -moz-background-clip: text;
+                -moz-text-fill-color: transparent;
+            
+                text-decoration: underline;
+            }
+
         /* Left Navbar column */
       .navbar .navbar-left {
         flex: 30%;
-        /* background-color: #f1f1f1; */
         padding: 20px;
         justify-content: left;
         align-content: center;
         text-align: left;
       }
     
-      .navbar .navbar-left img {
-        height: 30px;
-      }
+            /* Cap Logo Size */
+            .navbar .navbar-left img {
+                height: 30px;
+            }
 
-      .navbar .navbar-left .responsive {
-        display: none;
-      }
+            /* Hide Responsive Elements at Full Screen Size */
+            .navbar .navbar-left .responsive {
+                display: none;
+            }
 
-      .navbar .navmain .responsive {
-        display: none;
-      }
-      
+        
         /* Main Navbar column */
         .navbar .navmain {
             flex: 40%;
-            /* background-color: white; */
             padding: 20px;
             justify-content: center;
             align-content: center;
             text-align: center;
         }
-    
-        .navbar .navmain #hidden {
-          display: none;
-        }
-      
-        /* Login/Profile column */
+        
+            /* Hide Responsive Elements at Full Screen Size */
+            .navbar .navmain .responsive {
+            display: none;
+            }
+
+        /* Login/Profile Column */
         .navbar .user {
                 flex: 30%;
                 /* background-color: white; */
@@ -77,6 +75,7 @@
                 text-align: right;
             }
     
+    /* Nav Bar Button Styles */
     .button {
         border-radius: 8px;
         border-width: 0px;
@@ -93,31 +92,37 @@
         transition: 0.5s;
         }
   
-  /* Responsive layout - when the screen is less than 700px wide, make the two columns stack on top of each other instead of next to each other */
+  /* Responsive layout - when the screen is less than 850px wide, change to compact layout */
   @media screen and (max-width: 850px) {
+    /* Change display to Column for main elements  */
     .navbar {   
       flex-direction: column;
     }
-
+    
+    /* Change display to flex for hamburger menu and logo */
     .adaptive-navbar {
         display: flex;
 
     }
     
+    /* Unhide Hamburger Menu */
     .navbar .navbar-left .responsive {
         display: inline;
         padding: 10px;
       }
       
+    /* Unhide Get Started Button */
       .navbar .navmain .responsive {
         display: inline;
       }
 
+    /* Toggle the navbar vilsibility with menu button*/
     .navbar .toggle{
         display: none;
         padding: 50px;
     }
 
+    /* Set up flexbox for condensed menu */
     .navbar .adaptive-left {
         flex: 10%;
         justify-content: center;
@@ -129,7 +134,14 @@
       justify-content: center;
       align-content: center;
       text-align: center;
-      flex: 90%;
+      flex: 80%;
+    }
+
+    .navbar .adaptive-right {
+        flex: 10%;
+        justify-content: center;
+        align-content: center;
+        text-align: center;
     }
 
     .navbar .adaptive-middle img {
@@ -143,6 +155,7 @@
     .navbar .navmain {
       padding: 0px 0px 10px 0px;
       padding-left: 10%;
+      padding-right: 10%;
     }
 
     .navbar .user {
@@ -150,8 +163,10 @@
     }
   }
 
+  /* Keep Navbar Centered at Small Screen Size */
   @media screen and (max-width: 450px) {
     .navbar .navmain {
         padding-left: 0%;
+        padding-right: 0%;
       }
   }
