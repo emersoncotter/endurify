@@ -122,7 +122,7 @@
         padding: 50px;
     }
 
-    /* Set up flexbox for condensed menu */
+    /* Set up condensed left hamburger menu */
     .navbar .adaptive-left {
         flex: 10%;
         justify-content: center;
@@ -130,6 +130,7 @@
         text-align: center;
     }
 
+    /* set up middle condensed logo */
     .navbar .adaptive-middle {
       justify-content: center;
       align-content: center;
@@ -137,6 +138,7 @@
       flex: 80%;
     }
 
+    /* set up condensed right profile icon */
     .navbar .adaptive-right {
         flex: 10%;
         justify-content: center;
@@ -144,20 +146,24 @@
         text-align: center;
     }
 
+    /* make logo smaller on condensed format */
     .navbar .adaptive-middle img {
         height: 25px;
     }
 
+    /* main navbar a padding */
     .navbar .navmain a {
       padding: 5px 10px;
     }
 
+    /* keep navbar centered with logo */
     .navbar .navmain {
       padding: 0px 0px 10px 0px;
       padding-left: 10%;
       padding-right: 10%;
     }
 
+    /* hide login and sign up in condensed view */
     .navbar .user {
       display: none;
     }
