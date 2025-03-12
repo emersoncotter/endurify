@@ -65,8 +65,8 @@
             display: none;
             }
 
-        /* Login/Profile Column */
-        .navbar .user {
+        /* Right Navbar Column */
+        .navbar .navbar-right {
                 flex: 30%;
                 /* background-color: white; */
                 padding: 20px;
@@ -164,7 +164,7 @@
     }
 
     /* hide login and sign up in condensed view */
-    .navbar .user {
+    .navbar .navbar-right {
       display: none;
     }
   }
