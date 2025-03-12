@@ -1,11 +1,11 @@
 <?php
-if(session_status() !== PHP_SESSION_ACTIVE) session_start();
+    if(session_status() !== PHP_SESSION_ACTIVE) session_start();
 
-if(!isset($_SESSION["user_name"])) {
-	$_SESSION["user_name"] = '';
-	$_SESSION["first_name"] = '';
-    $_SESSION['last_name'] = '';
-	}
+    if(!isset($_SESSION["user_name"])) {
+        $_SESSION["user_name"] = '';
+        $_SESSION["first_name"] = '';
+        $_SESSION['last_name'] = '';
+        }
 ?>
 
 <!DOCTYPE html>
@@ -56,9 +56,9 @@ if(!isset($_SESSION["user_name"])) {
     <!-- Main navigation links of navbar -->
     <div class="navmain toggle" id="navmain">
         <!-- Page Navigation -->
-        <a class="gradient-text" href="#">Home</a>
-        <a class="gradient-text" href="features.php">Features</a>
-        <a class="gradient-text" href="about.php">About Us</a>
+        <a class="gradient-text <?php if(isset($currentPage) && $currentPage == "home"){echo 'current';} else {echo 'hover-underline-animation';};?>" href="#">Home</a>
+        <a class="gradient-text <?php if(isset($currentPage) && $currentPage == "features"){echo 'current';} else {echo 'hover-underline-animation';};?>" href="features.php">Features</a>
+        <a class="gradient-text <?php if(isset($currentPage) && $currentPage == "about"){echo 'current';} else {echo 'hover-underline-animation';};?>" href="about.php">About Us</a>
         <!-- Initially hidden Get Started Button -->
         <?php
             if (empty($_SESSION['username'])) {
@@ -76,7 +76,7 @@ if(!isset($_SESSION["user_name"])) {
 
         if (empty($_SESSION['username'])) {
             // show sign in button
-            echo '<a class="gradient-text" href="login.php">Log In</a>';
+            echo '<a class="gradient-text hover-underline-animation left" href="login.php">Log In</a>';
             echo '<button class="button" onclick="location.href=\'signup.php\';">Sign Up</button>';
         } else {
         // Dashboard Button Appears

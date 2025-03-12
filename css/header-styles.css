@@ -10,23 +10,40 @@
       
       /* Style the navigation bar links */
       .navbar a {  
-        padding: 14px 12px;
-        text-decoration: none;
-        text-align: center;
+        margin: 0px 12px;
+        text-decoration-thickness: 1.5px;
       }
-      
-            /* Change color on hover */
-            .navbar a:hover {
-                background: rgb(47,137,252);
-                background: linear-gradient(0deg, rgba(47,137,252,1) 0%, rgba(48,227,159,1) 70%);
-                
-                background-size: 100%;
-                background-repeat: repeat;
+
+            .hover-underline-animation {
+              display: inline-flexbox;
+              position: relative;
+            }
             
-                -webkit-text-fill-color: transparent; 
-                -moz-text-fill-color: transparent;
+            .hover-underline-animation::after {
+              content: '';
+              position: absolute;
+              width: 100%;
+              transform: scaleX(0);
+              height: 1.5px;
+              bottom: 0;
+              left: 0;
+              background-color: #30acd9;
+              transform-origin: bottom left;
+              transition: transform 0.35s ease-out;
+            }
             
+            .hover-underline-animation:hover::after {
+              transform: scaleX(1);
+              transform-origin: bottom left;
+            }
+
+
+            .current {
                 text-decoration: underline;
+                text-decoration-color: #30acd9;
+                text-underline-offset: 1.6px;
+                text-decoration-thickness: 1.6px;
+
             }
 
         /* Left Navbar column */
@@ -151,7 +168,13 @@
 
     /* main navbar a padding */
     .navbar .navmain a {
-      padding: 5px 10px;
+      padding: 0px 0px;
+      margin: 0px 10px;
+    }
+
+    .navbar .navmain button {
+      display: inline-flex;
+      position: relative;
     }
 
     /* keep navbar centered with logo */
@@ -168,7 +191,7 @@
   }
 
   /* Keep Navbar Centered at Small Screen Size */
-  @media screen and (max-width: 450px) {
+  @media screen and (max-width: 500px) {
     .navbar .navmain {
         padding-left: 0%;
         padding-right: 0%;

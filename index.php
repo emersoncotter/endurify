@@ -1,5 +1,6 @@
 <?php
 if(session_status() !== PHP_SESSION_ACTIVE) session_start();
+
 ?>
 
 <!DOCTYPE html>
@@ -15,7 +16,10 @@ if(session_status() !== PHP_SESSION_ACTIVE) session_start();
 </head>
 <body class="background-gradient">
 
-<?php include('header.php'); ?>
+<?php 
+  $currentPage = "home";
+  include('header.php'); 
+?>
 
 <!-- Header -->
 <div class="header">
