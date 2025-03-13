@@ -6,6 +6,7 @@
         top: 0;
         left: 0;
         right: 0;
+        min-height: 70px;
       }
       
       /* Style the navigation bar links */
@@ -46,10 +47,15 @@
 
             }
 
+            .icon {
+              font-family: "fontAwesome", "Font Awesome 5 Free";
+              font-weight: 400;
+            }
+
         /* Left Navbar column */
       .navbar .navbar-left {
         flex: 30%;
-        padding: 20px;
+        padding: 15px 20px;
         justify-content: left;
         align-content: center;
         text-align: left;
@@ -69,7 +75,7 @@
         /* Main Navbar column */
         .navbar .navmain {
             flex: 40%;
-            padding: 20px;
+            padding: 15px 20px;
             justify-content: center;
             align-content: center;
             text-align: center;
@@ -84,7 +90,7 @@
         .navbar .navbar-right {
                 flex: 30%;
                 /* background-color: white; */
-                padding: 20px;
+                padding: 15px 20px;
                 justify-content: right;
                 align-content: center;
                 text-align: right;

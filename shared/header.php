@@ -16,7 +16,8 @@
     <link rel="stylesheet" href="css/header-styles.css">
 	<link rel="stylesheet" href="css/styles.css">
     
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
 </head>
 <body>
     
@@ -47,7 +48,7 @@
             
             <!-- Initially Hidden Login Icon -->
             <div class="adaptive-right">
-                <a href="signin.php" class="icon gradient-text responsive">
+                <a href="login.php" class="icon gradient-text responsive">
                     <i class="fa fa-user"></i>
                 </a>
             </div>
@@ -63,7 +64,7 @@
         <?php
             if (empty($_SESSION['username'])) {
                 // show get started
-                echo '<button class="button responsive" onclick="location.href=\'signin.php\';">Get Started</button>';
+                echo '<button class="button responsive" onclick="location.href=\'login.php\';">Get Started</button>';
             } else {
                 // Dashboard Button Appears
                 echo '<button class="button" type="button responsive" onclick="location.href=\'dashboard.php\';">Dashboard</button>';

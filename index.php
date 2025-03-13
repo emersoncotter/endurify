@@ -18,7 +18,7 @@ if(session_status() !== PHP_SESSION_ACTIVE) session_start();
 
 <?php 
   $currentPage = "home";
-  include('header.php'); 
+  include('shared\header.php'); 
 ?>
 
 <!-- Header -->
