@@ -13,8 +13,10 @@
 <head>
 	<meta charset="utf-8">
 	<title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href='https://fonts.googleapis.com/css?family=Inria Sans' rel='stylesheet'>
-	<link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/header-styles.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
@@ -29,13 +31,10 @@
         <div class="adaptive-navbar">
             <!-- Initially Hidden Hamburger Icon ☰ -->
             <div class="adaptive-left">
-                <span class="gradient-text"> 
-                    <a href="javascript:void(0);" class="responsive" onclick="toggleMenu()">
-                        <i class="fa fa-bars"></i>
-                    </a>
-                </span>
+                <a href="javascript:void(0);" class="gradient-text responsive" onclick="toggleMenu()">
+                    <i class="gradient-text fa fa-bars"></i>
+                </a>
                 
-
                 <script>
                     function toggleMenu() {
                         var x = document.getElementById("navmain");
@@ -54,7 +53,7 @@
             <!-- Initially Hidden Login Icon -->
             <div class="adaptive-right">
                 <a href="login.php" class="icon gradient-text responsive">
-                    <i class="fa fa-user"></i>
+                    <i class="gradient-text fa fa-user"></i>
                 </a>
             </div>
         </div>

@@ -11,7 +11,7 @@
     background-repeat: repeat;
     
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent; 
+    -webkit-text-fill-color: transparent;
     -moz-background-clip: text;
     -moz-text-fill-color: transparent;
     background-clip: text;
@@ -70,6 +70,51 @@
     background: #ddd;
   }
   
+    /* Nav Bar Button Styles */
+    .button {
+      font-family: 'Inria Sans';
+      border-radius: 8px;
+      border-width: 0px;
+      color: #ffffff;
+      background: #338acd;
+      padding: 10px 20px 10px 20px;
+      text-decoration: none;
+      cursor: pointer;
+      }
+      
+      .button:hover {
+      background: #1c659c;
+      text-decoration: none;
+      transition: 0.5s;
+      }
+
+  /* Animate hover transisions */
+    .hover-underline-animation {
+      display: inline-flexbox;
+      position: relative;
+    }
+    
+    .hover-underline-animation::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      transform: scaleX(0);
+      height: 1.75px;
+      bottom: 0;
+      left: 0;
+      background-color: #30acd9;
+      transform-origin: bottom left;
+      transition: transform 0.35s ease-out;
+
+    }
+    
+    .hover-underline-animation:hover::after {
+      transform: scaleX(1);
+      transform-origin: bottom left;
+    }
+
+
+
   /* Responsive layout - when the screen is less than 700px wide, make the two columns stack on top of each other instead of next to each other */
   @media screen and (max-width: 900px) {
     .row {   

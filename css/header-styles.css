@@ -16,46 +16,21 @@
         font-size: 16px;
       }
 
-            /* Animate hover transisions */
-            .hover-underline-animation {
-              display: inline-flexbox;
-              position: relative;
-            }
-            
-            .hover-underline-animation::after {
-              content: '';
-              position: absolute;
-              width: 100%;
-              transform: scaleX(0);
-              height: 1.75px;
-              bottom: 0;
-              left: 0;
-              background-color: #30acd9;
-              transform-origin: bottom left;
-              transition: transform 0.35s ease-out;
+      /* Permanent Underline Active Page */
+      .current {
+          text-decoration: underline;
+          text-decoration-color: #30acd9;
+          text-underline-offset: 1.75px;
+          text-decoration-thickness: 2px;
+      }
 
-            }
-            
-            .hover-underline-animation:hover::after {
-              transform: scaleX(1);
-              transform-origin: bottom left;
-            }
+      .fa {
+        font-family: "fontAwesome", "Font Awesome 5 Free";
+        font-weight: 400;
+        display: block;
+      }
 
-            /* Permanent Underline Active Page */
-            .current {
-                text-decoration: underline;
-                text-decoration-color: #30acd9;
-                text-underline-offset: 1.75px;
-            }
-
-            .fa {
-              font-family: "fontAwesome", "Font Awesome 5 Free";
-              font-weight: 400;
-              color: rgba(48,227,159,1);
-              display: block;
-            }
-
-        /* Left Navbar column */
+      /* Left Navbar column */
       .navbar .navbar-left {
         flex: 30%;
         padding: 15px 20px;
@@ -98,23 +73,6 @@
                 align-content: center;
                 text-align: right;
             }
-    
-    /* Nav Bar Button Styles */
-    .button {
-        border-radius: 8px;
-        border-width: 0px;
-        color: #ffffff;
-        background: #338acd;
-        padding: 10px 20px 10px 20px;
-        text-decoration: none;
-        cursor: pointer;
-        }
-        
-        .button:hover {
-        background: #1c659c;
-        text-decoration: none;
-        transition: 0.5s;
-        }
   
   /* Responsive layout - when the screen is less than 850px wide, change to compact layout */
   @media screen and (max-width: 850px) {

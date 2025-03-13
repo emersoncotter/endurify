@@ -2,9 +2,10 @@
     position: fixed;
     top: 0; left: 0; bottom: 0; right: 0;
     margin: auto;
-    width: 450px;
+    width: 400px;
     height: 70%;
     min-height: 250px;
+    max-height: 500px;
     
     background: #f0f0fd;
     padding: 30px 32px;
@@ -26,6 +27,7 @@
     font-weight: bold;
     font-size: 24px;
     text-align: center;
+    padding-top: 10px;
 }
 
 .pane .fa {
@@ -40,13 +42,13 @@
 }
 
 .pane .formItem {
-    margin-bottom: 40px;
-    margin-top: 15px;
+    margin-bottom: 35px;
+    margin-top: 5px;
     width: 100%;
 }
 
 .pane input[type=text], input[type=password] {
-    padding: 12px;
+    padding: 12px 15px;
     margin-left: 15px;
     width: 85%;
     border: none;
@@ -57,4 +59,36 @@
     -moz-box-shadow: 0 0 5px #c3c3c3e6;
     -webkit-box-shadow: 0 0 5px #c3c3c3e6;
     box-shadow: 0 0 5px #c3c3c3e6;
+}
+
+.pane .button {
+    width: 95%;
+    font-size: 16px;
+}
+
+.pane a {  
+    text-decoration: none;
+    color: #30acd9;
+  }
+
+@media screen and (max-width: 700px) {
+    .pane {
+        width: 330px;
+        height: 65%;
+        max-height: 415px;
+    }
+
+    .pane input[type=text], input[type=password] {
+        padding: 10px;
+        margin-left: 15px;
+        width: 85%;
+        border: none;
+    }
+
+    .pane .formItem {
+        margin-bottom: 20px;
+        margin-top: 5px;
+        width: 100%;
+    }
+
 }
