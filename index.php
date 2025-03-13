@@ -10,6 +10,7 @@ if(session_status() !== PHP_SESSION_ACTIVE) session_start();
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="css/styles.css">
+
 <style>
 
 </style>
@@ -18,7 +19,7 @@ if(session_status() !== PHP_SESSION_ACTIVE) session_start();
 
 <?php 
   $currentPage = "home";
-  include('shared\header.php'); 
+  include('shared/header.php'); 
 ?>
 
 <!-- Header -->
@@ -31,6 +32,11 @@ if(session_status() !== PHP_SESSION_ACTIVE) session_start();
 <div class="row">
   <div class="side">
     <h2>About Me</h2>
+    <span class="gradient-text"> 
+                    <a href="javascript:void(0);" class="icon responsive" onclick="toggleMenu()">
+                        <i class="fa fa-bars"></i>
+                    </a>
+                </span>
     <h5>Photo of me:</h5>
     <div class="fakeimg" style="height:200px;">Image</div>
     <p>Some text about me in culpa qui officia deserunt mollit anim..</p>

@@ -13,9 +13,9 @@
 <head>
 	<meta charset="utf-8">
 	<title></title>
-    <link rel="stylesheet" href="css/header-styles.css">
+    <link href='https://fonts.googleapis.com/css?family=Inria Sans' rel='stylesheet'>
 	<link rel="stylesheet" href="css/styles.css">
-    
+    <link rel="stylesheet" href="css/header-styles.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
 </head>
@@ -29,9 +29,12 @@
         <div class="adaptive-navbar">
             <!-- Initially Hidden Hamburger Icon ☰ -->
             <div class="adaptive-left">
-                <a href="javascript:void(0);" class="icon gradient-text responsive" onclick="toggleMenu()">
-                    <i class="fa fa-bars"></i>
-                </a>
+                <span class="gradient-text"> 
+                    <a href="javascript:void(0);" class="responsive" onclick="toggleMenu()">
+                        <i class="fa fa-bars"></i>
+                    </a>
+                </span>
+                
 
                 <script>
                     function toggleMenu() {
@@ -43,7 +46,9 @@
 
             <!-- Always Visible Logo -->
             <div class="adaptive-middle">
-                <img src="media/logo.png" alt="Endurify Logo">
+                <a href="index.php">
+                    <img src="media/logo.png" alt="Endurify Logo">
+                </a>
             </div>
             
             <!-- Initially Hidden Login Icon -->

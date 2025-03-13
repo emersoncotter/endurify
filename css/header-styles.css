@@ -12,6 +12,8 @@
       /* Style the navigation bar links */
       .navbar a {  
         margin: 0px 12px;
+        font-weight: bold;
+        font-size: 16px;
       }
 
             /* Animate hover transisions */
@@ -25,12 +27,13 @@
               position: absolute;
               width: 100%;
               transform: scaleX(0);
-              height: 1px;
+              height: 1.75px;
               bottom: 0;
               left: 0;
               background-color: #30acd9;
               transform-origin: bottom left;
               transition: transform 0.35s ease-out;
+
             }
             
             .hover-underline-animation:hover::after {
@@ -42,14 +45,14 @@
             .current {
                 text-decoration: underline;
                 text-decoration-color: #30acd9;
-                text-underline-offset: 1.5px;
-                text-decoration-thickness: 1.5px;
-
+                text-underline-offset: 1.75px;
             }
 
-            .icon {
+            .fa {
               font-family: "fontAwesome", "Font Awesome 5 Free";
               font-weight: 400;
+              color: rgba(48,227,159,1);
+              display: block;
             }
 
         /* Left Navbar column */

@@ -1,6 +1,7 @@
 .background-gradient {
         background: radial-gradient(100% 100% at 99% 99%, #32e2df 32%, transparent),radial-gradient(100% 100% at 31% 20%, #30e1cb -100%, transparent),radial-gradient(100% 100% at 92% 24%, #338acd 30%, transparent),radial-gradient(100% 100% at 21% 75%, #338acd 40%, transparent),#30dacf;
-    }
+        background-attachment: fixed;
+      }
 
 .gradient-text {
     background: #F5F5F5;
@@ -9,11 +10,13 @@
     background-size: 100%;
     background-repeat: repeat;
     
-    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent; 
     -moz-background-clip: text;
     -moz-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    
   }
 
 * {
@@ -23,8 +26,9 @@
 
   /* Style the body */
   body {
-    font-family: Arial;
+    font-family: 'Inria Sans';
     margin: 0;
+    height: 100%;
   }
 
   .header {
