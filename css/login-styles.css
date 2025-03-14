@@ -7,7 +7,7 @@
     min-height: 250px;
     max-height: 500px;
     
-    background: #f0f0fd;
+    background: #F5F5F5;
     padding: 30px 32px;
     -moz-border-radius: 30px;
     -webkit-border-radius: 30px;
@@ -35,7 +35,6 @@
 }
 
 .pane .loginForm {
-    /* display: inline-block; */
     justify-content: center;
     text-align: center;
     align-content: center;
@@ -47,7 +46,7 @@
     width: 100%;
 }
 
-.pane input[type=text], input[type=password] {
+.pane input[type=text], input[type=password], input[type=email] {
     padding: 12px 15px;
     margin-left: 15px;
     width: 85%;
@@ -78,8 +77,8 @@
         max-height: 415px;
     }
 
-    .pane input[type=text], input[type=password] {
-        padding: 10px;
+    .pane input[type=text], input[type=password], input[type=email] {
+        padding: 10px 15px;
         margin-left: 15px;
         width: 85%;
         border: none;

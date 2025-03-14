@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-// redirect to home page if already logged in
+// redirect to dashboard page if already logged in
 if(isset($_SESSION['username'])) {
 	if($_SESSION['username'] != '') {
 		header("Location: dashboard.php");
@@ -29,7 +29,7 @@ if(isset($_SESSION['username'])) {
             <img src="media/logo.png" alt="Endurify Logo">
         </a>
 
-        <h1> Log In</h1>
+        <h1>Log In</h1>
 
         <div class="loginForm">
             <div class="formItem">
