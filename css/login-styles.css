@@ -1,3 +1,4 @@
+/* Content background window setup */
 .pane {
     position: fixed;
     top: 0; left: 0; bottom: 0; right: 0;
@@ -15,13 +16,23 @@
     -moz-box-shadow: 0 0 18px #000000e6;
     -webkit-box-shadow: 0 0 18px #000000e6;
     box-shadow: 0 0 18px #000000e6;
+
+    overflow: auto;
 }
 
+/* Tall version of bkgd window for signup page */
+.tall {
+    height: 75%;
+    max-height: 700px;
+}
+
+/* Limit the size of logo */
 .pane img {
     width: 100%;
     padding: 5%;
 }
 
+/* Style H1 text */
 .pane h1 {
     color: #192333;
     font-weight: bold;
@@ -30,25 +41,46 @@
     padding-top: 10px;
 }
 
+/* style icons on login page */
 .pane .fa {
     color: #192333;
+    margin-right: 15px;
 }
 
-.pane .loginForm {
+/* Center content on login and signup forms */
+.pane .loginForm, .signupForm {
     justify-content: center;
     text-align: center;
     align-content: center;
 }
 
-.pane .formItem {
+/* Set margins for login form items */
+.pane .loginForm .formItem {
     margin-bottom: 35px;
     margin-top: 5px;
     width: 100%;
 }
 
-.pane input[type=text], input[type=password], input[type=email] {
+/* Set margins for signup form items */
+.pane .signupForm .formItem {
+    margin-bottom: 22.5px;
+    margin-top: 5px;
+    width: 100%;
+}
+
+/* Signup page half-width field setup */
+.pane input[type=text].half-1, select.half-1 {
+    width: 45%;
+}
+
+    .pane input[type=text].half-2 {
+        width: 45%;
+        margin-left: 4%;
+    }
+
+/* Set general field styles */
+.pane input, select {
     padding: 12px 15px;
-    margin-left: 15px;
     width: 85%;
     border: none;
 
@@ -60,16 +92,61 @@
     box-shadow: 0 0 5px #c3c3c3e6;
 }
 
+/* set width of fields on signup page */
+.pane .signupForm input, select {
+    width: 95%;
+}
+
+/* Change border color of form fields when clicked */
+input:focus, .dropdown:focus {
+    border-color: #30acd9; 
+    outline: none;
+    box-shadow: 0 0 5px rgba(48, 172, 217, 0.5);
+}
+
+/* Style the dropdown menu */
+.dropdown {
+    font-size: 14px;
+    font-family: 'Inria Sans', sans-serif;
+    border-radius: 30px;
+    background-color: white;
+    color: #888;
+    opacity: 0.9;
+    appearance: none;
+    cursor: pointer;
+}
+
+/* Style dropdown placeholder text */
+.pane input::placeholder {
+    font-family: 'Inria Sans', sans-serif;
+    font-size: 14px;
+    color: #888; 
+    opacity: .9;
+}
+
+/* Make the blank placeholder selection gray */
+.dropdown option[value=""] {
+    color: #888;
+}
+
+/* submit button styling */
 .pane .button {
     width: 95%;
     font-size: 16px;
 }
 
+/* signup/loging link styling */
 .pane a {  
     text-decoration: none;
     color: #30acd9;
   }
 
+/* paragraph styling */
+p {
+    margin: auto;
+}
+
+/* Styling adjustments for smaller devices */
 @media screen and (max-width: 700px) {
     .pane {
         width: 330px;
@@ -77,17 +154,47 @@
         max-height: 415px;
     }
 
-    .pane input[type=text], input[type=password], input[type=email] {
+    .tall {
+        height: 75%;
+        max-height: 650px;
+    }
+
+    .pane select, input[type=text], input[type=password], input[type=email] {
         padding: 10px 15px;
-        margin-left: 15px;
         width: 85%;
         border: none;
     }
 
-    .pane .formItem {
+    .pane .signupForm input, select {
+        width: 95%;
+    }
+
+    .pane .loginForm .formItem {
         margin-bottom: 20px;
         margin-top: 5px;
         width: 100%;
     }
 
+    .pane .signupForm .formItem {
+        margin-bottom: 20px;
+        margin-top: 5px;
+        width: 100%;
+    }
+
+    .pane input[type=text].half-1, select.half-1 {
+        width: 45%;
+    }
+    
+    .pane input[type=text].half-2 {
+        width: 45%;
+        margin-left: 4%;
+    }
+
+}
+
+/* additional adjustments for screens with low height */
+@media screen and (max-height: 800px) {
+    .tall {
+        height: 95%;
+    }
 }

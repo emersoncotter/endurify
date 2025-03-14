@@ -24,29 +24,41 @@ if(isset($_SESSION['username'])) {
 </style>
 </head>
 <body class="background-gradient">
-    <div class="pane">
+    <div class="pane tall">
         <a href="index.php">
             <img src="media/logo.png" alt="Endurify Logo">
         </a>
 
         <h1>Sign Up</h1>
 
-        <div class="loginForm">
+        <div class="signupForm">
             <div class="formItem">
-                <label for="firstName"></label><i class="fa fa-id-card"></i><input type="text" autocomplete="given-name" id="firstName" name="firstName" placeholder="First" size="20" maxlength="40">
-                <label for="lastName"></label><input type="text" autocomplete="family-name" id="lastName" name="lastName" placeholder="Last" size="20" maxlength="40">
+                <input type="text" class="half-1" autocomplete="given-name" id="firstName" name="firstName" placeholder="First" size="20" maxlength="40">
+                <label for="lastName"></label><input type="text" class="half-2" autocomplete="family-name" id="lastName" name="lastName" placeholder="Last" size="20" maxlength="40">
             </div>
             <div class="formItem">
-                <label for="email"></label><i class="fa fa-envelope"></i><input type="email" autocomplete="email" id="email" name="email" placeholder="Email" size="20" maxlength="40">
+                <input type="email" autocomplete="email" id="email" name="email" placeholder="Email" size="20" maxlength="40">
             </div>
             <div class="formItem">
-                <label for="username"></label><i class="fa fa-user"></i><input type="text" autocomplete="username" id="username" name="username" placeholder="Username" size="20" maxlength="40">
+                <input type="text" autocomplete="username" id="username" name="username" placeholder="Username" size="20" maxlength="40">
             </div>
             <div class="formItem">
-                <label for="password"><i class="fa fa-lock"></i></label><input type="password" autocomplete="new-password" id="password" name="password" placeholder="Password" size="20" maxlength="40">
+                <input type="password" autocomplete="new-password" id="password" name="password" placeholder="Password" size="20" maxlength="40">
             </div>
             <div class="formItem">
-                <label for="confirmPassword"><i class="fa fa-lock"></i></label><input type="password" autocomplete="none" id="confirmPassword" name="password" placeholder="Confirm Password" size="20" maxlength="40">
+
+                <input type="password" autocomplete="none" id="confirmPassword" name="password" placeholder="Confirm Password" size="20" maxlength="40">
+            </div>
+            <div class="formItem">
+                <select class="half-1 dropdown" id="gender" name="gender" class="dropdown">
+                    <option value="" disabled selected>Gender</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="non-binary">Non-Binary</option>
+                    <option value="prefer-not">Prefer not to say</option>
+                    <option value="other">Other</option>
+                </select>
+                <input type="text" class="half-2" autocomplete="postal-code" id="zipcode" name="zipcode" placeholder="Zip Code" size="20" maxlength="5">
             </div>
             <div class="formItem">
                 <input class="button" type="submit" name="submit" value="Login">
