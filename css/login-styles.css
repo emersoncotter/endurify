@@ -68,15 +68,24 @@
     width: 100%;
 }
 
-/* Signup page half-width field setup */
-.pane input[type=text].half-1, select.half-1 {
-    width: 45%;
+/* Two Fields in one Row Styles */
+.pane .signupForm .doubleRow {
+    display: flex;
+    gap: 10px;
+
 }
 
-    .pane input[type=text].half-2 {
-        width: 45%;
-        margin-left: 4%;
-    }
+.doubleField {
+    flex: 1;
+    min-width: 0;
+}
+
+.inputContainer {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    width: 100%;
+}
 
 /* Set general field styles */
 .pane input, select {
@@ -94,7 +103,7 @@
 
 /* set width of fields on signup page */
 .pane .signupForm input, select {
-    width: 95%;
+    width: 100%;
 }
 
 /* Change border color of form fields when clicked */
@@ -146,6 +155,23 @@ p {
     margin: auto;
 }
 
+/* Highlight invalid fields */
+.pane .signupForm .error {
+    background-color: #ffe6e6;
+    border: 2px solid red;
+    box-shadow: 0 0 5px rgba(255, 0, 0, 0.5);
+}
+
+/* Form Error Messages */
+.error-message {
+    font-size: 12px;
+    color: red;
+    margin-top: 5px;
+    display: none; /* Hidden by default */
+    text-align: left;
+    margin-left: 5px;
+}
+
 /* Styling adjustments for smaller devices */
 @media screen and (max-width: 700px) {
     .pane {
@@ -193,7 +219,7 @@ p {
 }
 
 /* additional adjustments for screens with low height */
-@media screen and (max-height: 800px) {
+@media screen and (max-height: 900px) {
     .tall {
         height: 95%;
     }
