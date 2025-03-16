@@ -21,7 +21,7 @@ if (isset($_SESSION['username']) && $_SESSION['username'] != '') {
 </head>
 
 <body class="background-gradient">
-    <div class="pane tall">
+    <div class="pane">
         <a href="index.php">
             <img src="media/logo.png" alt="Endurify Logo">
         </a>

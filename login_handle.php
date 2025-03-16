@@ -39,7 +39,7 @@ if(mysqli_num_rows($result) == 1){
 }
 else{
 // redirect user to the login page
-    header("Location: login.php?login=notFound");
+    header("Location: login.php?login=error");
 
     
 // terminate the current script

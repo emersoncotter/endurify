@@ -1,13 +1,15 @@
 /* Content background window setup */
 .pane {
-    position: fixed;
-    top: 0; left: 0; bottom: 0; right: 0;
-    margin: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     width: 400px;
-    height: 70%;
-    min-height: 250px;
-    max-height: 500px;
-    
+    min-width: 300px;
+    max-width: 90%;
+    min-height: auto;
+    overflow: hidden;
+
     background: #F5F5F5;
     padding: 30px 32px;
     -moz-border-radius: 30px;
@@ -17,13 +19,13 @@
     -webkit-box-shadow: 0 0 18px #000000e6;
     box-shadow: 0 0 18px #000000e6;
 
-    overflow: auto;
 }
 
-/* Tall version of bkgd window for signup page */
-.tall {
-    height: 75%;
-    max-height: 700px;
+/* Let the panel adjust sizes as needed */
+.pane .loginForm, .pane .signupForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 /* Limit the size of logo */
@@ -38,7 +40,7 @@
     font-weight: bold;
     font-size: 24px;
     text-align: center;
-    padding-top: 10px;
+    padding-top: 8px;
 }
 
 /* style icons on login page */
@@ -162,41 +164,55 @@ p {
     box-shadow: 0 0 5px rgba(255, 0, 0, 0.5);
 }
 
+.pane .loginForm .error {
+    background-color: #ffe6e6;
+    border: 2px solid red;
+    box-shadow: 0 0 5px rgba(255, 0, 0, 0.5);
+}
+
 /* Form Error Messages */
-.error-message {
+.pane .signupForm .error-message {
     font-size: 12px;
     color: red;
-    margin-top: 5px;
+    margin-top: 2px;
+    margin-bottom: 0px;
     display: none; /* Hidden by default */
     text-align: left;
     margin-left: 5px;
 }
 
-/* Styling adjustments for smaller devices */
-@media screen and (max-width: 700px) {
-    .pane {
-        width: 330px;
-        height: 65%;
-        max-height: 415px;
-    }
+.pane .loginForm .error-message {
+    font-size: 12px;
+    color: red;
+    margin-top: 2px;
+    margin-bottom: 0px;
+    display: none; /* Hidden by default */
+    text-align: left;
+    margin-left: 40px;
+}
 
-    .tall {
-        height: 75%;
-        max-height: 650px;
+.pane .loginForm .invalid-message {
+    display:block;
+    margin-top:10px;
+    margin-left:0px;
+    text-align:center;
+
+}
+
+/* Styling adjustments for smaller devices */
+@media screen and (max-width: 450px) {
+    .pane {
+        width: 90%;
+        padding: 20px;
     }
 
     .pane select, input[type=text], input[type=password], input[type=email] {
         padding: 10px 15px;
-        width: 85%;
         border: none;
     }
 
-    .pane .signupForm input, select {
-        width: 95%;
-    }
-
     .pane .loginForm .formItem {
-        margin-bottom: 20px;
+        margin-bottom: 18px;
         margin-top: 5px;
         width: 100%;
     }
@@ -205,22 +221,5 @@ p {
         margin-bottom: 20px;
         margin-top: 5px;
         width: 100%;
-    }
-
-    .pane input[type=text].half-1, select.half-1 {
-        width: 45%;
-    }
-    
-    .pane input[type=text].half-2 {
-        width: 45%;
-        margin-left: 4%;
-    }
-
-}
-
-/* additional adjustments for screens with low height */
-@media screen and (max-height: 900px) {
-    .tall {
-        height: 95%;
     }
 }
