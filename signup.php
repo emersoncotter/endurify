@@ -75,6 +75,8 @@ if (isset($_SESSION['username']) && $_SESSION['username'] != '') {
                 </div>
                 <div class="formItem">
                     <input class="button" type="submit" name="submit" value="Sign Up">
+                    <?php if(isset($_GET["status"]) && $_GET["status"] === 'username') { echo '<span class="error-message invalid-message" style="display:block;">That username already exists!</span>';}?>
+                    <?php if(isset($_GET["status"]) && $_GET["status"] === 'email') { echo '<span class="error-message invalid-message" style="display:block;">That email already exists!</span>';}?>
                 </div>
                 <p>Already have an account? <a class="hover-underline-animation" href="login.php">Log In</a></p>
             </div>

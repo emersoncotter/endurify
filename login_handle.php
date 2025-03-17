@@ -4,7 +4,7 @@ session_start();
 include('mysqli_connect.php');
 
 // Pass form data
-$username = mysqli_real_escape_string($dbc, trim($_POST['username']));
+$username = mysqli_real_escape_string($dbc, strtolower(trim($_POST['username'])));
 $password = mysqli_real_escape_string($dbc, trim($_POST['password']));
 
 

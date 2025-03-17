@@ -42,9 +42,8 @@ if(isset($_SESSION['username'])) {
                 <div class="formItem">
                     <input class="button" type="submit" name="submit" value="Login">
                     <?php 
-                        if(isset($_GET["status"])) {
-                        echo '<span class="error-message invalid-message">Invalid Username or Password!</span>';
-                        }
+                        if(isset($_GET["status"]) && $_GET["status"] === 'error') { echo '<span class="error-message invalid-message">Invalid Username or Password!</span>';}
+                        if(isset($_GET["status"]) && $_GET["status"] === 'created') { echo '<span class="error-message invalid-message" style="color:green;">Account created successfully, please log in!</span>';}
                     ?>
                 </div>
                 <p>Don't have an account?  <a class="hover-underline-animation" href="signup.php">Sign Up</a></p>

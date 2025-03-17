@@ -140,8 +140,9 @@ p { margin: auto; }
 .pane .signupForm .error-message { margin-left: 5px; }
 .pane .loginForm .error-message { margin-left: 45px; }
 
-.pane .loginForm .invalid-message {
-    display:block;
+.pane .loginForm .invalid-message,
+.pane .signupForm .invalid-message {
+    display: block;
     margin-top:10px;
     margin-left:0px;
     text-align:center;

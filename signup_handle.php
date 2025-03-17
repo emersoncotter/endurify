@@ -15,22 +15,22 @@ if(isset($_SESSION['username'])) {
 include('mysqli_connect.php');
 
 		// Name Check
-        $first_name = !empty($_POST['firstName']) ? trim($_POST['firstName']) : NULL;
-        $last_name = !empty($_POST['lastName']) ? trim($_POST['lastName']) : NULL;
+        $first_name = !empty($_POST['firstName']) ? mysqli_real_escape_string($dbc, trim($_POST['firstName'])) : NULL;
+        $last_name = !empty($_POST['lastName']) ? mysqli_real_escape_string($dbc, trim($_POST['lastName'])) : NULL;
 
 		// Email/Username Check
-        $email = !empty($_POST['email']) ? trim($_POST['email']) : NULL;
-        $username = !empty(trim($_POST['username'])) ? trim($_POST['username']) : NULL;
+        $email = !empty($_POST['email']) ? mysqli_real_escape_string($dbc, strtolower(trim($_POST['email']))) : NULL;
+        $username = !empty(trim($_POST['username'])) ? mysqli_real_escape_string($dbc, strtolower(trim($_POST['username']))) : NULL;
 
         // Password Checks
-        $password = !empty(trim($_POST['password'])) ? trim($_POST['password']) : NULL;
-        $confirm_password = !empty(trim($_POST['confirmPassword'])) ? trim($_POST['confirmPassword']) : NULL;
+        $password = !empty(trim($_POST['password'])) ? mysqli_real_escape_string($dbc, trim($_POST['password'])) : NULL;
+        $confirm_password = !empty(trim($_POST['confirmPassword'])) ? mysqli_real_escape_string($dbc, trim($_POST['confirmPassword'])) : NULL;
 
         // Gender Selection Check
-        $gender = ($_POST['gender'] != '') ? trim($_POST['gender']) : NULL;
+        $gender = ($_POST['gender'] != '') ? trim(mysqli_real_escape_string($dbc, $_POST['gender'])) : NULL;
 
         // Zip code Check
-        $zipcode = !empty(trim($_POST['zipcode'])) ? trim($_POST['zipcode']) : NULL;
+        $zipcode = !empty(trim($_POST['zipcode'])) ? mysqli_real_escape_string($dbc, trim($_POST['zipcode'])) : NULL;
 
         // Confirm Password Check, otherwise set to null
         if ($password != $confirm_password) {
@@ -42,20 +42,20 @@ include('mysqli_connect.php');
 		if ($first_name == NULL || $last_name == NULL || $email == NULL || $username == NULL || $password == NULL || $gender == NULL || $zipcode == NULL) {
 			header("Location: signup.php?status=errorN");
 		} else {
-            // Formulate the and run query to check if username exists in the database
-            $query = "SELECT * from users WHERE user_name = '$username'"; 
-            $result = mysqli_query($dbc, $query);
-
-            if(mysqli_num_rows($result) > 0){
-                header("Location: signup.php?status=username");
-            }
-
             // Formulate the and run query to check if email exists in the database
-            $query = "SELECT * from users WHERE email = '$email'"; 
+            $query = "SELECT * from users WHERE LOWER(email) = LOWER('$email')"; 
             $result = mysqli_query($dbc, $query);
 
             if(mysqli_num_rows($result) > 0){
                 header("Location: signup.php?status=email");
+            }
+
+            // Formulate the and run query to check if username exists in the database
+            $query = "SELECT * from users WHERE LOWER(user_name) = LOWER('$username')"; 
+            $result = mysqli_query($dbc, $query);
+
+            if(mysqli_num_rows($result) > 0){
+                header("Location: signup.php?status=username");
             }
 
             // Insert user into database
@@ -63,7 +63,9 @@ include('mysqli_connect.php');
             $result = mysqli_query($dbc, $query);
 
                 // Check if the query is successful, result will be False if failure of running the query
-                if ($result) { header("Location: dashboard.php");
+                if ($result) { 
+                    
+                    header("Location: login.php?status=created");
 
                 // if not, return error
                 } else { header("Location: signup.php?status=error"); }
