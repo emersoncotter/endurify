@@ -1,11 +1,5 @@
 <?php
     if(session_status() !== PHP_SESSION_ACTIVE) session_start();
-
-    if(!isset($_SESSION["user_name"])) {
-        $_SESSION["user_name"] = '';
-        $_SESSION["first_name"] = '';
-        $_SESSION['last_name'] = '';
-        }
 ?>
 
 <!DOCTYPE html>
@@ -18,8 +12,7 @@
     <link href='https://fonts.googleapis.com/css?family=Inria Sans' rel='stylesheet'>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/header-styles.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 </head>
 <body>
     
