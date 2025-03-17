@@ -1,40 +1,23 @@
 /* Content background window setup */
 .pane {
-    position: absolute;
+    position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 400px;
     min-width: 300px;
     max-width: 90%;
-    min-height: auto;
-    overflow: hidden;
-
+    max-height: 90vh;
+    overflow: auto;
     background: #F5F5F5;
     padding: 30px 32px;
-    -moz-border-radius: 30px;
-    -webkit-border-radius: 30px;
     border-radius: 30px;
-    -moz-box-shadow: 0 0 18px #000000e6;
-    -webkit-box-shadow: 0 0 18px #000000e6;
     box-shadow: 0 0 18px #000000e6;
-
 }
 
-/* Let the panel adjust sizes as needed */
-.pane .loginForm, .pane .signupForm {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
+/* Logo and Header */
+.pane img { width: 100%; padding: 5%; }
 
-/* Limit the size of logo */
-.pane img {
-    width: 100%;
-    padding: 5%;
-}
-
-/* Style H1 text */
 .pane h1 {
     color: #192333;
     font-weight: bold;
@@ -43,27 +26,24 @@
     padding-top: 8px;
 }
 
-/* style icons on login page */
-.pane .fa {
-    color: #192333;
-    margin-right: 15px;
-}
+/* Icon Styles */
+.pane .fa { color: #192333; margin-right: 15px; }
 
-/* Center content on login and signup forms */
-.pane .loginForm, .signupForm {
+/* Form Alignment */
+.pane .loginForm, .pane .signupForm {
     justify-content: center;
     text-align: center;
     align-content: center;
 }
 
-/* Set margins for login form items */
+/* Login Form Item Spacing */
 .pane .loginForm .formItem {
     margin-bottom: 35px;
     margin-top: 5px;
     width: 100%;
 }
 
-/* Set margins for signup form items */
+/* Signup Form Item Spacing */
 .pane .signupForm .formItem {
     margin-bottom: 22.5px;
     margin-top: 5px;
@@ -71,16 +51,9 @@
 }
 
 /* Two Fields in one Row Styles */
-.pane .signupForm .doubleRow {
-    display: flex;
-    gap: 10px;
+.pane .signupForm .doubleRow { display: flex; gap: 10px; }
 
-}
-
-.doubleField {
-    flex: 1;
-    min-width: 0;
-}
+.doubleField { flex: 1; min-width: 0; }
 
 .inputContainer {
     display: flex;
@@ -104,9 +77,7 @@
 }
 
 /* set width of fields on signup page */
-.pane .signupForm input, select {
-    width: 100%;
-}
+.pane .signupForm input, select { width: 100%; }
 
 /* Change border color of form fields when clicked */
 input:focus, .dropdown:focus {
@@ -136,67 +107,45 @@ input:focus, .dropdown:focus {
 }
 
 /* Make the blank placeholder selection gray */
-.dropdown option[value=""] {
-    color: #888;
-}
+.dropdown option[value=""] { color: #888; }
 
-/* submit button styling */
-.pane .button {
-    width: 95%;
-    font-size: 16px;
-}
+/* Submit button styling */
+.pane .button { width: 95%; font-size: 16px; }
 
-/* signup/loging link styling */
-.pane a {  
-    text-decoration: none;
-    color: #30acd9;
-  }
+/* Signup/loging link styling */
+.pane a { text-decoration: none; color: #30acd9; }
 
 /* paragraph styling */
-p {
-    margin: auto;
-}
+p { margin: auto; }
 
 /* Highlight invalid fields */
-.pane .signupForm .error {
-    background-color: #ffe6e6;
-    border: 2px solid red;
-    box-shadow: 0 0 5px rgba(255, 0, 0, 0.5);
-}
-
-.pane .loginForm .error {
+.pane .signupForm .error, .pane .loginForm .error {
     background-color: #ffe6e6;
     border: 2px solid red;
     box-shadow: 0 0 5px rgba(255, 0, 0, 0.5);
 }
 
 /* Form Error Messages */
+
+.pane .loginForm .error-message,
 .pane .signupForm .error-message {
     font-size: 12px;
     color: red;
     margin-top: 2px;
-    margin-bottom: 0px;
-    display: none; /* Hidden by default */
+    margin-bottom: 0;
+    display: none;
     text-align: left;
-    margin-left: 5px;
 }
 
-.pane .loginForm .error-message {
-    font-size: 12px;
-    color: red;
-    margin-top: 2px;
-    margin-bottom: 0px;
-    display: none; /* Hidden by default */
-    text-align: left;
-    margin-left: 40px;
-}
+.pane .signupForm .error-message { margin-left: 5px; }
+.pane .loginForm .error-message { margin-left: 45px; }
 
 .pane .loginForm .invalid-message {
     display:block;
     margin-top:10px;
     margin-left:0px;
     text-align:center;
-
+    font-size: 16px;
 }
 
 /* Styling adjustments for smaller devices */
@@ -211,13 +160,7 @@ p {
         border: none;
     }
 
-    .pane .loginForm .formItem {
-        margin-bottom: 18px;
-        margin-top: 5px;
-        width: 100%;
-    }
-
-    .pane .signupForm .formItem {
+    .pane .loginForm .formItem, .pane .signupForm .formItem {
         margin-bottom: 20px;
         margin-top: 5px;
         width: 100%;
