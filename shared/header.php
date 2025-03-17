@@ -71,7 +71,7 @@
                 echo '<button class="button responsive" onclick="location.href=\'login.php\';">Get Started</button>';
             } else {
                 // Dashboard Button Appears
-                echo '<button class="button" type="button responsive" onclick="location.href=\'dashboard.php\';">Dashboard</button>';
+                echo '<button class="button responsive" type="button responsive" onclick="location.href=\'dashboard.php\';">Dashboard</button>';
             }  
         ?>
     </div>
@@ -85,6 +85,7 @@
             echo '<button class="button" onclick="location.href=\'signup.php\';">Sign Up</button>';
         } else {
         // Dashboard Button Appears
+        echo '<a class="gradient-text hover-underline-animation left" href="signout_handle.php">Sign Out</a>';
         echo '<button class="button" type="button" onclick="location.href=\'dashboard.php\';">Dashboard</button>';
         }  
         ?>

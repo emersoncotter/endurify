@@ -23,8 +23,8 @@
       .current {
           text-decoration: underline;
           text-decoration-color: #30acd9;
-          text-underline-offset: 1.75px;
-          text-decoration-thickness: 2px;
+          text-underline-offset: 2px;
+          text-decoration-thickness: 1.5px;
       }
 
       .fa {
@@ -78,7 +78,7 @@
             }
   
   /* Responsive layout - when the screen is less than 850px wide, change to compact layout */
-  @media screen and (max-width: 850px) {
+  @media screen and (max-width: 860px) {
     /* Change display to Column for main elements  */
     .navbar {   
       flex-direction: column;
