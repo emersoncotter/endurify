@@ -42,7 +42,7 @@ if(isset($_SESSION['username'])) {
                 <div class="formItem">
                     <input class="button" type="submit" name="submit" value="Login">
                     <?php 
-                        if(isset($_GET["login"])) {
+                        if(isset($_GET["status"])) {
                         echo '<span class="error-message invalid-message">Invalid Username or Password!</span>';
                         }
                     ?>

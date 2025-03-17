@@ -27,7 +27,7 @@ if (isset($_SESSION['username']) && $_SESSION['username'] != '') {
         </a>
 
         <h1>Sign Up</h1>
-        <form action="signup_handle" method="post" id="signinForm">
+        <form action="signup_handle.php" method="post" id="signinForm">
             <div class="signupForm">
                 <div class="formItem doubleRow">
                     <div class="inputContainer">
