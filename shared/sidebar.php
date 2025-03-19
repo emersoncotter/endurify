@@ -12,6 +12,7 @@
     <link href='https://fonts.googleapis.com/css?family=Inria Sans' rel='stylesheet'>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/sidebar-styles.css">
+    <link rel="stylesheet" href="css/dashboard-styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 </head>
 <body>
@@ -100,6 +101,12 @@
             
             elements.forEach(function(element) {
                 element.classList.toggle("visible"); // visible a "visible" class
+            });
+
+            var elements = document.querySelectorAll(".compressable"); // Select all elements with class "toggle"
+            
+            elements.forEach(function(element) {
+                element.classList.toggle("compressed"); // visible a "visible" class
             });
 }
     </script>

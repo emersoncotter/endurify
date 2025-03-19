@@ -1,0 +1,157 @@
+.dash-row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.main-content {
+    width: 60%;
+    /* max-width: 1200px; */
+    margin: 0 auto;
+    margin-left: 350px;
+    margin-right: 450px;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    background: #F5F5F5;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    padding: 20px;
+    overflow: visible;
+    /* display: flex; */
+    flex-direction: column;
+}
+
+.calendar {
+    background: #F5F5F5;
+    opacity: 60%;
+    height: 80px;
+    width: 60%;
+    margin: 10px 450px 0px 350px;
+    padding: 0px 20px 0px 20px;
+    border-radius: 20px;
+}
+
+.side-content {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 425px;
+    height: fit-content;
+    max-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    z-index: 1;
+}
+
+.profile {
+    /* background: #F5F5F5; */
+    height: 60px;
+    padding: 0px 20px 0px 20px;
+    margin: 10px 15px;
+}
+
+.summary {
+    height: 65%;
+    background: #F5F5F5;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    padding: 20px;
+    margin: 20px 40px 15px 20px;
+}
+
+.quest {
+    height: 35%;
+    background: #F5F5F5;
+    opacity: 80%;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    padding: 20px;
+    margin: 15px 40px 30px 20px;
+}
+
+@media screen and (max-width: 1250px) {
+    .main-content,
+    .calendar {
+        margin-left:205px;
+        margin-right: 400px;
+        width: 90%;
+    }
+
+    .compressed {
+        margin-left: 100px;
+    }
+
+    .side-content {
+        width: 390px;
+    }
+
+    .summary,
+    .quest {
+        margin-right: 30px;
+    }
+
+    .summary {
+        margin-bottom: 10px;
+    }
+
+}
+
+@media screen and (max-width: 950px) {
+    .dash-row {
+        flex-direction: row;
+    }
+    
+    .main-content,
+    .side-content,
+    .calendar {
+        margin-left:205px;
+        margin-right: 5%;
+        width: 90%;
+    }
+    
+    .side-content {
+        position: relative;
+        height: fit-content;
+    }
+
+    .summary,
+    .quest {
+        margin: 10px 0px;
+    }
+
+    .calendar {
+        margin-top: 10px;
+        margin-bottom: 0px;
+    }
+
+    .compressed {
+        margin-left: 100px;
+        margin-right: 30px;
+    }
+
+}
+
+@media screen and (max-width: 600px) {
+    .main-content,
+    .side-content,
+    .calendar {
+        margin-left: 3%;
+        margin-right: 3%;
+        width: 100%;
+    }
+
+    .summary,
+    .quest,
+    .calendar,
+    .main-content {
+        border-radius: 10px;
+    }
+
+    .main-content {
+        margin-bottom: calc(50px + 3%);
+    }
+
+    .side-content {
+        z-index: -1;
+    }
+}

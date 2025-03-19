@@ -13,43 +13,42 @@ if (empty($_SESSION['username'])) {
     <title>Endurify</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
   </head>
 
   <body class="background-gradient">
-    <div class="row">
+    <div class="">
         <?php 
         $currentPage = "dashboard";
         include('shared/sidebar.php'); 
         ?>
     </div>
-    
-    <div class="row">
-        <div class="side">
-          <h2>About Me</h2>
-          <h5>Photo of me:</h5>
-          <div class="fakeimg" style="height:200px;">Image</div>
-          <p>Some text about me in culpa qui officia deserunt mollit anim..</p>
-          <h3>More Text</h3>
-          <p>Lorem ipsum dolor sit ame.</p>
-          <div class="fakeimg" style="height:60px;">Image</div><br>
-          <div class="fakeimg" style="height:60px;">Image</div><br>
-          <div class="fakeimg" style="height:60px;">Image</div>
+    <div class="dash-row">
+      <div class="side-content compressable compressed">
+        <div class="profile">
+            <h2>Welcome, User</h2>
         </div>
-        <div class="main">
-        <h2>TITLE HEADING</h2>
-        <h5>Title description, Dec 7, 2024</h5>
-        <div class="fakeimg" style="height:200px;">Image</div>
-        <p>Some text..</p>
-        <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
-        <br>
-        <h2>TITLE HEADING</h2>
-        <h5>Title description, Sep 2, 2024</h5>
-        <div class="fakeimg" style="height:200px;">Image</div>
-        <p>Some text..</p>
-        <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+
+        <div class="summary">
+          <h2>Progress Summary</h2>
+        </div>
+
+        <div class="quest">
+          <h2>Daily Quest</h2>
+        </div>
       </div>
+
+      <div class="calendar compressable compressed">
+          <h2>Calendar</h2>
+      </div>
+
+      <div class="main-content compressable compressed">
+        <h1>Main Content</h1>
+        <p>Scroll me if content overflows...</p>
+        <div style="height: 1500px;">This is a long block to test scrolling.</div>
+      </div>
+
+     
     </div>
-
-
   </body>
 </html>
