@@ -83,7 +83,7 @@
 }
 
 /* Responsive layout - when the screen is less than 1300px wide, change to compact layout */
-@media screen and (max-width: 1250px) {
+@media screen and (max-width: 1300px) {
     .sidebar {
         width: 175px;
         }
