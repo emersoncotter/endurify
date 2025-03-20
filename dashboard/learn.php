@@ -21,7 +21,7 @@ if (empty($_SESSION['username'])) {
     <!-- Left Sidebar -->
     <div>
         <?php 
-        $currentPage = "dashboard";
+        $currentPage = "learn";
         include('shared/sidebar.php'); 
         ?>
     </div>
@@ -35,11 +35,7 @@ if (empty($_SESSION['username'])) {
         </div>
 
         <div class="summary">
-          <h2>Progress Summary</h2>
-        </div>
-
-        <div class="quest">
-          <h2>Daily Quest</h2>
+          <h2>In Progress Courses</h2>
         </div>
       </div>
     <!-- Main Content -->

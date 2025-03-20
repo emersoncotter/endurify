@@ -29,7 +29,7 @@ if(isset($_SESSION['username'])) {
 
         <h1>Log In</h1>
 
-        <form action="login_handle.php" method="post" id="loginForm">
+        <form action="handle/login_handle.php" method="post" id="loginForm">
             <div class="loginForm">
                 <div class="formItem">
                     <label for="username"></label><i class="fa fa-user"></i><input type="text" autocomplete="username" id="username" name="username" placeholder="Username" size="20" maxlength="40">

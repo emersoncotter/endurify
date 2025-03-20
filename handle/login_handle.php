@@ -31,7 +31,7 @@ if(mysqli_num_rows($result) == 1){
     $_SESSION["email"] = $row["email"];
     $_SESSION["streak_start_date"] = $row["streak_start_date"];
 
-    header("Location: dashboard.php");
+    header("Location: ../dashboard.php");
         echo "<p>GOODBYE</p>";
 
     exit();
@@ -39,7 +39,7 @@ if(mysqli_num_rows($result) == 1){
 }
 else{
 // redirect user to the login page
-    header("Location: login.php?status=error");
+    header("Location: ../login.php?status=error");
     
 // terminate the current script
     exit();

@@ -78,7 +78,7 @@
             echo '<button class="button" onclick="location.href=\'signup.php\';">Sign Up</button>';
         } else {
         // Dashboard Button Appears
-        echo '<a class="gradient-text hover-underline-animation left" href="signout_handle.php">Sign Out</a>';
+        echo '<a class="gradient-text hover-underline-animation left" href="handle/signout_handle.php">Sign Out</a>';
         echo '<button class="button" type="button" onclick="location.href=\'dashboard.php\';">Dashboard</button>';
         }  
         ?>
