@@ -55,7 +55,7 @@
                     <a href="dashboard/workouts.php"><i class="gradient-text fa fa-dumbbell"></i></a>
                 </div>
                 <div class="sidebar-column sidebar-responsive visible">
-                    <a class="gradient-text <?php if(isset($currentPage) && $currentPage == 'workouts'){echo 'current';} else {echo 'hover-underline-animation';};?>" href="dashboard/workouts.php">
+                    <a class="gradient-text <?php if(isset($currentPage) && $currentPage == 'workouts'){echo 'current';} else {echo 'hover-underline-animation';};?>" href="workouts.php">
                         <span>Workouts</span>
                     </a>
                 </div>
@@ -66,7 +66,7 @@
                     <a href="dashboard/learn.php"><i class="gradient-text fa fa-graduation-cap"></i></a>
                 </div>
                 <div class="sidebar-column sidebar-responsive visible">
-                    <a class="gradient-text <?php if(isset($currentPage) && $currentPage == 'learn'){echo 'current';} else {echo 'hover-underline-animation';};?>" href="dashboard/learn.php">
+                    <a class="gradient-text <?php if(isset($currentPage) && $currentPage == 'learn'){echo 'current';} else {echo 'hover-underline-animation';};?>" href="learn.php">
                         <span>Learn</span>
                     </a>
                 </div>
@@ -77,7 +77,7 @@
                     <a href="dashboard/profile.php"><i class="gradient-text fa fa-user"></i></a>
                 </div>
                 <div class="sidebar-column sidebar-responsive visible">
-                    <a class="gradient-text <?php if(isset($currentPage) && $currentPage == 'profile'){echo 'current';} else {echo 'hover-underline-animation';};?>" href="dashboard/profile.php">
+                    <a class="gradient-text <?php if(isset($currentPage) && $currentPage == 'profile'){echo 'current';} else {echo 'hover-underline-animation';};?>" href="profile.php">
                         <span>Profile</span>
                     </a>
                 </div>
@@ -88,7 +88,7 @@
                     <a href="dashboard/settings.php"><i class="gradient-text fa fa-gear"></i></a>
                 </div>
                 <div class="sidebar-column sidebar-responsive visible">
-                    <a class="gradient-text <?php if(isset($currentPage) && $currentPage == 'settings'){echo 'current';} else {echo 'hover-underline-animation';};?>" href="dashboard/settings.php">
+                    <a class="gradient-text <?php if(isset($currentPage) && $currentPage == 'settings'){echo 'current';} else {echo 'hover-underline-animation';};?>" href="settings.php">
                         <span>Settings</span>
                     </a>
                 </div>

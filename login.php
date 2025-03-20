@@ -12,7 +12,7 @@ if(isset($_SESSION['username'])) {
 <!DOCTYPE html>
 <html>
 <head>
-<title>Endurify</title>
+<title>Endurify | Login</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href='https://fonts.googleapis.com/css?family=Inria Sans' rel='stylesheet'>

@@ -8,7 +8,7 @@ if(session_status() !== PHP_SESSION_ACTIVE) session_start();
 
 if(isset($_SESSION['username'])) {
 	if($_SESSION['username'] != '') {
-		header("Location: dashboard.php");
+		header("Location: ../dashboard.php");
 	}
 }
 

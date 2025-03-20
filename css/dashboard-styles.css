@@ -113,6 +113,7 @@
     flex-direction: column;
     justify-content: space-between;
     z-index: 1;
+    overflow: auto;
 }
 
 .profile {
@@ -138,6 +139,15 @@
     border-radius: 20px;
     padding: 20px;
     margin: 15px 40px 30px 20px;
+}
+
+.learn {
+    height: 90%;
+    background: rgba(245,245,245);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    padding: 20px;
+    margin: 20px 40px 15px 20px;
 }
 
 @media screen and (max-width: 1300px) {
@@ -186,7 +196,8 @@
     }
 
     .summary,
-    .quest {
+    .quest,
+    .learn {
         margin: 10px 0px;
     }
 
@@ -213,6 +224,7 @@
 
     .summary,
     .quest,
+    .learn,
     .calendar,
     .main-content {
         border-radius: 10px;
