@@ -52,7 +52,7 @@
 
             <div class="sidebar-row">
                 <div class="sidebar-column">
-                    <a href="dashboard/workouts.php"><i class="gradient-text fa fa-dumbbell"></i></a>
+                    <a href="workouts.php"><i class="gradient-text fa fa-dumbbell"></i></a>
                 </div>
                 <div class="sidebar-column sidebar-responsive visible">
                     <a class="gradient-text <?php if(isset($currentPage) && $currentPage == 'workouts'){echo 'current';} else {echo 'hover-underline-animation';};?>" href="workouts.php">
@@ -63,7 +63,7 @@
 
             <div class="sidebar-row">
                 <div class="sidebar-column">
-                    <a href="dashboard/learn.php"><i class="gradient-text fa fa-graduation-cap"></i></a>
+                    <a href="learn.php"><i class="gradient-text fa fa-graduation-cap"></i></a>
                 </div>
                 <div class="sidebar-column sidebar-responsive visible">
                     <a class="gradient-text <?php if(isset($currentPage) && $currentPage == 'learn'){echo 'current';} else {echo 'hover-underline-animation';};?>" href="learn.php">
@@ -74,7 +74,7 @@
 
             <div class="sidebar-row">
                 <div class="sidebar-column">
-                    <a href="dashboard/profile.php"><i class="gradient-text fa fa-user"></i></a>
+                    <a href="profile.php"><i class="gradient-text fa fa-user"></i></a>
                 </div>
                 <div class="sidebar-column sidebar-responsive visible">
                     <a class="gradient-text <?php if(isset($currentPage) && $currentPage == 'profile'){echo 'current';} else {echo 'hover-underline-animation';};?>" href="profile.php">
@@ -83,9 +83,33 @@
                 </div>
             </div>
 
+            <?php
+
+            if(isset($currentPage) && $currentPage == 'admin'){
+                $class = ' current';
+            } else {
+                $class = ' hover-underline-animation';
+            }
+
+            if ($_SESSION["role"] === "admin") {
+                echo 
+                    "<div class='sidebar-row'>
+                        <div class='sidebar-column'>
+                            <a href='admin.php'><i class='gradient-text fa fa-shield-halved'></i></a>
+                        </div>
+                        <div class='sidebar-column sidebar-responsive visible'>
+                            <a class='gradient-text".$class."' href='admin.php'>
+                                <span>Admin Panel</span>
+                            </a>
+                        </div>
+                    </div>";
+                    }
+                    ?>    
+
+
             <div class="sidebar-row">
                 <div class="sidebar-column">
-                    <a href="dashboard/settings.php"><i class="gradient-text fa fa-gear"></i></a>
+                    <a href="settings.php"><i class="gradient-text fa fa-gear"></i></a>
                 </div>
                 <div class="sidebar-column sidebar-responsive visible">
                     <a class="gradient-text <?php if(isset($currentPage) && $currentPage == 'settings'){echo 'current';} else {echo 'hover-underline-animation';};?>" href="settings.php">

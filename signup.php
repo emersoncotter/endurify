@@ -16,7 +16,7 @@ if (isset($_SESSION['username']) && $_SESSION['username'] != '') {
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href='https://fonts.googleapis.com/css?family=Inria Sans' rel='stylesheet'>
 <link rel="stylesheet" href="css/styles.css">
-<link rel="stylesheet" href="css/login-styles.css">
+<link rel="stylesheet" href="css/form-styles.css">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 </head>
 
@@ -59,7 +59,7 @@ if (isset($_SESSION['username']) && $_SESSION['username'] != '') {
                 <div class="formItem doubleRow">
                     <div class="inputContainer">
                         <select class="doubleField dropdown required-field" id="gender" name="gender">
-                            <option value="" disabled selected>Gender</option>
+                            <option value="" disabled selected hidden>Gender</option>
                             <option value="male">Male</option>
                             <option value="female">Female</option>
                             <option value="non-binary">Non-Binary</option>

@@ -13,9 +13,9 @@
             
             // Month Display & Navigation
             $month = strtotime($startday." day");
-            echo "<a class='arrow left' href='".$currentPage.".php?reldate=".($startday-5)."'><i class='fa-solid fa-chevron-left'></i></a>";
+            echo "<a class='arrow left' href='".$currentPage.".php?reldate=".($startday-5)."#calendar'><i class='fa-solid fa-chevron-left'></i></a>";
             echo "<h2>".date("F", $month)."</h2>";
-            echo "<a class='arrow right' href='".$currentPage.".php?reldate=".($startday+5)."'><i class='fa-solid fa-chevron-right'></i></a>";
+            echo "<a class='arrow right' href='".$currentPage.".php?reldate=".($startday+5)."#calendar'><i class='fa-solid fa-chevron-right'></i></a>";
             
             // Day display logic
             for($offset = ($startday - 2); $offset < ($startday + 3); $offset++) {
@@ -32,7 +32,7 @@
               } 
 
               // Print Weekday and Date
-              echo "<div class='".$class."'><a href='".$currentPage.".php?reldate=".$offset."'>".
+              echo "<div class='".$class."'><a href='".$currentPage.".php?reldate=".$offset."#calendar'>".
                       "<div class='date'>".date("D", $day)."</div>".
                       "<div class='date'>".date("d", $day)."</div>".
                     "</a></div>";

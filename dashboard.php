@@ -43,7 +43,7 @@ if (empty($_SESSION['username'])) {
         </div>
       </div>
     <!-- Main Content -->
-      <div class="calendar compressable compressed">
+      <div id="calendar" class="calendar compressable compressed">
       <?php 
           $currentPage = "dashboard";
           include('shared/calendar.php'); 

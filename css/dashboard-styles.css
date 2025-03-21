@@ -243,6 +243,14 @@
         border-width: 2px;
     }
 
+    .header h1 {
+        text-align: center;
+        margin: 0px 20%;
+        vertical-align: middle;
+        /* align-items: center; */
+        /* margin: 0px; */
+    }
+
     .calendar h2 {
         width: 50%;
     }

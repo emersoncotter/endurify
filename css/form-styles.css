@@ -30,10 +30,17 @@
 .pane .fa { color: #192333; margin-right: 15px; }
 
 /* Form Alignment */
-.pane .loginForm, .pane .signupForm {
+.pane .loginForm, 
+.pane .signupForm {
     justify-content: center;
     text-align: center;
     align-content: center;
+}
+
+.adminForm {
+    width: 60%;
+    margin-left: 20%;
+    margin-right: 20%;
 }
 
 /* Login Form Item Spacing */
@@ -46,12 +53,23 @@
 /* Signup Form Item Spacing */
 .pane .signupForm .formItem {
     margin-bottom: 22.5px;
+    width: 100%;
+}
+
+/* Admin Form Item Spacing */
+.adminForm .formItem {
+    margin-bottom: 22.5px;
     margin-top: 5px;
     width: 100%;
 }
 
+.adminForm label {
+    margin-left: 6px;
+}
+
 /* Two Fields in one Row Styles */
-.pane .signupForm .doubleRow { display: flex; gap: 10px; }
+.pane .signupForm .doubleRow,
+.adminForm .doubleRow { display: flex; gap: 10px; }
 
 .doubleField { flex: 1; min-width: 0; }
 
@@ -63,17 +81,22 @@
 }
 
 /* Set general field styles */
-.pane input, select {
+input, select, textarea {
     padding: 12px 15px;
     width: 85%;
     border: none;
 
-    -moz-border-radius: 30px;
-    -webkit-border-radius: 30px;
     border-radius: 30px;
-    -moz-box-shadow: 0 0 5px #c3c3c3e6;
-    -webkit-box-shadow: 0 0 5px #c3c3c3e6;
     box-shadow: 0 0 5px #c3c3c3e6;
+}
+
+textarea {
+    border-radius: 15px;
+}
+
+.adminForm input, select, textarea, .button { 
+    width: 100%;
+    margin-top: 5px;
 }
 
 /* set width of fields on signup page */
@@ -99,7 +122,8 @@ input:focus, .dropdown:focus {
 }
 
 /* Style dropdown placeholder text */
-.pane input::placeholder {
+.pane input::placeholder
+.adminForm input::placeholder {
     font-family: 'Inria Sans', sans-serif;
     font-size: 14px;
     color: #888; 
@@ -119,7 +143,9 @@ input:focus, .dropdown:focus {
 p { margin: auto; }
 
 /* Highlight invalid fields */
-.pane .signupForm .error, .pane .loginForm .error {
+.pane .signupForm .error, 
+.pane .loginForm .error,
+.adminForm .error {
     background-color: #ffe6e6;
     border: 2px solid red;
     box-shadow: 0 0 5px rgba(255, 0, 0, 0.5);
@@ -128,7 +154,8 @@ p { margin: auto; }
 /* Form Error Messages */
 
 .pane .loginForm .error-message,
-.pane .signupForm .error-message {
+.pane .signupForm .error-message,
+.adminForm .error-message {
     font-size: 12px;
     color: red;
     margin-top: 2px;
@@ -137,17 +164,35 @@ p { margin: auto; }
     text-align: left;
 }
 
-.pane .signupForm .error-message { margin-left: 5px; }
+.pane .signupForm .error-message, .adminForm .error { margin-left: 5px; }
 .pane .loginForm .error-message { margin-left: 45px; }
 
 .pane .loginForm .invalid-message,
-.pane .signupForm .invalid-message {
+.pane .signupForm .invalid-message,
+.adminForm .invalid-message {
     display: block;
-    margin-top:10px;
-    margin-left:0px;
-    text-align:center;
+    margin-top: 10px;
+    margin-left: 0px;
+    text-align: center;
     font-size: 16px;
 }
+
+@media screen and (max-width:1300px) {
+    .adminForm {
+        width: 80%;
+        margin-left: 10%;
+        margin-right: 10%;
+    }
+}
+
+@media screen and (max-width:600px) {
+    .adminForm {
+        width: 100%;
+        margin-left: 0%;
+        margin-right: 0%;
+    }
+}
+
 
 /* Styling adjustments for smaller devices */
 @media screen and (max-width: 450px) {
@@ -161,9 +206,11 @@ p { margin: auto; }
         border: none;
     }
 
-    .pane .loginForm .formItem, .pane .signupForm .formItem {
-        margin-bottom: 20px;
-        margin-top: 5px;
+    .pane .loginForm .formItem, 
+    .pane .signupForm .formItem,
+    .adminForm .formItem {
+        margin-bottom: 18px;
+        margin-top: 0px;
         width: 100%;
     }
 }

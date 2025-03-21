@@ -39,7 +39,7 @@
         </div>
       </div>
     <!-- Main Content -->
-      <div class="calendar compressable compressed">
+      <div id="calendar" class="calendar compressable compressed">
         <?php 
           $currentPage = "learn";
           include('shared/calendar.php'); 
