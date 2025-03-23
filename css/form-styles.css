@@ -63,6 +63,10 @@
     width: 100%;
 }
 
+.hidden {
+    display: none;
+}
+
 .adminForm label {
     margin-left: 6px;
 }

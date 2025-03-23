@@ -48,14 +48,40 @@ include('handle/mysqli_connect.php');
       </div>
 
       <div class="main-content compressable compressed">
-          <form class="adminForm" id="exerciseForm" action="handle/admin_handle.php" method="post">
-              <h2>Add New Exercise</h2>
-              <?php if(isset($_GET["status"]) && $_GET["status"] === 'error') { echo '<span class="error-message invalid-message" style="display:block; text-align:left;">An unknown exception has occured. Please try again.</span>';}?>
-              <?php if(isset($_GET["status"]) && $_GET["status"] === 'success') { echo '<span class="error-message invalid-message" style="display: block; text-align:left; color: green;">Successfully created exercise!</span>';}?>
+
+      <select id="formDropdown" onchange="handleDropdownChange()">
+        <?php if(!(isset($_GET['action']))) {$_GET['action'] = 'createExercise';}?>
+        <option <?php if(isset($_GET['action']) && $_GET['action'] === 'createExercise'){echo 'selected';}?> value="createExercise">Create Exercise</option>
+        <option <?php if(isset($_GET['action']) && $_GET['action'] === 'createRegimen'){echo 'selected';}?> value="createRegimen">Create Regimen</option>
+      </select>
+
+        <script>
+            function handleDropdownChange() {
+                const selected = document.getElementById('formDropdown').value;
+
+                // Hide all form sections
+                document.querySelectorAll('.adminForm').forEach(el => el.style.display = 'none');
+
+                // Show the one that matches the selected value
+                if (selected) {
+                document.getElementById(selected).style.display = 'block';
+                }
+            }
+        </script>
+
+
+      </script>
+
+
+        <form class="adminForm <?php if(isset($_GET['action']) && $_GET['action'] !='createExercise'){echo 'hidden';}?>" id="createExercise" action="handle/admin_handle.php?action=createExercise" method="post">
+              <h2>Create New Exercise</h2>
+              <?php if(isset($_GET["status"]) && $_GET["status"] === 'error' && isset($_GET["action"]) && $_GET["action"] === 'createExercise') { echo '<span class="error-message invalid-message" style="display:block; text-align:left;">An unknown exception has occured. Please try again.</span>';}?>
+              <?php if(isset($_GET["status"]) && $_GET["status"] === 'success' && isset($_GET["action"]) && $_GET["action"] === 'createExercise') { echo '<span class="error-message invalid-message" style="display: block; text-align:left; color: green;">Successfully created exercise!</span>';}?>
+              
               <div class="formItem">
                   <label for="name">Exercise Name</label>
                   <input type="text" id="name" name="name">
-                  <?php if(isset($_GET["status"]) && $_GET["status"] === 'duplicate') { echo '<span class="error-message invalid-message" style="display:block; text-align:left;">That exercise name already exists!</span>';}?>
+                  <?php if(isset($_GET["status"]) && $_GET["status"] === 'duplicate' && isset($_GET["action"]) && $_GET["action"] === 'createExercise') { echo '<span class="error-message invalid-message" style="display:block; text-align:left;">That exercise name already exists!</span>';}?>
                 </div>
                 
                 <div class="formItem doubleRow">
@@ -121,33 +147,76 @@ include('handle/mysqli_connect.php');
                 <textarea id="description" name="description" rows="4"></textarea>
             </div>
 
-            <span id="incomplete" class="error-message" style="text-align:left; margin-bottom: 5px;">Error. Please complete all required fields.</span>
+            <span id="createExerciseIncomplete" class="error-message" style="text-align:left; margin-bottom: 5px;">Error. Please complete all required fields.</span>
             <input class="button" type="submit" name="submit" value="Add Exercise">
 
-        </form>
+            <script>
+                document.getElementById('createExerciseForm').addEventListener('submit', function(event) {
+                    const requiredFields = ['name', 'category', 'difficulty', 'duration', 'equipment', 'muscle', 'shorthand_description', 'description'];
+                    let formValid = true;
 
-        <script>
-            document.getElementById('exerciseForm').addEventListener('submit', function(event) {
-                const requiredFields = ['name', 'category', 'difficulty', 'duration', 'equipment', 'muscle', 'shorthand_description', 'description'];
-                let formValid = true;
+                    requiredFields.forEach(id => {
+                        const field = document.getElementById(id);
+                        if (!field.value.trim()) {
+                            field.style.border = '1px solid red';
+                            formValid = false;
+                        } else {
+                            field.style.border = '';
+                        }
+                    });
 
-                requiredFields.forEach(id => {
-                    const field = document.getElementById(id);
-                    if (!field.value.trim()) {
-                        field.style.border = '1px solid red';
-                        formValid = false;
-                    } else {
-                        field.style.border = '';
+                    if (!formValid) {
+                        let incomplete = document.getElementById('createExerciseIncomplete');
+                        incomplete.classList.add('invalid-message');
+                        event.preventDefault();
                     }
                 });
+            </script>
+        </form>
 
-                if (!formValid) {
-                    let incomplete = document.getElementById('incomplete');
-                    incomplete.classList.add('invalid-message');
-                    event.preventDefault();
-                }
-            });
-        </script>  
+        <form class="adminForm <?php if(isset($_GET['action']) && $_GET['action'] !='createRegimen'){echo 'hidden';}?>" id="createRegimen" action="handle/admin_handle.php?action=createRegimen" method="post">
+              <h2>Create New Regimen</h2>
+              <?php if(isset($_GET["status"]) && $_GET["status"] === 'error' && isset($_GET["action"]) && $_GET["action"] === 'createRegimen') { echo '<span class="error-message invalid-message" style="display:block; text-align:left;">An unknown exception has occured. Please try again.</span>';}?>
+              <?php if(isset($_GET["status"]) && $_GET["status"] === 'success' && isset($_GET["action"]) && $_GET["action"] === 'createRegimen') { echo '<span class="error-message invalid-message" style="display: block; text-align:left; color: green;">Successfully created regimen!</span>';}?>
+              
+              <div class="formItem">
+                  <label for="regimenName">Regimen Name</label>
+                  <input type="text" id="regimenName" name="regimenName">
+                  <?php if(isset($_GET["status"]) && $_GET["status"] === 'duplicate' && isset($_GET["action"]) && $_GET["action"] === 'createRegimen') { echo '<span class="error-message invalid-message" style="display:block; text-align:left;">That regimen name already exists!</span>';}?>
+                </div>
+
+            <div class="formItem">
+                <label for="regimenDescription">Description</label>
+                <textarea id="regimenDescription" name="regimenDescription" rows="4"></textarea>
+            </div>
+
+            <span id="createRegimenIncomplete" class="error-message" style="text-align:left; margin-bottom: 5px;">Error. Please complete all required fields.</span>
+            <input class="button" type="submit" name="submit" value="Create Regimen">
+
+            <script>
+                document.getElementById('createRegimenForm').addEventListener('submit', function(event) {
+                    const requiredFields = ['regimenName', 'regimenDescription'];
+                    let formValid = true;
+
+                    requiredFields.forEach(id => {
+                        const field = document.getElementById(id);
+                        if (!field.value.trim()) {
+                            field.style.border = '1px solid red';
+                            formValid = false;
+                        } else {
+                            field.style.border = '';
+                        }
+                    });
+
+                    if (!formValid) {
+                        let incomplete = document.getElementById('createRegimenIncomplete');
+                        incomplete.classList.add('invalid-message');
+                        event.preventDefault();
+                    }
+                });
+            </script>
+        </form>
+          
       </div>
 
      
