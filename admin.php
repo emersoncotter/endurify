@@ -48,33 +48,31 @@ include('handle/mysqli_connect.php');
       </div>
 
       <div class="main-content compressable compressed">
+        <div class="titleDropdown">
+            <h2>Action:</h2>
+            <select id="formDropdown" onchange="handleDropdownChange()">
+                <?php if(!(isset($_GET['action']))) {$_GET['action'] = 'createExercise';}?>
+                <option <?php if(isset($_GET['action']) && $_GET['action'] === 'createExercise'){echo 'selected';}?> value="createExercise">Create Exercise</option>
+                <option <?php if(isset($_GET['action']) && $_GET['action'] === 'createRegimen'){echo 'selected';}?> value="createRegimen">Create Regimen</option>
+                <option <?php if(isset($_GET['action']) && $_GET['action'] === 'modifyRegimen'){echo 'selected';}?> value="modifyRegimen">Modify Regimen</option>
+            </select>
+            <script>
+                function handleDropdownChange() {
+                    const selected = document.getElementById('formDropdown').value;
 
-      <select id="formDropdown" onchange="handleDropdownChange()">
-        <?php if(!(isset($_GET['action']))) {$_GET['action'] = 'createExercise';}?>
-        <option <?php if(isset($_GET['action']) && $_GET['action'] === 'createExercise'){echo 'selected';}?> value="createExercise">Create Exercise</option>
-        <option <?php if(isset($_GET['action']) && $_GET['action'] === 'createRegimen'){echo 'selected';}?> value="createRegimen">Create Regimen</option>
-      </select>
+                    // Hide all form sections
+                    document.querySelectorAll('.adminForm').forEach(el => el.style.display = 'none');
 
-        <script>
-            function handleDropdownChange() {
-                const selected = document.getElementById('formDropdown').value;
-
-                // Hide all form sections
-                document.querySelectorAll('.adminForm').forEach(el => el.style.display = 'none');
-
-                // Show the one that matches the selected value
-                if (selected) {
-                document.getElementById(selected).style.display = 'block';
+                    // Show the one that matches the selected value
+                    if (selected) {
+                    document.getElementById(selected).style.display = 'block';
+                    }
                 }
-            }
-        </script>
-
-
-      </script>
-
+            </script>
+        </div>      
 
         <form class="adminForm <?php if(isset($_GET['action']) && $_GET['action'] !='createExercise'){echo 'hidden';}?>" id="createExercise" action="handle/admin_handle.php?action=createExercise" method="post">
-              <h2>Create New Exercise</h2>
+              <h3>Create New Exercise</h3>
               <?php if(isset($_GET["status"]) && $_GET["status"] === 'error' && isset($_GET["action"]) && $_GET["action"] === 'createExercise') { echo '<span class="error-message invalid-message" style="display:block; text-align:left;">An unknown exception has occured. Please try again.</span>';}?>
               <?php if(isset($_GET["status"]) && $_GET["status"] === 'success' && isset($_GET["action"]) && $_GET["action"] === 'createExercise') { echo '<span class="error-message invalid-message" style="display: block; text-align:left; color: green;">Successfully created exercise!</span>';}?>
               
@@ -151,7 +149,7 @@ include('handle/mysqli_connect.php');
             <input class="button" type="submit" name="submit" value="Add Exercise">
 
             <script>
-                document.getElementById('createExerciseForm').addEventListener('submit', function(event) {
+                document.getElementById('createExercise').addEventListener('submit', function(event) {
                     const requiredFields = ['name', 'category', 'difficulty', 'duration', 'equipment', 'muscle', 'shorthand_description', 'description'];
                     let formValid = true;
 
@@ -175,7 +173,7 @@ include('handle/mysqli_connect.php');
         </form>
 
         <form class="adminForm <?php if(isset($_GET['action']) && $_GET['action'] !='createRegimen'){echo 'hidden';}?>" id="createRegimen" action="handle/admin_handle.php?action=createRegimen" method="post">
-              <h2>Create New Regimen</h2>
+              <h3>Create New Regimen</h3>
               <?php if(isset($_GET["status"]) && $_GET["status"] === 'error' && isset($_GET["action"]) && $_GET["action"] === 'createRegimen') { echo '<span class="error-message invalid-message" style="display:block; text-align:left;">An unknown exception has occured. Please try again.</span>';}?>
               <?php if(isset($_GET["status"]) && $_GET["status"] === 'success' && isset($_GET["action"]) && $_GET["action"] === 'createRegimen') { echo '<span class="error-message invalid-message" style="display: block; text-align:left; color: green;">Successfully created regimen!</span>';}?>
               
@@ -194,7 +192,7 @@ include('handle/mysqli_connect.php');
             <input class="button" type="submit" name="submit" value="Create Regimen">
 
             <script>
-                document.getElementById('createRegimenForm').addEventListener('submit', function(event) {
+                document.getElementById('createRegimen').addEventListener('submit', function(event) {
                     const requiredFields = ['regimenName', 'regimenDescription'];
                     let formValid = true;
 
@@ -212,6 +210,49 @@ include('handle/mysqli_connect.php');
                         let incomplete = document.getElementById('createRegimenIncomplete');
                         incomplete.classList.add('invalid-message');
                         event.preventDefault();
+                    }
+                });
+            </script>
+        </form>
+
+        <form class="adminForm <?php if(isset($_GET['action']) && $_GET['action'] !='modifyRegimen'){echo 'hidden';}?>" id="modifyRegimen" action="handle/admin_handle.php?action=modifyRegimen" method="post">
+            <h3>Modify Regimen</h3>
+            <?php if(isset($_GET["status"]) && $_GET["status"] === 'error' && isset($_GET["action"]) && $_GET["action"] === 'modifyRegimen') { echo '<span class="error-message invalid-message" style="display:block; text-align:left;">An unknown exception has occured. Please try again.</span>';}?>
+            <?php if(isset($_GET["status"]) && $_GET["status"] === 'success' && isset($_GET["action"]) && $_GET["action"] === 'modifyRegimen') { echo '<span class="error-message invalid-message" style="display: block; text-align:left; color: green;">Successfully created exercise!</span>';}?>
+              
+            <div class="formItem doubleRow" style="margin-bottom: 3px">
+                <div class="inputContainer">
+                    <label for="modifyRegimenName">Regimen Name</label>
+                    <select id="modifyRegimenName"  name="modifyRegimenName">
+                        <?php
+                            $regimens = mysqli_query($dbc, "SELECT 	regimen_id, regimen_name FROM workout_regimens ORDER BY regimen_name");
+                            echo "<option value='' disabled selected hidden>Select Option</option>";
+                            while($row = mysqli_fetch_assoc($regimens)) {
+                                echo "<option value='" . $row['regimen_id'] . "'>" . $row['regimen_name'] . "</option>";
+                            }
+                        ?>
+                    </select>
+                </div>
+                    
+                <div class="inputContainer">
+                    <label for="submit" style="visibility:hidden;">Submit</label>
+                    <input id="submit" class="button" type="submit" name="submit" value="Select">
+                </div>
+            </div>
+
+            <span id="modifyRegimenIncomplete" class="error-message" style="text-align:left; margin-bottom: 5px; margin-top:5px;">Error. Please complete all required fields.</span>
+
+            <script>
+                document.getElementById('modifyRegimen').addEventListener('submit', function(event) {
+                    const select = document.getElementById('modifyRegimenName');
+                    let formValid = select.value !== '';
+
+                    if (!formValid) {
+                        select.style.border = '1px solid red';
+                        document.getElementById('modifyRegimenIncomplete').classList.add('invalid-message');
+                        event.preventDefault();
+                    } else {
+                        select.style.border = '';
                     }
                 });
             </script>

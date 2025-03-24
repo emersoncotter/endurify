@@ -93,6 +93,8 @@ if($action == "createExercise") {
         }
 
     }
+} else if ($action == "modifyRegimen") {
+    
 }
 
 

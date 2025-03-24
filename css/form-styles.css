@@ -37,7 +37,19 @@
     align-content: center;
 }
 
-.adminForm {
+.titleDropdown {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+    .titleDropdown h2 {
+        margin: 0;
+    }
+
+.adminForm, 
+.titleDropdown {
     width: 60%;
     margin-left: 20%;
     margin-right: 20%;
@@ -181,8 +193,9 @@ p { margin: auto; }
     font-size: 16px;
 }
 
-@media screen and (max-width:1300px) {
-    .adminForm {
+@media screen and (max-width:1500px) {
+    .adminForm, 
+    .titleDropdown  {
         width: 80%;
         margin-left: 10%;
         margin-right: 10%;
@@ -190,7 +203,8 @@ p { margin: auto; }
 }
 
 @media screen and (max-width:600px) {
-    .adminForm {
+    .adminForm, 
+    .titleDropdown {
         width: 100%;
         margin-left: 0%;
         margin-right: 0%;
