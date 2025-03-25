@@ -131,8 +131,7 @@ input:focus, .dropdown:focus {
 }
 
 /* Style the dropdown menu */
-.dropdown {
-    font-size: 14px;
+.signupForm .dropdown {
     font-family: 'Inria Sans', sans-serif;
     border-radius: 30px;
     background-color: white;
@@ -140,6 +139,17 @@ input:focus, .dropdown:focus {
     opacity: 0.9;
     appearance: none;
     cursor: pointer;
+}
+
+.adminForm .dropdown,
+.selectionDropdown {
+    font-family: 'Inria Sans', sans-serif;
+    border-radius: 30px;
+    background-color: white;
+    color: black;
+    appearance: none;
+    cursor: pointer;
+    padding: 12px 15px;
 }
 
 /* Style dropdown placeholder text */
@@ -150,9 +160,6 @@ input:focus, .dropdown:focus {
     color: #888; 
     opacity: .9;
 }
-
-/* Make the blank placeholder selection gray */
-.dropdown option[value=""] { color: #888; }
 
 /* Submit button styling */
 .pane .button { width: 95%; font-size: 16px; }

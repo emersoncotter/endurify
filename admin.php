@@ -50,7 +50,7 @@ include('handle/mysqli_connect.php');
       <div class="main-content compressable compressed">
         <div class="titleDropdown">
             <h2>Action:</h2>
-            <select id="formDropdown" onchange="handleDropdownChange()">
+            <select class="selectionDropdown" id="formDropdown" onchange="handleDropdownChange()">
                 <?php if(!(isset($_GET['action']))) {$_GET['action'] = 'createExercise';}?>
                 <option <?php if(isset($_GET['action']) && $_GET['action'] === 'createExercise'){echo 'selected';}?> value="createExercise">Create Exercise</option>
                 <option <?php if(isset($_GET['action']) && $_GET['action'] === 'createRegimen'){echo 'selected';}?> value="createRegimen">Create Regimen</option>
@@ -97,7 +97,7 @@ include('handle/mysqli_connect.php');
             
             <div class="formItem">
                 <label for="category">Category</label>
-                <select id="category"  name="category">
+                <select class="dropdown" id="category"  name="category">
                     <?php
                         $categories = mysqli_query($dbc, "SELECT category_id, name FROM exercise_categories ORDER BY name");
                         echo "<option value='' disabled selected hidden>Select Option</option>";
@@ -111,7 +111,7 @@ include('handle/mysqli_connect.php');
             <div class="formItem doubleRow">
                     <div class="inputContainer">
                         <label for="equipment">Equipment</label>
-                        <select id="equipment" name="equipment">
+                        <select class="dropdown" id="equipment" name="equipment">
                             <?php
                                 $equipment = mysqli_query($dbc, "SELECT equipment_id, name FROM equipment_types ORDER BY name");
                                 echo "<option value='' disabled selected hidden>Select Option</option>";
@@ -124,7 +124,7 @@ include('handle/mysqli_connect.php');
 
                     <div class="inputContainer">
                         <label for="muscle">Muscle Targeted</label>
-                        <select id="muscle" name="muscle">
+                        <select class="dropdown" id="muscle" name="muscle">
                             <?php
                                 $muscles = mysqli_query($dbc, "SELECT muscle_id, name FROM muscles ORDER BY name");
                                 echo "<option value='' disabled selected hidden>Select Option</option>";
@@ -226,7 +226,7 @@ include('handle/mysqli_connect.php');
             <div class="formItem doubleRow" style="margin-bottom: 3px">
                 <div class="inputContainer">
                     <label for="modifyRegimenName">Regimen Name</label>
-                    <select id="modifyRegimenName"  name="modifyRegimenName">
+                    <select class="dropdown" id="modifyRegimenName"  name="modifyRegimenName">
                         <?php
                             $regimens = mysqli_query($dbc, "SELECT regimen_id, regimen_name FROM workout_regimens ORDER BY regimen_name");
                             $selected = false;
@@ -294,8 +294,8 @@ include('handle/mysqli_connect.php');
                                 <form class='adminForm sequence-{$row["sequence"]}' id='modifyRegimen' action='handle/admin_handle.php?action=modifyRegimen&regimen={$row["regimen_id"]}&sequence={$row["sequence"]}' method='post' style='margin-bottom:20px;'>
                                     <div class='formItem doubleRow compressedItem'>
                                         <div class='inputContainer'>
-                                            <label for='modifyRegimenExercise-{$row["sequence"]}'>Exercise</label>
-                                            <select id='modifyRegimenExercise-{$row["sequence"]}' name='modifyRegimenExercise'>
+                                            <label for='modifyRegimenExercise-{$row["sequence"]}'>Exercise #{$row["sequence"]}</label>
+                                            <select class='dropdown' id='modifyRegimenExercise-{$row["sequence"]}' name='modifyRegimenExercise'>
                             ";
 
                             $exercises = mysqli_query($dbc, "SELECT exercise_id, name FROM exercises ORDER BY name");
