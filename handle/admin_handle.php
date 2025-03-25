@@ -95,23 +95,23 @@ if($action == "createExercise") {
 } else if ($action == "modifyRegimen") {
     // Selecting 
     if(!(isset($_POST["regimen"]))){
-        $name = ($_POST['modifyRegimenName'] != '') ? trim(mysqli_real_escape_string($dbc, $_POST['modifyRegimenName'])) : NULL;
+        $regimen_id = ($_POST['modifyRegimenName'] != '') ? trim(mysqli_real_escape_string($dbc, $_POST['modifyRegimenName'])) : NULL;
         
-        if ($name == NULL) {
+        if ($regimen_id == NULL) {
             header("Location: ../admin.php?action=modifyRegimen&status=error");
         } else {
             // Formulate the and run query to check if email exists in the database
-            $check_name = "SELECT * from workout_regimens WHERE regimen_name = '$name'"; 
-            $check_name_result = mysqli_query($dbc, $check_name);
+            $check_id = "SELECT * from workout_regimens WHERE regimen_id = '$regimen_id'"; 
+            $check_id_result = mysqli_query($dbc, $check_id);
     
-            if(mysqli_num_rows($check_name_result) > 0){
-                header("Location: ../admin.php?action=modifyRegimen&regimen=");
+            if(mysqli_num_rows($check_id_result) > 0){
+                header("Location: ../admin.php?action=modifyRegimen&regimen=".$regimen_id."#top");
             } else {
                     header("Location: ../admin.php?action=modifyRegimen&status=error");
             }
-            }
-    
         }
+    
+    }
 
 
     } else {

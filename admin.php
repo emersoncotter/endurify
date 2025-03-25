@@ -43,7 +43,7 @@ include('handle/mysqli_connect.php');
         </div>
       </div>
     <!-- Main Content -->
-      <div class="calendar header compressable compressed">
+      <div class="calendar header compressable compressed" id="top">
         <h1>Administrator Dashboard</h1>
       </div>
 
@@ -71,6 +71,7 @@ include('handle/mysqli_connect.php');
             </script>
         </div>      
 
+        <!-- Create Exercise Form -->
         <form class="adminForm <?php if(isset($_GET['action']) && $_GET['action'] !='createExercise'){echo 'hidden';}?>" id="createExercise" action="handle/admin_handle.php?action=createExercise" method="post">
               <h3>Create New Exercise</h3>
               <?php if(isset($_GET["status"]) && $_GET["status"] === 'error' && isset($_GET["action"]) && $_GET["action"] === 'createExercise') { echo '<span class="error-message invalid-message" style="display:block; text-align:left;">An unknown exception has occured. Please try again.</span>';}?>
@@ -92,7 +93,7 @@ include('handle/mysqli_connect.php');
                         <label for="duration">Duration (seconds)</label>
                         <input type="number" id="duration" name="duration" min="1">
                     </div>
-            </div>
+                </div>
             
             <div class="formItem">
                 <label for="category">Category</label>
@@ -145,7 +146,7 @@ include('handle/mysqli_connect.php');
                 <textarea id="description" name="description" rows="4"></textarea>
             </div>
 
-            <span id="createExerciseIncomplete" class="error-message" style="text-align:left; margin-bottom: 5px;">Error. Please complete all required fields.</span>
+            <span id="createExerciseIncomplete" class="error-message" style="text-align:left; margin-bottom: 5px;">Error: Please complete all required fields.</span>
             <input class="button" type="submit" name="submit" value="Add Exercise">
 
             <script>
@@ -172,6 +173,7 @@ include('handle/mysqli_connect.php');
             </script>
         </form>
 
+        <!-- Create Regimen Form -->
         <form class="adminForm <?php if(isset($_GET['action']) && $_GET['action'] !='createRegimen'){echo 'hidden';}?>" id="createRegimen" action="handle/admin_handle.php?action=createRegimen" method="post">
               <h3>Create New Regimen</h3>
               <?php if(isset($_GET["status"]) && $_GET["status"] === 'error' && isset($_GET["action"]) && $_GET["action"] === 'createRegimen') { echo '<span class="error-message invalid-message" style="display:block; text-align:left;">An unknown exception has occured. Please try again.</span>';}?>
@@ -188,7 +190,7 @@ include('handle/mysqli_connect.php');
                 <textarea id="regimenDescription" name="regimenDescription" rows="4"></textarea>
             </div>
 
-            <span id="createRegimenIncomplete" class="error-message" style="text-align:left; margin-bottom: 5px;">Error. Please complete all required fields.</span>
+            <span id="createRegimenIncomplete" class="error-message" style="text-align:left; margin-bottom: 5px;">Error: Please complete all required fields.</span>
             <input class="button" type="submit" name="submit" value="Create Regimen">
 
             <script>
@@ -215,20 +217,31 @@ include('handle/mysqli_connect.php');
             </script>
         </form>
 
+        <!-- Modify Regimen Form -->
         <form class="adminForm <?php if(isset($_GET['action']) && $_GET['action'] !='modifyRegimen'){echo 'hidden';}?>" id="modifyRegimen" action="handle/admin_handle.php?action=modifyRegimen" method="post">
             <h3>Modify Regimen</h3>
             <?php if(isset($_GET["status"]) && $_GET["status"] === 'error' && isset($_GET["action"]) && $_GET["action"] === 'modifyRegimen') { echo '<span class="error-message invalid-message" style="display:block; text-align:left;">An unknown exception has occured. Please try again.</span>';}?>
-            <?php if(isset($_GET["status"]) && $_GET["status"] === 'success' && isset($_GET["action"]) && $_GET["action"] === 'modifyRegimen') { echo '<span class="error-message invalid-message" style="display: block; text-align:left; color: green;">Successfully created exercise!</span>';}?>
+            <?php if(isset($_GET["status"]) && $_GET["status"] === 'success' && isset($_GET["action"]) && $_GET["action"] === 'modifyRegimen') { echo '<span class="error-message invalid-message" style="display: block; text-align:left; color: green;">Successfully modified regimen!</span>';}?>
               
             <div class="formItem doubleRow" style="margin-bottom: 3px">
                 <div class="inputContainer">
                     <label for="modifyRegimenName">Regimen Name</label>
                     <select id="modifyRegimenName"  name="modifyRegimenName">
                         <?php
-                            $regimens = mysqli_query($dbc, "SELECT 	regimen_id, regimen_name FROM workout_regimens ORDER BY regimen_name");
-                            echo "<option value='' disabled selected hidden>Select Option</option>";
+                            $regimens = mysqli_query($dbc, "SELECT regimen_id, regimen_name FROM workout_regimens ORDER BY regimen_name");
+                            $selected = false;
+                            $selectedValue = false;
                             while($row = mysqli_fetch_assoc($regimens)) {
-                                echo "<option value='" . $row['regimen_id'] . "'>" . $row['regimen_name'] . "</option>";
+                                $selected = (isset($_GET["regimen"]) && $_GET["regimen"] == $row['regimen_id']) ? true : false;
+                                if ($selected) {
+                                    echo "<option selected value='" . $row['regimen_id'] . "'>" . $row['regimen_name'] . "</option>";
+                                    $selectedValue = true;
+                                } else {
+                                    echo "<option value='" . $row['regimen_id'] . "'>" . $row['regimen_name'] . "</option>";
+                                }
+                            }
+                            if (!$selectedValue) {
+                                echo "<option value='' disabled selected hidden>Select Option</option>";
                             }
                         ?>
                     </select>
@@ -240,7 +253,7 @@ include('handle/mysqli_connect.php');
                 </div>
             </div>
 
-            <span id="modifyRegimenIncomplete" class="error-message" style="text-align:left; margin-bottom: 5px; margin-top:5px;">Error. Please complete all required fields.</span>
+            <span id="modifyRegimenIncomplete" class="error-message" style="text-align:left; margin-bottom: 5px; margin-top:5px;">Error: Please complete all required fields.</span>
 
             <script>
                 document.getElementById('modifyRegimen').addEventListener('submit', function(event) {
@@ -257,6 +270,128 @@ include('handle/mysqli_connect.php');
                 });
             </script>
         </form>
+
+        <!-- Selected Regimen to Modify Forms -->
+        <?php 
+        
+            if(isset($_GET['action']) && $_GET['action'] === "modifyRegimen" && isset($_GET['regimen'])) {
+                $regimen_id = mysqli_real_escape_string($dbc, $_GET['regimen']);
+                $regimen_exercises_sql = "SELECT we.*, e.name FROM workout_exercises we JOIN exercises e ON we.exercise_id = e.exercise_id WHERE we.regimen_id = ? ORDER BY sequence";
+                
+                if ($stmt = mysqli_prepare($dbc, $regimen_exercises_sql)) {
+                    mysqli_stmt_bind_param($stmt, 'i', $regimen_id);
+                    mysqli_stmt_execute($stmt);
+                    $result = mysqli_stmt_get_result($stmt);
+                
+                    echo '<h3 class="adminForm">Exercises</h3>';
+
+                    if (mysqli_num_rows($result) === 0) {
+                        echo "no rows found, add?";
+                    } else {
+                        while ($row = mysqli_fetch_assoc($result)) {
+
+                            echo "
+                                <form class='adminForm sequence-{$row["sequence"]}' id='modifyRegimen' action='handle/admin_handle.php?action=modifyRegimen&regimen={$row["regimen_id"]}&sequence={$row["sequence"]}' method='post' style='margin-bottom:20px;'>
+                                    <div class='formItem doubleRow compressedItem'>
+                                        <div class='inputContainer'>
+                                            <label for='modifyRegimenExercise-{$row["sequence"]}'>Exercise</label>
+                                            <select id='modifyRegimenExercise-{$row["sequence"]}' name='modifyRegimenExercise'>
+                            ";
+
+                            $exercises = mysqli_query($dbc, "SELECT exercise_id, name FROM exercises ORDER BY name");
+                            // echo "<option value='' disabled selected hidden>Select Option</option>";
+                            $selected = false;
+                            while ($exerciserow = mysqli_fetch_assoc($exercises)) {
+
+                                $selected = ($row['exercise_id'] == $exerciserow['exercise_id']) ? true : false;
+                                if ($selected) {
+                                    echo "<option selected value='{$exerciserow["exercise_id"]}'>{$exerciserow["name"]}</option>";
+                                    $selectedValue = true;
+                                } else {
+                                    echo "<option value='{$exerciserow["exercise_id"]}'>{$exerciserow["name"]}</option>";
+                                }
+                            }
+
+                            echo "
+                                            </select>
+                                        </div>
+
+                                        <div class='inputContainer'>
+                                            <label for='modifyRegimenSequence-{$row["sequence"]}'>Position</label>
+                                            <input type='number' value='{$row['sequence']}' id='modifyRegimenSequence-{$row["sequence"]}' name='modifyRegimenSequence' min='1'>
+                                        </div>
+                                        
+                                    </div>
+
+                                    <div class='formItem doubleRow compressedItem'>
+                                    <div class='inputContainer'>
+                                            <label for='modifyRegimenRest-{$row["sequence"]}'>Rest (sec)</label>
+                                            <input type='number' value='{$row['rest_time']}' id='modifyRegimenRest-{$row["sequence"]}' name='modifyRegimenRest' min='0'>
+                                        </div>
+                                        <div class='inputContainer'>
+                                            <label for='modifyRegimenReps-{$row["sequence"]}'>Reps</label>
+                                            <input type='number' value='{$row['reps']}' id='modifyRegimenReps-{$row["sequence"]}' name='modifyRegimenReps' min='1'>
+                                        </div>
+
+                                        <div class='inputContainer'>
+                                            <label for='modifyRegimenSets-{$row["sequence"]}'>Sets</label>
+                                            <input type='number' value='{$row['sets']}' id='modifyRegimenSets-{$row["sequence"]}' name='modifyRegimenSets' min='1'>
+                                        </div>
+                                    </div>
+
+                                    <div class='formItem compressedItem'>
+                                        <label for='modifyRegimenNotes-{$row["sequence"]}'>Notes</label>
+                                        <textarea id='modifyRegimenNotes-{$row["sequence"]}' name='modifyRegimenNotes' rows='2'>{$row['notes']}</textarea>
+                                    </div>
+
+                                    <span id='modifyRegimen{$row["sequence"]}Incomplete' class='error-message' style='text-align:left; margin-bottom: 5px;'>Error: Please complete all required fields.</span>
+                                    <input class='button' type='submit' name='submit' value='Update Exercise'>
+
+
+                                </form>
+                            ";
+
+                            // Dynamic Exercise Form Validation Scripts
+                            echo "
+                                <script>
+                                    document.querySelectorAll('.sequence-{$row["sequence"]}').forEach(form => {
+                                        form.addEventListener('submit', function(event) {
+                                            const requiredFields = ['modifyRegimenExercise-{$row["sequence"]}', 'modifyRegimenSequence-{$row["sequence"]}', 'modifyRegimenRest-{$row["sequence"]}', 'modifyRegimenReps-{$row["sequence"]}', 'modifyRegimenSets-{$row["sequence"]}', 'modifyRegimenNotes-{$row["sequence"]}'];
+                                            let formValid = true;
+
+                                            requiredFields.forEach(id => {
+                                                const field = document.getElementById(id);
+                                                if (!field.value.trim()) {
+                                                    field.style.border = '1px solid red';
+                                                    formValid = false;
+                                                } else {
+                                                    field.style.border = '';
+                                                }
+                                            });
+
+                                            if (!formValid) {
+                                                let incomplete = document.getElementById('modifyRegimen{$row["sequence"]}Incomplete');
+                                                incomplete.classList.add('invalid-message');
+                                                event.preventDefault();
+                                            }
+                                        });
+                                    });
+                                </script>
+                            ";
+
+                        }
+                    }
+                
+                    mysqli_stmt_close($stmt);
+                } else {
+                    echo "Error while preparing statement: " . mysqli_error($dbc);
+                }
+            }
+        
+        ?>
+
+
+        
           
       </div>
 

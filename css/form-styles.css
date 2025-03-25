@@ -75,6 +75,10 @@
     width: 100%;
 }
 
+.adminForm .compressedItem {
+    margin-bottom: 5px !important;
+}
+
 .hidden {
     display: none;
 }
@@ -108,6 +112,7 @@ input, select, textarea {
 
 textarea {
     border-radius: 15px;
+    resize: none;
 }
 
 .adminForm input, select, textarea, .button { 
