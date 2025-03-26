@@ -172,6 +172,7 @@
     .sidebar-row {
         display: flex;
         flex-direction: column;
+        width: 14%;
     }
 
 

@@ -164,6 +164,20 @@ input:focus, .dropdown:focus {
 /* Submit button styling */
 .pane .button { width: 95%; font-size: 16px; }
 
+.adminForm .button {
+    font-size: 14px;
+    text-align: center;
+}
+
+.remove {
+    background: rgb(224, 78, 78) !important;
+    margin-left: 0px;
+}
+
+.remove:hover {
+    background: rgb(170, 44, 44) !important;
+}
+
 /* Signup/loging link styling */
 .pane a { text-decoration: none; color: #30acd9; }
 

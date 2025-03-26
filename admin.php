@@ -38,7 +38,7 @@ include('handle/mysqli_connect.php');
             <h2>Welcome, <?php echo $_SESSION['first_name']; ?>!</h2>
         </div>
 
-        <div class="learn" style="height: 700px;">
+        <div class="learn" style="height: 700px; display: none;">
           <h2>Database Statistics</h2>
         </div>
       </div>
@@ -282,24 +282,107 @@ include('handle/mysqli_connect.php');
                     mysqli_stmt_bind_param($stmt, 'i', $regimen_id);
                     mysqli_stmt_execute($stmt);
                     $result = mysqli_stmt_get_result($stmt);
-                
+                    $numRows = mysqli_num_rows($result);
+
+
                     echo '<h3 class="adminForm">Exercises</h3>';
 
-                    if (mysqli_num_rows($result) === 0) {
-                        echo "no rows found, add?";
-                    } else {
+                    // Regimen Has no Current Exercises in It
+                    if ($numRows === 0) {
+                        echo "
+                                <form class='adminForm sequence-new' id='modifyRegimen' action='handle/admin_handle.php?action=modifyRegimen&regimen=$regimen_id&sequence=new' method='post' style='margin-bottom:20px;'>
+                                    <div class='formItem doubleRow compressedItem'>
+                                        <div class='inputContainer'>
+                                            <label for='modifyRegimenExercise-new'>Exercise</label>
+                                            <select class='dropdown' id='modifyRegimenExercise-new' name='modifyRegimenExercise'>
+                            ";
+
+                            $exercises = mysqli_query($dbc, "SELECT exercise_id, name FROM exercises ORDER BY name");
+                            echo "<option value='' disabled selected hidden>Select Exercise</option>";
+                            $selected = false;
+                            while ($exerciserow = mysqli_fetch_assoc($exercises)) {
+
+                                $selected = ($row['exercise_id'] == $exerciserow['exercise_id']) ? true : false;
+                                if ($selected) {
+                                    echo "<option selected value='{$exerciserow["exercise_id"]}'>{$exerciserow["name"]}</option>";
+                                    $selectedValue = true;
+                                } else {
+                                    echo "<option value='{$exerciserow["exercise_id"]}'>{$exerciserow["name"]}</option>";
+                                }
+                            }
+
+                            echo "
+                                            </select>
+                                        </div>   
+                                    </div>
+
+                                    <div class='formItem doubleRow compressedItem'>
+                                    <div class='inputContainer'>
+                                            <label for='modifyRegimenRest-new'>Rest (sec)</label>
+                                            <input type='number' id='modifyRegimenRest-new' name='modifyRegimenRest' min='0'>
+                                        </div>
+                                        <div class='inputContainer'>
+                                            <label for='modifyRegimenReps-new'>Reps</label>
+                                            <input type='number' id='modifyRegimenReps-new' name='modifyRegimenReps' min='1'>
+                                        </div>
+
+                                        <div class='inputContainer'>
+                                            <label for='modifyRegimenSets-new'>Sets</label>
+                                            <input type='number' id='modifyRegimenSets-new' name='modifyRegimenSets' min='1'>
+                                        </div>
+                                    </div>
+
+                                    <div class='formItem compressedItem'>
+                                        <label for='modifyRegimenNotes-new'>Notes</label>
+                                        <textarea id='modifyRegimenNotes-new' name='modifyRegimenNotes' rows='2'></textarea>
+                                    </div>
+                                    
+                                    <span id='modifyRegimennewIncomplete' class='error-message' style='text-align:left; margin-bottom: 5px;'>Error: Please complete all required fields.</span>
+                                    <input class='button' type='submit' name='submit' value='Add New Exercise'>
+                                </form>
+                            ";
+
+                            // Dynamic Exercise Form Validation Scripts
+                            echo "
+                                <script>
+                                    document.querySelectorAll('.sequence-new').forEach(form => {
+                                        form.addEventListener('submit', function(event) {
+                                            const requiredFields = ['modifyRegimenExercise-new', 'modifyRegimenRest-new', 'modifyRegimenReps-new', 'modifyRegimenSets-new', 'modifyRegimenNotes-new'];
+                                            let formValid = true;
+
+                                            requiredFields.forEach(id => {
+                                                const field = document.getElementById(id);
+                                                if (!field.value.trim()) {
+                                                    field.style.border = '1px solid red';
+                                                    formValid = false;
+                                                } else {
+                                                    field.style.border = '';
+                                                }
+                                            });
+
+                                            if (!formValid) {
+                                                let incomplete = document.getElementById('modifyRegimennewIncomplete');
+                                                incomplete.classList.add('invalid-message');
+                                                event.preventDefault();
+                                            }
+                                        });
+                                    });
+                                </script>
+                            ";
+                    
+                        } else {
+                    // Regimen Has Current Exercises
                         while ($row = mysqli_fetch_assoc($result)) {
 
                             echo "
                                 <form class='adminForm sequence-{$row["sequence"]}' id='modifyRegimen' action='handle/admin_handle.php?action=modifyRegimen&regimen={$row["regimen_id"]}&sequence={$row["sequence"]}' method='post' style='margin-bottom:20px;'>
                                     <div class='formItem doubleRow compressedItem'>
                                         <div class='inputContainer'>
-                                            <label for='modifyRegimenExercise-{$row["sequence"]}'>Exercise #{$row["sequence"]}</label>
+                                            <label for='modifyRegimenExercise-{$row["sequence"]}'>Exercise</label>
                                             <select class='dropdown' id='modifyRegimenExercise-{$row["sequence"]}' name='modifyRegimenExercise'>
                             ";
 
                             $exercises = mysqli_query($dbc, "SELECT exercise_id, name FROM exercises ORDER BY name");
-                            // echo "<option value='' disabled selected hidden>Select Option</option>";
                             $selected = false;
                             while ($exerciserow = mysqli_fetch_assoc($exercises)) {
 
@@ -315,12 +398,6 @@ include('handle/mysqli_connect.php');
                             echo "
                                             </select>
                                         </div>
-
-                                        <div class='inputContainer'>
-                                            <label for='modifyRegimenSequence-{$row["sequence"]}'>Position</label>
-                                            <input type='number' value='{$row['sequence']}' id='modifyRegimenSequence-{$row["sequence"]}' name='modifyRegimenSequence' min='1'>
-                                        </div>
-                                        
                                     </div>
 
                                     <div class='formItem doubleRow compressedItem'>
@@ -345,9 +422,16 @@ include('handle/mysqli_connect.php');
                                     </div>
 
                                     <span id='modifyRegimen{$row["sequence"]}Incomplete' class='error-message' style='text-align:left; margin-bottom: 5px;'>Error: Please complete all required fields.</span>
-                                    <input class='button' type='submit' name='submit' value='Update Exercise'>
-
-
+                                    
+                                    <div class='formItem doubleRow'>
+                                        <div class='inputContainer'>
+                                            <input class='button' type='submit' name='submit' value='Update'>
+                                        </div>
+                                        <div class='inputContainer'>
+                                            <a class='button remove' href='handle/admin_handle.php?action=modifyRegimen&regimen={$row["regimen_id"]}&sequence={$row["sequence"]}&r=1'>Remove</a>
+                                        </div>
+                                    </div>
+                                    
                                 </form>
                             ";
 
@@ -356,12 +440,12 @@ include('handle/mysqli_connect.php');
                                 <script>
                                     document.querySelectorAll('.sequence-{$row["sequence"]}').forEach(form => {
                                         form.addEventListener('submit', function(event) {
-                                            const requiredFields = ['modifyRegimenExercise-{$row["sequence"]}', 'modifyRegimenSequence-{$row["sequence"]}', 'modifyRegimenRest-{$row["sequence"]}', 'modifyRegimenReps-{$row["sequence"]}', 'modifyRegimenSets-{$row["sequence"]}', 'modifyRegimenNotes-{$row["sequence"]}'];
+                                            const requiredFields = ['modifyRegimenExercise-{$row["sequence"]}', 'modifyRegimenRest-{$row["sequence"]}', 'modifyRegimenReps-{$row["sequence"]}', 'modifyRegimenSets-{$row["sequence"]}', 'modifyRegimenNotes-{$row["sequence"]}'];
                                             let formValid = true;
 
                                             requiredFields.forEach(id => {
                                                 const field = document.getElementById(id);
-                                                if (!field.value.trim()) {
+                                                if (!field || !field.value.trim()) {
                                                     field.style.border = '1px solid red';
                                                     formValid = false;
                                                 } else {
@@ -380,6 +464,90 @@ include('handle/mysqli_connect.php');
                             ";
 
                         }
+
+                        // Add Additional Exercise to Regimen
+                        echo "
+                                <form class='adminForm sequence-new' id='modifyRegimen' action='handle/admin_handle.php?action=modifyRegimen&regimen=$regimen_id&sequence=new' method='post' style='margin-bottom:20px;'>
+                                    <div class='formItem doubleRow compressedItem'>
+                                        <div class='inputContainer'>
+                                            <label for='modifyRegimenExercise-new'>Exercise</label>
+                                            <select class='dropdown' id='modifyRegimenExercise-new' name='modifyRegimenExercise'>
+                            ";
+
+                            $exercises = mysqli_query($dbc, "SELECT exercise_id, name FROM exercises ORDER BY name");
+                            echo "<option value='' disabled selected hidden>Select Exercise</option>";
+                            $selected = false;
+                            while ($exerciserow = mysqli_fetch_assoc($exercises)) {
+
+                                $selected = ($row['exercise_id'] == $exerciserow['exercise_id']) ? true : false;
+                                if ($selected) {
+                                    echo "<option selected value='{$exerciserow["exercise_id"]}'>{$exerciserow["name"]}</option>";
+                                    $selectedValue = true;
+                                } else {
+                                    echo "<option value='{$exerciserow["exercise_id"]}'>{$exerciserow["name"]}</option>";
+                                }
+                            }
+
+                            echo "
+                                            </select>
+                                        </div>   
+                                    </div>
+
+                                    <div class='formItem doubleRow compressedItem'>
+                                    <div class='inputContainer'>
+                                            <label for='modifyRegimenRest-new'>Rest (sec)</label>
+                                            <input type='number' id='modifyRegimenRest-new' name='modifyRegimenRest' min='0'>
+                                        </div>
+                                        <div class='inputContainer'>
+                                            <label for='modifyRegimenReps-new'>Reps</label>
+                                            <input type='number' id='modifyRegimenReps-new' name='modifyRegimenReps' min='1'>
+                                        </div>
+
+                                        <div class='inputContainer'>
+                                            <label for='modifyRegimenSets-new'>Sets</label>
+                                            <input type='number' id='modifyRegimenSets-new' name='modifyRegimenSets' min='1'>
+                                        </div>
+                                    </div>
+
+                                    <div class='formItem compressedItem'>
+                                        <label for='modifyRegimenNotes-new'>Notes</label>
+                                        <textarea id='modifyRegimenNotes-new' name='modifyRegimenNotes' rows='2'></textarea>
+                                    </div>
+                                    
+                                    <span id='modifyRegimennewIncomplete' class='error-message' style='text-align:left; margin-bottom: 5px;'>Error: Please complete all required fields.</span>
+                                    <input class='button' type='submit' name='submit' value='Add New Exercise'>
+                                </form>
+                            ";
+
+                            // Dynamic Exercise Form Validation Scripts
+                            echo "
+                                <script>
+                                    document.querySelectorAll('.sequence-new').forEach(form => {
+                                        form.addEventListener('submit', function(event) {
+                                            const requiredFields = ['modifyRegimenExercise-new', 'modifyRegimenRest-new', 'modifyRegimenReps-new', 'modifyRegimenSets-new', 'modifyRegimenNotes-new'];
+                                            let formValid = true;
+
+                                            requiredFields.forEach(id => {
+                                                const field = document.getElementById(id);
+                                                if (!field.value.trim()) {
+                                                    field.style.border = '1px solid red';
+                                                    formValid = false;
+                                                } else {
+                                                    field.style.border = '';
+                                                }
+                                            });
+
+                                            if (!formValid) {
+                                                let incomplete = document.getElementById('modifyRegimennewIncomplete');
+                                                incomplete.classList.add('invalid-message');
+                                                event.preventDefault();
+                                            }
+                                        });
+                                    });
+                                </script>
+                            ";
+
+
                     }
                 
                     mysqli_stmt_close($stmt);
@@ -389,13 +557,7 @@ include('handle/mysqli_connect.php');
             }
         
         ?>
-
-
-        
-          
       </div>
-
-     
     </div>
   </body>
 </html>

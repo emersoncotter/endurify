@@ -120,7 +120,7 @@
 
             <div class="sidebar-row">
                 <div class="sidebar-column">
-                    <a href="profile.php"><i class="gradient-text fa fa-arrow-right-from-bracket"></i></a>
+                    <a href="handle/signout_handle.php"><i class="gradient-text fa fa-arrow-right-from-bracket"></i></a>
                 </div>
                 <div class="sidebar-column sidebar-responsive visible">
                     <a class="gradient-text <?php if(isset($currentPage) && $currentPage == 'profile'){echo 'current';} else {echo 'hover-underline-animation';};?>" href="handle/signout_handle.php">
