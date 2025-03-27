@@ -1,5 +1,6 @@
     /* Style the top navigation bar */
     .navbar {
+        z-index: 999;
         display: flex;
         background-color: #F5F5F5;
         position: fixed;
@@ -10,6 +11,7 @@
         -moz-border-radius: 0px 12.5px 12.5px0px;
         -webkit-border-radius: 0px 0px 12.5px 12.5px;
         border-radius: 0px 0px 12.5px 12.5px;
+
       }
       
       /* Style the navigation bar links */
@@ -82,12 +84,14 @@
     /* Change display to Column for main elements  */
     .navbar {   
       flex-direction: column;
+      justify-content: space-evenly;
+      width: 100%;
     }
     
     /* Change display to flex for hamburger menu and logo */
     .adaptive-navbar {
         display: flex;
-
+        justify-content: space-evenly;
     }
     
     /* Unhide Hamburger Menu */
@@ -113,7 +117,7 @@
 
     /* Set up condensed left hamburger menu */
     .navbar .adaptive-left {
-        flex: 10%;
+        
         justify-content: center;
         align-content: center;
         text-align: center;
@@ -124,12 +128,12 @@
       justify-content: center;
       align-content: center;
       text-align: center;
-      flex: 80%;
+      
     }
 
     /* set up condensed right profile icon */
     .navbar .adaptive-right {
-        flex: 10%;
+        
         justify-content: center;
         align-content: center;
         text-align: center;
@@ -140,10 +144,14 @@
         height: 25px;
     }
 
+    .adaptive-left, .adaptive-left {
+      margin: 0;
+    }
+
     /* main navbar a padding */
     .navbar .navmain a {
       padding: 0px 0px;
-      margin: 0px 10px;
+      margin: 0px 0px;
     }
 
     .navbar .navmain button {
@@ -151,11 +159,8 @@
       position: relative;
     }
 
-    /* keep navbar centered with logo */
-    .navbar .navmain {
-      padding: 0px 0px 10px 0px;
-      padding-left: 10%;
-      padding-right: 10%;
+    .navbar a {
+      margin: 0 !important;
     }
 
     /* hide login and sign up in condensed view */
