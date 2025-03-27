@@ -140,7 +140,7 @@ if($action == "createExercise") {
             $rest = !empty($_POST['modifyRegimenRest']) ? mysqli_real_escape_string($dbc, trim($_POST['modifyRegimenRest'])) : NULL;
             $reps = !empty($_POST['modifyRegimenReps']) ? mysqli_real_escape_string($dbc, trim($_POST['modifyRegimenReps'])) : NULL;
             $sets = !empty($_POST['modifyRegimenSets']) ? mysqli_real_escape_string($dbc, trim($_POST['modifyRegimenSets'])) : NULL;
-            $notes = !empty($_POST['modifyRegimenNotes']) ? mysqli_real_escape_string($dbc, ucwords(trim($_POST['modifyRegimenNotes']))) : NULL;
+            $notes = !empty($_POST['modifyRegimenNotes']) ? mysqli_real_escape_string($dbc, ucfirst(trim($_POST['modifyRegimenNotes']))) : NULL;
             
             // Selection Checks
             $exercise = ($_POST['modifyRegimenExercise'] != '') ? trim(mysqli_real_escape_string($dbc, $_POST['modifyRegimenExercise'])) : NULL;
