@@ -18,17 +18,14 @@ if(session_status() !== PHP_SESSION_ACTIVE) session_start();
 
     <!-- Main Content -->
     <div class="main">
-      <img src="media/dumbbell.png" class="background-blur" />
-      
-      <div class="item">
-        <h1>Gamify Your <br> Fitness Journey</h1>
-      </div>
-      <div class="item">
-        <p>Track your workouts, earn acheivements, and level up your fitness with our gamified workout platform.</p>
-      </div>
-      <div class="item">
-          <a class="button" href="signup.php">Get Started</a>
-      </div>
+      <img src="media/background.jpg" class="background-blur" />
+
+      <h1>Gamify Your <br> Fitness Journey</h1>
+
+      <p>Track your workouts, earn achievements, and level up your 
+      fitness with our gamified workout platform.</p>
+
+      <a class="button" href="login.php">Get Started</a>
     </div>
 
  

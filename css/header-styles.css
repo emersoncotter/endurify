@@ -121,6 +121,7 @@
         justify-content: center;
         align-content: center;
         text-align: center;
+        margin-right: 18%;
     }
 
     /* set up middle condensed logo */
@@ -137,6 +138,7 @@
         justify-content: center;
         align-content: center;
         text-align: center;
+        margin-left: 18%;
     }
 
     /* make logo smaller on condensed format */
@@ -151,7 +153,12 @@
     /* main navbar a padding */
     .navbar .navmain a {
       padding: 0px 0px;
-      margin: 0px 0px;
+      margin: 0px 10px;
+    }
+
+    .navbar .navmain {
+      padding-top: 0px;
+      padding-bottom: 10px;
     }
 
     .navbar .navmain button {
@@ -159,7 +166,7 @@
       position: relative;
     }
 
-    .navbar a {
+    .navbar .navbar-left a {
       margin: 0 !important;
     }
 
@@ -175,4 +182,10 @@
         padding-left: 0%;
         padding-right: 0%;
       }
+
+    .navbar .adaptive-left,
+    .navbar .adaptive-right {
+      margin-left: 0;
+      margin-right: 0;
+    }
   }
