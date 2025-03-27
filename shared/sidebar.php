@@ -19,115 +19,134 @@
     
 <!-- Sidebar -->
     <div class="sidebar sidebar-responsive visible">
-        <!-- Logo -->
-        <a class="" href="index.php">
-            <img src="media/logo.png" alt="Endurify Logo">
-        </a>
-        
-        <!-- Page Navigation -->
-        <div class="sidebar-container">
-            <div class="sidebar-row responsive">
-                <div class="sidebar-column">
-                    <a href="javascript:void(0);" class="responsive" onclick="toggleMenu()">
-                        <i class="gradient-text fa fa-arrow-right sidebar-responsive"></i>
-                        <i class="gradient-text fa fa-arrow-left sidebar-responsive visible"></i>
-                    </a>
-                </div>
-                <div class="sidebar-column sidebar-responsive visible">
-                    <a class="gradient-text" href="javascript:void(0);" onclick="toggleMenu()">
-                        <span>Collapse</span>
-                    </a>
-                </div>
-            </div>
-            <div class="sidebar-row">
-                <div class="sidebar-column">
-                    <a href="dashboard.php"><i class="gradient-text fa fa-house"></i></a>
-                </div>
-                <div class="sidebar-column sidebar-responsive visible">
-                    <a class="gradient-text <?php if(isset($currentPage) && $currentPage == 'dashboard'){echo 'current';} else {echo 'hover-underline-animation';};?>" href="dashboard.php">
-                        <span>Dashboard</span>
-                    </a>
-                </div>
-            </div>
-
-            <div class="sidebar-row">
-                <div class="sidebar-column">
-                    <a href="workouts.php"><i class="gradient-text fa fa-dumbbell"></i></a>
-                </div>
-                <div class="sidebar-column sidebar-responsive visible">
-                    <a class="gradient-text <?php if(isset($currentPage) && $currentPage == 'workouts'){echo 'current';} else {echo 'hover-underline-animation';};?>" href="workouts.php">
-                        <span>Workouts</span>
-                    </a>
-                </div>
-            </div>
-
-            <div class="sidebar-row">
-                <div class="sidebar-column">
-                    <a href="learn.php"><i class="gradient-text fa fa-graduation-cap"></i></a>
-                </div>
-                <div class="sidebar-column sidebar-responsive visible">
-                    <a class="gradient-text <?php if(isset($currentPage) && $currentPage == 'learn'){echo 'current';} else {echo 'hover-underline-animation';};?>" href="learn.php">
-                        <span>Learn</span>
-                    </a>
-                </div>
-            </div>
-
-            <div class="sidebar-row">
-                <div class="sidebar-column">
-                    <a href="profile.php"><i class="gradient-text fa fa-user"></i></a>
-                </div>
-                <div class="sidebar-column sidebar-responsive visible">
-                    <a class="gradient-text <?php if(isset($currentPage) && $currentPage == 'profile'){echo 'current';} else {echo 'hover-underline-animation';};?>" href="profile.php">
-                        <span>Profile</span>
-                    </a>
-                </div>
-            </div>
-
-            <?php
-
-            if(isset($currentPage) && $currentPage == 'admin'){
-                $class = ' current';
-            } else {
-                $class = ' hover-underline-animation';
-            }
-
-            if ($_SESSION["role"] === "admin") {
-                echo 
-                    "<div class='sidebar-row'>
-                        <div class='sidebar-column'>
-                            <a href='admin.php'><i class='gradient-text fa fa-shield-halved'></i></a>
+        <div class="sidebar-top">
+            <!-- Logo -->
+            <a class="" href="index.php">
+                <img src="media/logo.png" alt="Endurify Logo">
+            </a>
+                
+            <!-- Page Navigation -->
+            <div class="sidebar-container">
+                <div class="sidebar-row <?php if(isset($currentPage) && $currentPage == 'dashboard'){echo 'current';} else {echo 'hover';};?>">
+                    <div class="background">
+                        <div class="sidebar-column">
+                            <a href="dashboard.php"><i class="<?php if(isset($currentPage) && $currentPage != 'dashboard'){echo 'gradient-text';}?> fas fa-table-columns"></i></a>
                         </div>
-                        <div class='sidebar-column sidebar-responsive visible'>
-                            <a class='gradient-text".$class."' href='admin.php'>
-                                <span>Admin Panel</span>
+                        <div class="sidebar-column sidebar-responsive visible">
+                            <a href="dashboard.php">
+                                <span>Dashboard</span>
                             </a>
                         </div>
-                    </div>";
-                    }
-                    ?>    
-
-
-            <div class="sidebar-row">
-                <div class="sidebar-column">
-                    <a href="settings.php"><i class="gradient-text fa fa-gear"></i></a>
+                    </div>
                 </div>
-                <div class="sidebar-column sidebar-responsive visible">
-                    <a class="gradient-text <?php if(isset($currentPage) && $currentPage == 'settings'){echo 'current';} else {echo 'hover-underline-animation';};?>" href="settings.php">
-                        <span>Settings</span>
-                    </a>
+
+                <div class="sidebar-row <?php if(isset($currentPage) && $currentPage == 'workouts'){echo 'current';} else {echo 'hover';};?>">
+                    <div class="background">
+                        <div class="sidebar-column">
+                            <a href="workouts.php"><i class="<?php if(isset($currentPage) && $currentPage != 'workouts'){echo 'gradient-text';}?> fa fa-dumbbell fa-rotate-by" style="--fa-rotate-angle: 315deg;"></i></a>
+                        </div>
+                        <div class="sidebar-column sidebar-responsive visible">
+                            <a href="workouts.php">
+                                <span>Workouts</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sidebar-row <?php if(isset($currentPage) && $currentPage == 'learn'){echo 'current';} else {echo 'hover';};?>">
+                    <div class="background">
+                        <div class="sidebar-column">
+                            <a href="learn.php"><i class="<?php if(isset($currentPage) && $currentPage != 'learn'){echo 'gradient-text';}?> fa fa-graduation-cap"></i></a>
+                        </div>
+                        <div class="sidebar-column sidebar-responsive visible">
+                            <a href="learn.php">
+                                <span>Learn</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sidebar-row <?php if(isset($currentPage) && $currentPage == 'profile'){echo 'current';} else {echo 'hover';};?>">
+                    <div class="background">
+                        <div class="sidebar-column">
+                            <a href="profile.php"><i class="<?php if(isset($currentPage) && $currentPage != 'profile'){echo 'gradient-text';}?> fa fa-user"></i></i></a>
+                        </div>
+                        <div class="sidebar-column sidebar-responsive visible">
+                            <a href="profile.php">
+                                <span>Profile</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <?php
+
+                if(isset($currentPage) && $currentPage == 'admin'){
+                    $class = 'current';
+                    $gradient = '';
+                } else {
+                    $class = 'hover';
+                    $gradient = 'gradient-text';
+                }
+
+                if ($_SESSION["role"] === "admin") {
+                    echo 
+                        "<div class='sidebar-row $class'>
+                            <div class='background'>
+                                <div class='sidebar-column'>
+                                    <a href='admin.php'><i class='$gradient fa fa-shield-halved'></i></a>
+                                </div>
+                                <div class='sidebar-column sidebar-responsive visible'>
+                                    <a href='admin.php'>
+                                        <span>Admin</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>";
+                        }
+                ?>
+                
+                <div class="sidebar-row mobile-visible">
+                    <div class="sidebar-column">
+                        <a href="handle/signout_handle.php"><i class="gradient-text fa fa-arrow-right-from-bracket"></i></a>
+                    </div>
+                    <div class="sidebar-column sidebar-responsive visible">
+                        
+                        </a>
+                    </div>
+                </div>
+
+            </div>          
+        </div>
+        
+        <div class="sidebar-bottom mobile-hidden">
+            <div class="sidebar-container">
+
+                    <div class="sidebar-row hover">
+                        <div class="background">
+                            <div class="sidebar-column">
+                                <a href="handle/signout_handle.php"><i class="gradient-text fa fa-arrow-right-from-bracket"></i></a>
+                            </div>
+                            <div class="sidebar-column sidebar-responsive visible">
+                                <a href="handle/signout_handle.php">
+                                    <span>Sign Out</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="sidebar-row responsive">
+                        <div class="sidebar-column">
+                            <a href="javascript:void(0);" class="responsive" onclick="toggleMenu()">
+                                <i class="gradient-text fa fa-chevron-right sidebar-responsive"></i>
+                                <i class="gradient-text fa fa-chevron-left sidebar-responsive visible"></i>
+                            </a>
+                    </div>
                 </div>
             </div>
-
-            <div class="sidebar-row">
-                <div class="sidebar-column">
-                    <a href="handle/signout_handle.php"><i class="gradient-text fa fa-arrow-right-from-bracket"></i></a>
-                </div>
-                <div class="sidebar-column sidebar-responsive visible">
-                    <a class="gradient-text <?php if(isset($currentPage) && $currentPage == 'profile'){echo 'current';} else {echo 'hover-underline-animation';};?>" href="handle/signout_handle.php">
-                        <span>Sign Out</span>
-                    </a>
-                </div>
-            </div>
+            
+        </div>
 
     </div>
 
