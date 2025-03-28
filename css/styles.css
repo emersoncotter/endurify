@@ -60,6 +60,7 @@
     margin: 0;
     color: #FFFFFF;
     width: 70%;
+    max-width: 1000px;
   }
 
   .background-blur {

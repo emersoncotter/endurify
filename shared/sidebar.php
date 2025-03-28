@@ -160,7 +160,7 @@
                 element.classList.toggle("visible"); // visible a "visible" class
             });
 
-            var elements = document.querySelectorAll(".compressable"); // Select all elements with class "toggle"
+            var elements = document.querySelectorAll(".dashboard-container"); // Select all elements with class "toggle"
             
             elements.forEach(function(element) {
                 element.classList.toggle("compressed"); // visible a "visible" class

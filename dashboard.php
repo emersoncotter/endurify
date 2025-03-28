@@ -16,46 +16,61 @@ if (empty($_SESSION['username'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
   </head>
-
+  
   <body class="background-gradient">
     <!-- Left Sidebar -->
     <div>
-        <?php 
+      <?php 
         $currentPage = "dashboard";
         include('shared/sidebar.php'); 
         ?>
     </div>
-
-    <!-- Dashboard Content -->
-    <div class="dash-row">
-      <!-- Right Side Content -->
-      <div class="side-content compressable compressed">
-        <div class="profile">
-            <h2>Welcome, <?php echo $_SESSION['first_name']; ?>!</h2>
-        </div>
-
-        <div class="summary">
-          <h2>Progress Summary</h2>
-        </div>
-
-        <div class="quest">
-          <h2>Daily Quest</h2>
-        </div>
-      </div>
-    <!-- Main Content -->
-      <div id="calendar" class="calendar compressable compressed">
-      <?php 
-          $currentPage = "dashboard";
-          include('shared/calendar.php'); 
+    
+    <!-- Dashboard -->
+    <div class="dashboard-container">
+      <!-- Main Header -->
+      <div class="dash-header">
+        <?php 
+        $title = 'Dashboard';
+        $subtitle = "Welcome back, ".$_SESSION['first_name']."!";
+        include('shared/dashboard-header.php'); 
         ?>
       </div>
+    
+    <!-- Dashboard Content -->
+      <div class="dash-content">        
+          <!-- Main Content -->
+          <div class="main-content">
+            <div class="dash-item">
+              <h1>Activity Feed</h1>
+              <div style="height: 450px;">Activity Feed Content Here.</div>
+            </div>
 
-      <div class="main-content compressable compressed">
-        <h1>Main Content</h1>
-        <div style="height: 1500px;">This is a long block to test scrolling.</div>
+            <div class="dash-item">
+              <h1>Challenge Hub</h1>
+              <div style="height: 450px;">Challenge Hub Content Here.</div>
+            </div>
+          </div>
+          
+          <div class="side-content">
+            <div class="dash-item">
+              <h1>Progress Summary</h1>
+              <div style="height: 150px;">This is a long block to test scrolling.</div>
+            </div>
+
+            <div class="dash-item">
+              <h1>Leaderboard</h1>
+              <div style="height: 100px;">This is a long block to test scrolling.</div>
+            </div>
+
+            <div class="dash-item">
+              <h1>Daily Reward</h1>
+              <div style="height: 100px;">This is a long block to test scrolling.</div>
+            </div>
+          </div>
+      
       </div>
-
-     
     </div>
+    
   </body>
 </html>

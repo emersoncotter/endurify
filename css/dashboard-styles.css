@@ -1,263 +1,122 @@
-.dash-row {
+.dashboard-container {
+    margin: 30px 50px 20px 350px;
+}
+
+.dash-header {
+    background: rgba(245,245,245);
+    height: 100px;
+    width: 100%;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    justify-content: center;
+    display: flex;
+}
+
+.dash-content {
     display: flex;
     flex-wrap: wrap;
+    flex-direction: row;
+    column-gap: 30px;
+    margin-top: 20px;
 }
 
 .main-content {
-    width: 100%;
-    /* max-width: 1250px; */
-    margin: 0 auto;
-    margin-left: 350px;
-    margin-right: 445px;
-    margin-top: 10px;
-    margin-bottom: 30px;
-    background: #F5F5F5;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 20px;
-    padding: 20px;
-    overflow: visible;
-    /* display: flex; */
-    flex-direction: column;
-}
-
-.calendar {
-    background: rgba(245,245,245,.7);
-    height: 100px;
-    width: 100%;
-    /* max-width: 1250px; */
-    margin: 10px 445px 0px 350px;
-    padding: 10px 15px;
-    border-radius: 20px;
+    flex: calc(70% - 30px);
     display: flex;
-    flex-wrap: wrap;
-    gap: 1%;
-    justify-content: center;
+    width: 100%;
+    flex-direction: column;
+    gap: 20px;
 }
-
-    .calendar h2 {
-        width: 33%;
-        text-align: center;
-        align-content: center;
-        height: 40%;
-        margin: 0px;
-        font-size: 22px;
-        /* align-content: center; */
-    }
-
-    .calendar a.arrow {
-        width: 25%;
-        height: 40%;
-        margin: 0px;
-        font-size: 14px;
-        align-content: center;
-    }
-
-        .calendar .right {
-            text-align: left;
-        }
-
-        .calendar .left {
-            text-align: right;
-        }
-
-    .calendar .day {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        width: 19%; 
-        height: 60%;
-        border-radius: 5px;
-        text-align: center;
-        font-size: 16px;
-        background: #F5F5F5;
-        padding: 12px;
-    }
-
-    .calendar a {
-        inset: 0;
-        background: none;
-        text-decoration: none;
-        color: black;
-        width: 100%;
-    }
-
-    .calendar .active-streak a {
-        color: #F5F5F5;
-    }
-
-    .calendar .active-streak {
-        background: linear-gradient(to left, #30E3CA,#30C4DB,#2fade894);        
-    }
-
-    .calendar .selected.active-streak {
-        border: rgba(245,245,245,.8) solid 3px;
-        font-weight: bold;
-    }
-
-    .calendar .selected {
-        border: rgba(48,196,219,.7) solid 3px;
-        font-weight: bold;
-    }
-
-
 
 .side-content {
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 415px;
-    height: fit-content;
-    max-height: 100vh;
+    flex: 30%;
     display: flex;
+    width: 100%;
     flex-direction: column;
-    justify-content: space-between;
-    z-index: 1;
-    overflow: auto;
+    gap: 20px;
 }
 
-.profile {
-    /* background: #F5F5F5; */
-    height: 80px;
-    padding: 0px 20px 0px 20px;
-    margin: 10px 15px;
-}
-
-.summary {
-    height: 65%;
+.dash-item {
     background: rgba(245,245,245);
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 20px;
+    border-radius: 10px;
     padding: 20px;
-    margin: 20px 40px 15px 20px;
+    width: 100%;
 }
 
-.quest {
-    height: 35%;
-    background: rgba(245,245,245,.7);
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 20px;
-    padding: 20px;
-    margin: 15px 40px 30px 20px;
-}
-
-.learn {
-    height: 90%;
-    background: rgba(245,245,245);
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 20px;
-    padding: 20px;
-    margin: 20px 40px 15px 20px;
+.dashboard-container h1,
+.dashboard-container h2 {
+    margin: 0;
 }
 
 @media screen and (max-width: 1300px) {
-    .main-content,
-    .calendar {
-        margin-left:205px;
-        margin-right: 400px;
-        width: 90%;
-    }
-
-    .compressed {
+    .dashboard-container {
         margin-left: 100px;
-    }
-
-    .side-content {
-        width: 390px;
-    }
-
-    .summary,
-    .quest {
         margin-right: 30px;
     }
-
-    .summary {
-        margin-bottom: 10px;
+    
+    .compressed {
+        margin-left: 205px;
     }
-
 }
 
 @media screen and (max-width: 950px) {
-    .dash-row {
-        flex-direction: row;
+    .dash-content {
+        flex-direction: column-reverse;
+        margin-top: 15px;
     }
-    
-    .main-content,
-    .side-content,
-    .calendar {
-        margin-left:205px;
-        margin-right: 5%;
-        width: 90%;
+
+    .dash-content.reverse {
+        flex-direction: column;
+    }
+
+    .main-content {
+        gap: 20px;
+        margin-top: 20px;
     }
     
     .side-content {
-        position: relative;
-        height: fit-content;
+        flex-direction: row;
+        flex-wrap: wrap;
+        row-gap: 20px;
+        column-gap: 20px;
     }
 
-    .summary,
-    .quest,
-    .learn {
-        margin: 10px 0px;
-    }
 
-    .calendar {
-        margin-top: 10px;
-        margin-bottom: 0px;
-    }
 
-    .compressed {
-        margin-left: 100px;
-        margin-right: 30px;
+    .side-content .dash-item {
+        flex: calc(50% - 20px);
     }
 
 }
 
 @media screen and (max-width: 600px) {
-    .main-content,
-    .side-content,
-    .calendar {
-        margin-left: 3%;
-        margin-right: 3%;
-        width: 100%;
+    .dashboard-container {
+        margin: 3% 3% calc(50px + 3%) 3%;
     }
 
-    .summary,
-    .quest,
-    .learn,
-    .calendar,
-    .main-content {
-        border-radius: 10px;
+    .dash-item {
+        margin: 10px 0px 0px 0px;
+    }
+
+    .dash-content {
+        margin: 0px;
     }
 
     .main-content {
-        margin-bottom: calc(50px + 3%);
+        gap: 0px;
+        margin: 0px;
     }
 
     .side-content {
-        z-index: -1;
+        flex-direction: column;
+        gap: 0px;
     }
 
-    .calendar .selected.active-streak,
-    .calendar .selected {
-        border-width: 2px;
-    }
-
-    .header h1 {
-        text-align: center;
-        margin: 0px 20%;
-        vertical-align: middle;
-        /* align-items: center; */
-        /* margin: 0px; */
-    }
-
-    .calendar h2 {
-        width: 50%;
-    }
-
-    .calendar a.arrow {
-        width: 20%;
-        text-align: center;
+    .side-content.reverse {
+        flex-direction: column-reverse;
+        gap: 0px;
     }
 
 }

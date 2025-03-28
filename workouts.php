@@ -11,7 +11,7 @@ if (empty($_SESSION['username'])) {
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Endurify | Profile</title>
+    <title>Endurify | Workouts</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -21,7 +21,7 @@ if (empty($_SESSION['username'])) {
     <!-- Left Sidebar -->
     <div>
       <?php 
-        $currentPage = "profile";
+        $currentPage = "workouts";
         include('shared/sidebar.php'); 
         ?>
     </div>
@@ -31,9 +31,24 @@ if (empty($_SESSION['username'])) {
       <!-- Main Header -->
       <div class="dash-header">
         <?php 
-        $title = 'Your Profile';
+        $title = 'Workouts';
 
-        $subtitle = "Welcome back, ".$_SESSION['first_name']."!";
+        $Subtitles = [
+            "Time to put in the work,",
+            "Every rep gets you closer,",
+            "Train hard. Stay strong,",
+            "Your grind starts here,",
+            "Let’s crush today’s workout,",
+            "Push limits. Build results,",
+            "Stronger every session,",
+            "Ready when you are,",
+            "Sweat now. Shine later,",
+            "Your journey, one workout at a time,"
+        ];
+
+        $subtitle = $Subtitles[array_rand($Subtitles,1)];
+
+        $subtitle = $subtitle." ".$_SESSION['first_name']."!";
         include('shared/dashboard-header.php'); 
         ?>
       </div>
@@ -43,15 +58,15 @@ if (empty($_SESSION['username'])) {
           <!-- Main Content -->
           <div class="main-content">
             <div class="dash-item">
-              <h1>Account Information</h1>
-              <div style="height: 1000px;">Profile Information Here</div>
+              <h1>Browse by Category</h1>
+              <div style="height: 1000px;">Workouts by Category Here</div>
             </div>
           </div>
           
           <div class="side-content">
             <div class="dash-item">
-              <h1>Learning Progress</h1>
-              <div style="height: 500px;">Learning Progress Here.</div>
+              <h1>Routines</h1>
+              <div style="height: 500px;">Custom routines here.</div>
             </div>
 
             <div class="dash-item">

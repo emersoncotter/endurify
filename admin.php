@@ -24,32 +24,29 @@ include('handle/mysqli_connect.php');
   <body class="background-gradient">
     <!-- Left Sidebar -->
     <div>
-        <?php 
+      <?php 
         $currentPage = "admin";
         include('shared/sidebar.php'); 
         ?>
     </div>
+    
+    <!-- Dashboard -->
+    <div class="dashboard-container">
+      <!-- Main Header -->
+      <div class="dash-header">
+        <?php 
+        $title = 'Admin Dashboard';
 
+        $subtitle = "Welcome back, ".$_SESSION['first_name']."!";
+        include('shared/dashboard-header.php'); 
+        ?>
+      </div>
+    
     <!-- Dashboard Content -->
-    <div class="dash-row">
-      <!-- Right Side Content -->
-      <div class="side-content compressable compressed">
-        <div class="profile">
-            <h2>Welcome, <?php echo $_SESSION['first_name']; ?>!</h2>
-        </div>
-
-        <div class="learn" style="height: 700px; display: none;">
-          <h2>Database Statistics</h2>
-        </div>
-      </div>
-    <!-- Main Content -->
-      <div class="calendar header compressable compressed" id="top">
-        <h1>Administrator Dashboard</h1>
-      </div>
-
-      <div class="main-content compressable compressed">
-        <div class="titleDropdown">
-            <h2>Action:</h2>
+      <div class="dash-content reverse">
+      <div class="side-content reverse">
+        <div class="dash-item">
+            <h1>Actions</h1>
             <select class="selectionDropdown" id="formDropdown" onchange="handleDropdownChange()">
                 <?php if(!(isset($_GET['action']))) {$_GET['action'] = 'createExercise';}?>
                 <option <?php if(isset($_GET['action']) && $_GET['action'] === 'createExercise'){echo 'selected';}?> value="createExercise">Create Exercise</option>
@@ -69,8 +66,17 @@ include('handle/mysqli_connect.php');
                     }
                 }
             </script>
-        </div>      
 
+        </div>
+
+        <div class="dash-item">
+            <h1>Database Status</h1>
+            <div style="height: 100px;">Database Information Here</div>
+        </div>
+        </div>        
+          <!-- Main Content -->
+        <div class="main-content">
+            <div class="dash-item">
         <!-- Create Exercise Form -->
         <form class="adminForm <?php if(isset($_GET['action']) && $_GET['action'] !='createExercise'){echo 'hidden';}?>" id="createExercise" action="handle/admin_handle.php?action=createExercise" method="post">
               <h3>Create New Exercise</h3>
@@ -557,7 +563,16 @@ include('handle/mysqli_connect.php');
             }
         
         ?>
+
+
+              
+            </div>
+        </div>
+          
+        
+      
       </div>
     </div>
+    
   </body>
 </html>
