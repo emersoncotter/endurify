@@ -1,0 +1,118 @@
+/* Header Layout */
+.workout-title {
+    padding-bottom: 10px;
+}
+
+.workout-info {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+  }
+  
+  .workout-desc {
+    color: #777;
+    font-size: 16px;
+    margin-bottom: 30px;
+  }
+  
+  /* Tags */
+  .tag {
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 500;
+    display: inline-block;
+    background-color: #eee;
+    color: #555;
+  }
+  
+  .tag.Beginner { background-color: #00d89e92; color: #ffffff; }
+  .tag.Intermediate { background-color: #ffb24797; color: #ffffff; }
+  .tag.Advanced { background-color: #ff696185; color: #ffffff; }
+  
+  .xp {
+    background-color: #e3efff;
+    color: #2f89fc;
+  }
+  
+  .category {
+    background-color: #e0e0e0;
+    color: #888;
+  }
+  
+  /* Card layout */
+  .exercise-row-card {
+    display: flex;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    margin-bottom: 24px;
+    align-items: center;
+  }
+  
+  .exercise-left {
+    width: 160px;
+    height: 160px;
+    background: linear-gradient(135deg, #00C6FF, #0072FF);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  
+  .exercise-left img {
+    width: 64px;
+    height: 64px;
+  }
+  
+  .exercise-body {
+    padding: 20px;
+    flex-grow: 1;
+  }
+  
+  .exercise-title {
+    margin: 0 0 10px 0;
+    font-size: 22px;
+  }
+  
+  .exercise-info {
+    display: flex;
+    gap: 24px;
+    font-size: 15px;
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  .exercise-info i {
+    margin-right: 6px;
+  }
+  
+  .exercise-notes {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 14px;
+  }
+  
+  .exercise-tags {
+    display: flex;
+    gap: 10px;
+  }
+  
+  /* Responsive */
+  @media (max-width: 650px) {
+    .exercise-row-card {
+      flex-direction: column;
+    }
+  
+    .exercise-left {
+      width: 100%;
+      height: 60px;
+    }
+  
+    .exercise-body {
+      padding: 16px;
+    }
+  }
+  

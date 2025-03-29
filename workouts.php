@@ -62,11 +62,11 @@ include('handle/mysqli_connect.php');
     <!-- Dashboard Content -->
       <div class="dash-content">        
           <!-- Main Content -->
-          <div class="main-content">
+          <div class="main-content" id="category">
             <div class="dash-item">
               <h2>Browse by Category</h2>
 
-              <div class="category-selector" id="cat">
+              <div class="category-selector">
                 <?php                       
                   $categories = mysqli_query($dbc, "SELECT category_id, name FROM exercise_categories ORDER BY category_id");
                   // All Filter Button
@@ -92,7 +92,7 @@ include('handle/mysqli_connect.php');
                     }
 
                       echo "
-                      <a href='workouts.php?filter={$row['category_id']}#cat'>
+                      <a href='workouts.php?filter={$row['category_id']}#category'>
                         <div class='$class'>
                           <span>{$row['name']}</span>
                         </div>
@@ -146,7 +146,7 @@ include('handle/mysqli_connect.php');
                             </div>
                             <div class='bottom'>
                                 <span class='xp'>{$row["xp_amount"]} xp</span>
-                                <a class='select {$row["difficulty"]}' href='view.php/regimen={$row["regimen_id"]}'>
+                                <a class='select {$row["difficulty"]}' href='viewregimen.php?regimen={$row["regimen_id"]}'>
                                   <i class='fa fa-play'></i>
                                 </a>
                             </div>
