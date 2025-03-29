@@ -181,16 +181,29 @@ include('handle/mysqli_connect.php');
 
         <!-- Create Regimen Form -->
         <form class="adminForm <?php if(isset($_GET['action']) && $_GET['action'] !='createRegimen'){echo 'hidden';}?>" id="createRegimen" action="handle/admin_handle.php?action=createRegimen" method="post">
-              <h3>Create New Regimen</h3>
-              <?php if(isset($_GET["status"]) && $_GET["status"] === 'error' && isset($_GET["action"]) && $_GET["action"] === 'createRegimen') { echo '<span class="error-message invalid-message" style="display:block; text-align:left;">An unknown exception has occured. Please try again.</span>';}?>
-              <?php if(isset($_GET["status"]) && $_GET["status"] === 'success' && isset($_GET["action"]) && $_GET["action"] === 'createRegimen') { echo '<span class="error-message invalid-message" style="display: block; text-align:left; color: green;">Successfully created regimen!</span>';}?>
-              
-              <div class="formItem">
-                  <label for="regimenName">Regimen Name</label>
-                  <input type="text" id="regimenName" name="regimenName">
-                  <?php if(isset($_GET["status"]) && $_GET["status"] === 'duplicate' && isset($_GET["action"]) && $_GET["action"] === 'createRegimen') { echo '<span class="error-message invalid-message" style="display:block; text-align:left;">That regimen name already exists!</span>';}?>
+            <h3>Create New Regimen</h3>
+            <?php if(isset($_GET["status"]) && $_GET["status"] === 'error' && isset($_GET["action"]) && $_GET["action"] === 'createRegimen') { echo '<span class="error-message invalid-message" style="display:block; text-align:left;">An unknown exception has occured. Please try again.</span>';}?>
+            <?php if(isset($_GET["status"]) && $_GET["status"] === 'success' && isset($_GET["action"]) && $_GET["action"] === 'createRegimen') { echo '<span class="error-message invalid-message" style="display: block; text-align:left; color: green;">Successfully created regimen!</span>';}?>
+            <div class="formItem doubleRow">
+                <div class="inputContainer">
+                    <label for="regimenName">Regimen Name</label>
+                    <input type="text" id="regimenName" name="regimenName">
+                    <?php if(isset($_GET["status"]) && $_GET["status"] === 'duplicate' && isset($_GET["action"]) && $_GET["action"] === 'createRegimen') { echo '<span class="error-message invalid-message" style="display:block; text-align:left;">That regimen name already exists!</span>';}?>
                 </div>
 
+                <div class="inputContainer">
+                    <label for="regimenCategory">Category</label>
+                    <select class="dropdown" id="regimenCategory"  name="regimenCategory">
+                        <?php
+                            $categories = mysqli_query($dbc, "SELECT category_id, name FROM exercise_categories ORDER BY name");
+                            echo "<option value='' disabled selected hidden>Select Option</option>";
+                            while($row = mysqli_fetch_assoc($categories)) {
+                                echo "<option value='" . $row['category_id'] . "'>" . $row['name'] . "</option>";
+                            }
+                        ?>
+                    </select>
+                </div>
+            </div>  
             <div class="formItem">
                 <label for="regimenDescription">Description</label>
                 <textarea id="regimenDescription" name="regimenDescription" rows="4"></textarea>
@@ -201,7 +214,7 @@ include('handle/mysqli_connect.php');
 
             <script>
                 document.getElementById('createRegimen').addEventListener('submit', function(event) {
-                    const requiredFields = ['regimenName', 'regimenDescription'];
+                    const requiredFields = ['regimenName', 'regimenCategory', 'regimenDescription'];
                     let formValid = true;
 
                     requiredFields.forEach(id => {

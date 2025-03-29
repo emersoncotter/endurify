@@ -47,7 +47,12 @@ if (empty($_SESSION['username'])) {
             "Ready when you are,"
           ];
 
-          $subtitle = $Subtitles[array_rand($Subtitles,1)];
+          if (isset($_SESSION["learn_subtitle"])) {
+            $subtitle = $_SESSION["learn_subtitle"];
+          } else {
+            $subtitle = $Subtitles[array_rand($Subtitles,1)];
+            $_SESSION["learn_subtitle"] = $subtitle;
+          }
 
           $subtitle = $subtitle." ".$_SESSION['first_name']."!";
 

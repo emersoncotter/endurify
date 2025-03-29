@@ -44,7 +44,7 @@ echo "<h2>$subtitle</h2>";
     font-size: 1.4em;
 }
 
-.profile-icon {
+.header-content .profile-icon {
     width: 60px;
     height: 60px;
     border-radius: 50%;

@@ -6,6 +6,7 @@ if (empty($_SESSION['username'])) {
     exit();
     } 
   
+include('handle/mysqli_connect.php');
 ?>
 
 <!DOCTYPE html>
@@ -46,7 +47,12 @@ if (empty($_SESSION['username'])) {
             "Your journey, one workout at a time,"
         ];
 
-        $subtitle = $Subtitles[array_rand($Subtitles,1)];
+        if (isset($_SESSION["workouts_subtitle"])) {
+          $subtitle = $_SESSION["workouts_subtitle"];
+        } else {
+          $subtitle = $Subtitles[array_rand($Subtitles,1)];
+          $_SESSION["workouts_subtitle"] = $subtitle;
+        }
 
         $subtitle = $subtitle." ".$_SESSION['first_name']."!";
         include('shared/dashboard-header.php'); 
@@ -58,8 +64,139 @@ if (empty($_SESSION['username'])) {
           <!-- Main Content -->
           <div class="main-content">
             <div class="dash-item">
-              <h1>Browse by Category</h1>
-              <div style="height: 1000px;">Workouts by Category Here</div>
+              <h2>Browse by Category</h2>
+
+              <div class="category-selector" id="cat">
+                <?php                       
+                  $categories = mysqli_query($dbc, "SELECT category_id, name FROM exercise_categories ORDER BY category_id");
+                  // All Filter Button
+                  if(!isset($_GET['filter'])) {
+                    $class = 'category-button active';
+                  } else {
+                    $class = 'category-button';
+                  }
+
+                  echo "
+                      <a href='workouts.php'>
+                        <div class='$class'>
+                          <span>All</span>
+                        </div>
+                      </a>";
+
+                  // Filter Buttons from Categories Table
+                  while($row = mysqli_fetch_assoc($categories)) {
+                    if(isset($_GET['filter']) && $row['category_id'] == $_GET['filter']) {
+                      $class = 'category-button active';
+                    } else {
+                      $class = 'category-button';
+                    }
+
+                      echo "
+                      <a href='workouts.php?filter={$row['category_id']}#cat'>
+                        <div class='$class'>
+                          <span>{$row['name']}</span>
+                        </div>
+                      </a>";
+                  }
+                ?>
+              </div>
+
+                <?php 
+                  if(isset($_GET["filter"])) {
+                    $filter = (int) $_GET['filter'];
+                    $regimenList = "SELECT * FROM workout_regimens WHERE category_id = ? ORDER BY category_id";
+                    $stmt = mysqli_prepare($dbc, $regimenList);
+
+                    if ($stmt) {
+                      mysqli_stmt_bind_param($stmt, 'i', $filter);
+                      }
+
+                  } else {
+                    $regimenList = "SELECT * FROM workout_regimens ORDER BY category_id";
+                    $stmt = mysqli_prepare($dbc, $regimenList);
+                  }
+
+                    if ($stmt) {
+                        mysqli_stmt_execute($stmt);
+                        $result = mysqli_stmt_get_result($stmt);
+                        $numRows = mysqli_num_rows($result);
+
+                        echo "<div class='result-header'> <h2>Workouts</h2>";
+
+                      if($numRows === 0) {
+                        echo "<span class='result-count'>Showing $numRows results</span></div>";
+                      } else {
+                        echo "<span class='result-count'>Showing $numRows results</span></div>";
+                        echo "<div class='result-grid'>";
+
+                        while ($row = mysqli_fetch_assoc($result)) {
+
+                          $img = htmlspecialchars("media/regimens/default.png");
+
+                          echo "
+                          <div class='card'>
+                            <div class='top' style=\"background-image: linear-gradient(135deg,rgba(0, 200, 255, 0.6),rgba(0, 115, 255, 0.6)), url('$img');\">
+                              <div class='info'>
+                                <span class='difficulty {$row["difficulty"]}'>{$row["difficulty"]}</span>
+                              </div>
+                            </div>
+                            <div class='middle'>
+                              <h3>{$row["regimen_name"]}</h3>
+                              <span class='description'>{$row["description"]}</span>
+                            </div>
+                            <div class='bottom'>
+                                <span class='xp'>{$row["xp_amount"]} xp</span>
+                                <a class='select {$row["difficulty"]}' href='view.php/regimen={$row["regimen_id"]}'>
+                                  <i class='fa fa-play'></i>
+                                </a>
+                            </div>
+                          </div>
+                          ";
+                        }
+                      }
+
+                    } else {
+                      echo 'No exercises found with current filter! (ref: err)';
+                    }
+
+
+
+                
+                ?>
+              </div>
+
+            
+
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             </div>
           </div>
           

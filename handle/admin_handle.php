@@ -32,7 +32,7 @@ if($action == "createExercise") {
     if ($exercise_name == NULL || $difficulty == NULL || $duration == NULL || $short_desc == NULL || $description == NULL || $category == NULL || $equipment == NULL || $muscle == NULL) {
         header("Location: ../admin.php?action=createExercise&status=error");
     } else {
-        // Formulate the and run query to check if email exists in the database
+        // Formulate the and run query to check if exercise exists in the database
         $check_name = "SELECT * from exercises WHERE name = '$exercise_name'"; 
         $check_name_result = mysqli_query($dbc, $check_name);
 
@@ -63,8 +63,12 @@ if($action == "createExercise") {
     $name = !empty($_POST['regimenName']) ? mysqli_real_escape_string($dbc, ucwords(trim($_POST['regimenName']))) : NULL;
     $description = !empty($_POST['regimenDescription']) ? mysqli_real_escape_string($dbc, ucfirst(trim($_POST['regimenDescription']))) : NULL;
 
+    // Selection Checks
+    $category = ($_POST['regimenCategory'] != '') ? trim(mysqli_real_escape_string($dbc, $_POST['regimenCategory'])) : NULL;
+
+
     // Unfilled Form Message
-    if ($name == NULL || $description == NULL) {
+    if ($name == NULL || $category == NULL || $description == NULL) {
         header("Location: ../admin.php?action=createExercise&status=error");
     } else {
         // Formulate the and run query to check if email exists in the database
@@ -76,13 +80,13 @@ if($action == "createExercise") {
         } else {
             // Prepared statement to insert
             $query = "INSERT INTO workout_regimens (
-                regimen_name, description) VALUES (?, ?)";
+                regimen_name, category_id, description) VALUES (?, ?, ?)";
 
             $stmt = mysqli_prepare($dbc, $query);
 
             // Bind parameters
-            mysqli_stmt_bind_param($stmt, 'ss',
-                $name, $description);
+            mysqli_stmt_bind_param($stmt, 'sis',
+                $name,$category, $description);
 
             // Execute and check result, return header
             if (mysqli_stmt_execute($stmt)) {

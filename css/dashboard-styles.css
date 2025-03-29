@@ -2,6 +2,15 @@
     margin: 30px 50px 20px 350px;
 }
 
+.dashboard-container h1,
+.dashboard-container h2 {
+    margin: 0;
+}
+
+.dashboard-container a {
+    text-decoration: none;
+}
+
 .dash-header {
     background: rgba(245,245,245);
     height: 100px;
@@ -22,7 +31,7 @@
 }
 
 .main-content {
-    flex: calc(70% - 30px);
+    flex: calc(75% - 30px);
     display: flex;
     width: 100%;
     flex-direction: column;
@@ -30,7 +39,7 @@
 }
 
 .side-content {
-    flex: 30%;
+    flex: 25%;
     display: flex;
     width: 100%;
     flex-direction: column;
@@ -45,9 +54,18 @@
     width: 100%;
 }
 
-.dashboard-container h1,
-.dashboard-container h2 {
-    margin: 0;
+.hidden {
+    display: none;
+}
+
+@media screen and (max-width: 1500px) {
+    .main-content {
+        flex: calc(70% - 30px);
+    }
+    
+    .side-content {
+        flex: 30%;
+    }
 }
 
 @media screen and (max-width: 1300px) {
@@ -61,7 +79,7 @@
     }
 }
 
-@media screen and (max-width: 950px) {
+@media screen and (max-width: 1000px) {
     .dash-content {
         flex-direction: column-reverse;
         margin-top: 15px;

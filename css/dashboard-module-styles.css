@@ -1,0 +1,303 @@
+/* || Main Dashboard Styles */
+/* Profile Module Styles */ 
+.profile {
+    background-image: 
+    linear-gradient(to right, #30E3CA 0%, #2F89FC 100%),  /* horizontal gradient */
+    linear-gradient(to bottom, #f5f5f5 0%, #f5f5f5 100%); /* solid base */
+    background-repeat: no-repeat;
+    background-size: 100% 120px, 100% 100%;
+    background-position: top, top;
+    display: flex;
+    flex-direction: column;
+}
+
+    .profile a {
+        text-decoration: none;
+    }
+
+    .profile .profile-icon {
+        width: 100px;
+        aspect-ratio: 1 / 1;
+        border-radius: 50%;
+        background: linear-gradient(90deg, #2F89FC 0%, #30E3CA 80%);
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 50px;
+        font-weight: bold;
+        border: 4px solid white;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+        user-select: none;
+        cursor: pointer;
+        margin-top: 50px;
+        margin-left: calc(50% - 50px);
+        z-index: 1;
+    }
+
+    .profile .content {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        text-align: center;
+    }
+
+    /* Progress Badge Styles */
+    .badge-container {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+    
+        .badge {
+            display: flex;
+            align-items: center;
+            padding: 10px 20px;
+            border-radius: 999px;
+            font-weight: 600;
+            font-style: italic;
+            font-size: 16px;
+            gap: 10px;
+            border: 2px solid;
+        }
+        
+        .badge i {
+            font-size: 18px;
+        }
+        
+        /* Specific Badge Colors */
+        .badge-green {
+            background-color: rgba(48, 227, 202, 0.1);
+            color: #30E3CA;
+            border-color: #30E3CA;
+        }
+        
+        .badge-blue {
+            background-color: rgba(47, 137, 252, 0.1);
+            color: #2F89FC;
+            border-color: #2F89FC;
+        }
+
+    /* XP Bar Styles */
+    .xp-container {
+        width: 100%;
+        margin-top: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+        .xp-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+            padding: 10px 15px;
+        }
+
+        .xp-label {
+            color: #727272;
+            font-weight: 500;
+        }
+
+        .xp-needed {
+            color: #727272;
+            font-weight: bold;
+        }
+
+        .xp-earned {
+            color: #2F89FC;
+        }
+
+        .xp-bar {
+            height: 14px;
+            background-color: #D9D9D9;
+            border-radius: 999px;
+            overflow: hidden;
+        }
+
+        .xp-fill {
+            height: 100%;
+            border-radius: 999px;
+            background: linear-gradient(90deg, #30E3CA, #2F89FC);
+        }
+
+
+
+/* || Category Selector Styles (Workouts/Learn Pages) */
+.dash-item .category-selector {
+    margin-top: 15px;
+    background-color: #394A46;
+    border-radius: 20px;
+    padding: 8px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+    white-space: nowrap;
+    justify-content: space-evenly;
+}
+
+    .category-selector .category-button {
+        background: none;
+        border: none;
+        color: white;
+        font-weight: 600;
+        padding: 10px 5px;
+        border-radius: 999px;
+        font-size: 16px;
+        cursor: pointer;
+        text-align: center;
+        margin-left: 2px;
+        margin-right: 2px;
+    }
+
+    .category-selector .category-button:hover {
+        background-color: white;
+        color: #000;
+        transition: 0.3s;
+    }
+
+    .category-button.active {
+        background-color: white;
+        color: #000;
+    }
+
+/* || Results Display Cards (Workouts/Learn Pages) */
+.result-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 5px 20px 5px;
+  }
+  
+  .result-header .result-count {
+    font-style: italic;
+    color: #888;
+  }
+
+.result-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(225px, .25fr));
+    gap: 20px;
+    justify-content: left;
+}
+
+    .result-grid .card {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        background: white;
+        border-radius: 16px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        overflow: hidden;
+    }
+
+    .result-grid .card:hover {
+        transform: translateY(-4px);
+    }
+
+.card .top {
+    padding: 16px;
+    height: 140px;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+}
+
+    .top .difficulty {
+        background-color: rgba(255, 255, 255, 0.5);
+        padding: 4px 10px;
+        border-radius: 999px;
+        font-weight: bold;
+        text-align: left;
+        width: auto;
+    }
+  
+    .difficulty.Beginner { background-color: #00d89e92; color: #ffffff; }
+    .difficulty.Intermediate { background-color: #ffb24797; color: #ffffff; }
+    .difficulty.Advanced { background-color: #ff696185; color: #ffffff; }
+
+.card .middle {
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+    flex-grow: 1;
+}
+
+    .card .middle h3 {
+        margin: 0;
+        font-weight: bold;
+        margin-bottom: 8px;
+    }
+
+    .middle .description {
+        flex-grow: 1;
+        color: #666;
+        font-size: 14px;
+    }
+
+.card .bottom {
+    padding: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #fff;
+    flex-grow: 0;
+    text-align: center;
+}
+
+    .xp {
+        color: #30E3CA;
+        font-weight: bold;
+    }
+
+    .select {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #2F89FC;
+        color: white;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        text-decoration: none;
+        font-size: 18px;
+        transition: background-color 0.2s ease;
+        text-align: center;
+    }
+
+    .select:hover {
+        background-color: #1e6fd6;
+    }
+
+    @media (max-width: 650px) {
+        .result-grid {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .result-grid .card {
+            width: 100%;
+        }
+
+        .card .top {
+            height: 70px;
+        }
+
+        .card .middle {
+            padding-bottom: 8px;
+        }
+
+        .card .bottom {
+            padding-top: 8px;
+        }
+    }
