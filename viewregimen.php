@@ -47,7 +47,7 @@ include('handle/mysqli_connect.php');
 
               <?php
                 $id = $_SESSION['id'];
-
+                
                 $query = "SELECT wr.*, ec.name as category_name FROM workout_regimens wr JOIN exercise_categories ec ON wr.category_id = ec.category_id WHERE regimen_id = ?";
                 $stmt = mysqli_prepare($dbc, $query);
                 mysqli_stmt_bind_param($stmt, 'i', $id);
@@ -86,12 +86,12 @@ include('handle/mysqli_connect.php');
                       while ($row = mysqli_fetch_assoc($result)) {
 
                       // echo " {$row["name"]} | {$row['rest_time']} sec | {$row['reps']} reps | {$row['sets']} sets | Notes: {$row['notes']} <br> ";
-
+                      $img = htmlspecialchars("media/regimens/{$row["category_name"]}.png");
 
                       echo " 
                       <div class='exercise-row-card'>
-                        <div class='exercise-left'>
-                          <img src='placeholder.png' alt='{$row["name"]}' />
+                        <div class='exercise-left' style=\"background-image: linear-gradient(135deg,rgba(0, 200, 255, 0.6),rgba(0, 115, 255, 0.6)), url('$img');\">
+                          
                         </div>
                         
                         <div class='exercise-body'>

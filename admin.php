@@ -203,7 +203,25 @@ include('handle/mysqli_connect.php');
                         ?>
                     </select>
                 </div>
-            </div>  
+            </div>
+            
+            <div class="formItem doubleRow">
+                    <div class="inputContainer">
+                        <label for="regimenXp">Completion XP</label>
+                        <input type="number" id="regimenXp" name="regimenXp" min="0">
+                    </div>
+
+                    <div class="inputContainer">
+                        <label for="regimenDifficulty">Difficulty</label>
+                        <select class="dropdown" id="regimenDifficulty"  name="regimenDifficulty">
+                            <option value='' disabled selected hidden>Select Option</option>
+                            <option value='Beginner'>Beginner</option>
+                            <option value='Intermediate'>Intermediate</option>
+                            <option value='Advanced'>Advanced</option>
+                        </select>
+                    </div>
+                </div>
+
             <div class="formItem">
                 <label for="regimenDescription">Description</label>
                 <textarea id="regimenDescription" name="regimenDescription" rows="4"></textarea>
@@ -214,7 +232,7 @@ include('handle/mysqli_connect.php');
 
             <script>
                 document.getElementById('createRegimen').addEventListener('submit', function(event) {
-                    const requiredFields = ['regimenName', 'regimenCategory', 'regimenDescription'];
+                    const requiredFields = ['regimenName', 'regimenCategory', 'regimenXp', 'regimenDifficulty', 'regimenDescription'];
                     let formValid = true;
 
                     requiredFields.forEach(id => {
@@ -244,7 +262,6 @@ include('handle/mysqli_connect.php');
               
             <div class="formItem doubleRow" style="margin-bottom: 3px">
                 <div class="inputContainer">
-                    <label for="modifyRegimenName">Regimen Name</label>
                     <select class="dropdown" id="modifyRegimenName"  name="modifyRegimenName">
                         <?php
                             $regimens = mysqli_query($dbc, "SELECT regimen_id, regimen_name FROM workout_regimens ORDER BY regimen_name");
@@ -267,7 +284,6 @@ include('handle/mysqli_connect.php');
                 </div>
                     
                 <div class="inputContainer">
-                    <label for="submit" style="visibility:hidden;">Submit</label>
                     <input id="submit" class="button" type="submit" name="submit" value="Select">
                 </div>
             </div>
@@ -295,6 +311,115 @@ include('handle/mysqli_connect.php');
         
             if(isset($_GET['action']) && $_GET['action'] === "modifyRegimen" && isset($_GET['regimen'])) {
                 $regimen_id = mysqli_real_escape_string($dbc, $_GET['regimen']);
+
+                $regimen_details_sql = "SELECT * FROM workout_regimens WHERE regimen_id = ?";
+
+                if ($stmt = mysqli_prepare($dbc, $regimen_details_sql)) {
+                    mysqli_stmt_bind_param($stmt, 'i', $regimen_id);
+                    mysqli_stmt_execute($stmt);
+                    $result = mysqli_stmt_get_result($stmt);
+                    $numRows = mysqli_num_rows($result);
+
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        echo "
+                            <form class='adminForm regimenDetails' id='createRegimen' action='handle/admin_handle.php?action=modifyRegimen&regimen=$regimen_id&sequence=details' method='post' style='margin-bottom:20px;'>
+                                <h3>Details</h3>
+                                <div class='formItem compressedItem doubleRow'>
+                                    <div class='inputContainer'>
+                                        <label for='regimenDetailName'>Regimen Name</label>
+                                        <input type='text' id='regimenDetailName' name='regimenDetailName' value='{$row["regimen_name"]}'>";
+                                if(isset($_GET['status']) && $_GET['status'] === 'duplicate' && isset($_GET['action']) && $_GET['action'] === 'modifyRegimen') { echo '<span class="error-message invalid-message" style="display:block; text-align:left;">That regimen name already exists!</span>';}
+                        echo "</div>
+
+                                <div class='inputContainer'>
+                                    <label for='regimenDetailCategory'>Category</label>
+                                    <select class='dropdown' id='regimenDetailCategory' name='regimenDetailCategory'>";
+                                $categories = mysqli_query($dbc, 'SELECT category_id, name FROM exercise_categories ORDER BY name');
+                                while ($categoryrow = mysqli_fetch_assoc($categories)) {
+                                    $selected = ($row['category_id'] == $categoryrow['category_id']) ? true : false;
+                                    if ($selected) {
+                                        echo "<option selected value='{$categoryrow["category_id"]}'>{$categoryrow["name"]}</option>";
+                                        $selectedValue = true;
+                                    } else {
+                                        echo "<option value='{$categoryrow["category_id"]}'>{$categoryrow["name"]}</option>";
+                                    }
+                                } 
+                        echo "
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class='formItem compressedItem doubleRow'>
+                                <div class='inputContainer'>
+                                    <label for='regimenDetailXp'>Completion XP</label>
+                                    <input type='number' id='regimenDetailXp' name='regimenDetailXp' min='0' value='{$row["xp_amount"]}'>
+                                </div>
+
+                                <div class='inputContainer'>
+                                    <label for='regimenDetailDifficulty'>Difficulty</label>
+                                    <select class='dropdown' id='regimenDetailDifficulty' name='regimenDetailDifficulty'>";
+
+                                $difficultyOptions = ['Beginner', 'Intermediate', 'Advanced'];
+                                foreach ($difficultyOptions as $option) {
+                                    $selected = ($row['difficulty'] == $option) ? 'selected' : '';
+                                    echo "<option value='$option' $selected>$option</option>";
+                                }
+
+                                echo "
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class='formItem compressedItem'>
+                                <label for='regimenDetailDescription'>Description</label>
+                                <textarea id='regimenDetailDescription' name='regimenDetailDescription' rows='4'>{$row["description"]}</textarea>
+                            </div>
+
+                            <span id='createRegimenDetailIncomplete' class='error-message' style='text-align:left; margin-bottom: 5px;'>Error: Please complete all required fields.</span>
+                            <div class='formItem doubleRow'>
+                                <div class='inputContainer'>
+                                    <input class='button' type='submit' name='submit' value='Update Details'>
+                                </div>
+                                <div class='inputContainer'>
+                                    <a class='button remove' href='handle/admin_handle.php?action=modifyRegimen&regimen={$row["regimen_id"]}&sequence=details&r=1'>Delete Regimen</a>
+                                </div>
+                            </div>
+
+                            <script>
+                                document.querySelectorAll('.sequence-new').forEach(form => {
+                                    form.addEventListener('submit', function(event) {
+                                        const requiredFields = ['regimenDetailName', 'regimenDetailCategory', 'regimenDetailXp', 'regimenDetailDifficulty', 'regimenDetailDescription'];
+                                        let formValid = true;
+
+                                        requiredFields.forEach(id => {
+                                            const field = document.getElementById(id);
+                                            if (!field.value.trim()) {
+                                                field.style.border = '1px solid red';
+                                                formValid = false;
+                                            } else {
+                                                field.style.border = '';
+                                            }
+                                        });
+
+                                        if (!formValid) {
+                                            let incomplete = document.getElementById('createRegimenDetailIncomplete');
+                                            incomplete.classList.add('invalid-message');
+                                            event.preventDefault();
+                                        }
+                                    });
+                                });
+                            </script>
+                        </form> 
+                        ";
+                    }
+                }
+
+
+
+
+
+
+
                 $regimen_exercises_sql = "SELECT we.*, e.name FROM workout_exercises we JOIN exercises e ON we.exercise_id = e.exercise_id WHERE we.regimen_id = ? ORDER BY sequence";
                 
                 if ($stmt = mysqli_prepare($dbc, $regimen_exercises_sql)) {
@@ -581,10 +706,7 @@ include('handle/mysqli_connect.php');
               
             </div>
         </div>
-          
-        
-      
-      </div>
+        </div>
     </div>
     
   </body>

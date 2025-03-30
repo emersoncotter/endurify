@@ -104,7 +104,7 @@ include('handle/mysqli_connect.php');
                 <?php 
                   if(isset($_GET["filter"])) {
                     $filter = (int) $_GET['filter'];
-                    $regimenList = "SELECT * FROM workout_regimens WHERE category_id = ? ORDER BY category_id";
+                    $regimenList = "SELECT wr.*, ec.name as category_name FROM workout_regimens wr JOIN exercise_categories ec ON wr.category_id = ec.category_id WHERE wr.category_id = ? ORDER BY category_id";
                     $stmt = mysqli_prepare($dbc, $regimenList);
 
                     if ($stmt) {
@@ -112,7 +112,7 @@ include('handle/mysqli_connect.php');
                       }
 
                   } else {
-                    $regimenList = "SELECT * FROM workout_regimens ORDER BY category_id";
+                    $regimenList = "SELECT wr.*, ec.name as category_name FROM workout_regimens wr JOIN exercise_categories ec ON wr.category_id = ec.category_id ORDER BY category_id";
                     $stmt = mysqli_prepare($dbc, $regimenList);
                   }
 
@@ -131,8 +131,7 @@ include('handle/mysqli_connect.php');
 
                         while ($row = mysqli_fetch_assoc($result)) {
 
-                          $img = htmlspecialchars("media/regimens/default.png");
-
+                          $img = htmlspecialchars("media/regimens/{$row["category_name"]}.png");
                           echo "
                           <div class='card'>
                             <div class='top' style=\"background-image: linear-gradient(135deg,rgba(0, 200, 255, 0.6),rgba(0, 115, 255, 0.6)), url('$img');\">

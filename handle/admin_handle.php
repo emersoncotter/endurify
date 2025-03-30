@@ -61,14 +61,15 @@ if($action == "createExercise") {
 } else if ($action == "createRegimen") {
     // Value Checks
     $name = !empty($_POST['regimenName']) ? mysqli_real_escape_string($dbc, ucwords(trim($_POST['regimenName']))) : NULL;
+    $xp = !empty($_POST['regimenXp']) ? mysqli_real_escape_string($dbc, trim($_POST['regimenXp'])) : NULL;
     $description = !empty($_POST['regimenDescription']) ? mysqli_real_escape_string($dbc, ucfirst(trim($_POST['regimenDescription']))) : NULL;
 
     // Selection Checks
     $category = ($_POST['regimenCategory'] != '') ? trim(mysqli_real_escape_string($dbc, $_POST['regimenCategory'])) : NULL;
-
+    $difficulty = ($_POST['regimenDifficulty'] != '') ? trim(mysqli_real_escape_string($dbc, $_POST['regimenDifficulty'])) : NULL;
 
     // Unfilled Form Message
-    if ($name == NULL || $category == NULL || $description == NULL) {
+    if ($name == NULL || $category == NULL || $xp == NULL || $description == NULL || $difficulty == NULL) {
         header("Location: ../admin.php?action=createExercise&status=error");
     } else {
         // Formulate the and run query to check if email exists in the database
@@ -80,13 +81,13 @@ if($action == "createExercise") {
         } else {
             // Prepared statement to insert
             $query = "INSERT INTO workout_regimens (
-                regimen_name, category_id, description) VALUES (?, ?, ?)";
+                regimen_name, category_id, xp_amount, difficulty, description) VALUES (?, ?, ?, ?, ?)";
 
             $stmt = mysqli_prepare($dbc, $query);
 
             // Bind parameters
-            mysqli_stmt_bind_param($stmt, 'sis',
-                $name,$category, $description);
+            mysqli_stmt_bind_param($stmt, 'siiss',
+                $name,$category, $xp, $difficulty, $description);
 
             // Execute and check result, return header
             if (mysqli_stmt_execute($stmt)) {
@@ -123,6 +124,68 @@ if($action == "createExercise") {
 
         if ($sequence == NULL) {
             header("Location: ../admin.php?action=modifyRegimen&regimen=$regimen_id&status=error");
+        } else if ($sequence == "details") {
+
+            if(isset($_GET['r'])) {
+                $query = "DELETE FROM workout_regimens WHERE regimen_id = ?";
+
+                $deletestmt = mysqli_prepare($dbc, $query);
+                mysqli_stmt_bind_param($deletestmt, 'i', $regimen_id);
+
+                if (mysqli_stmt_execute($deletestmt)) {
+                    header("Location: ../admin.php?action=modifyRegimen&status=success#top");
+                    exit();
+                } else {
+                    header("Location: ../admin.php?action=modifyRegimen&status=error#top");
+                    exit();
+                }
+            }
+
+
+
+            // Value Checks
+            $name = !empty($_POST['regimenDetailName']) ? mysqli_real_escape_string($dbc, ucwords(trim($_POST['regimenDetailName']))) : NULL;
+            $xp = !empty($_POST['regimenDetailXp']) ? mysqli_real_escape_string($dbc, trim($_POST['regimenDetailXp'])) : NULL;
+            $description = !empty($_POST['regimenDetailDescription']) ? mysqli_real_escape_string($dbc, ucfirst(trim($_POST['regimenDetailDescription']))) : NULL;
+
+            // Selection Checks
+            $category = ($_POST['regimenDetailCategory'] != '') ? trim(mysqli_real_escape_string($dbc, $_POST['regimenDetailCategory'])) : NULL;
+            $difficulty = ($_POST['regimenDetailDifficulty'] != '') ? trim(mysqli_real_escape_string($dbc, $_POST['regimenDetailDifficulty'])) : NULL;
+
+            // Unfilled Form Message
+            if ($name == NULL || $category == NULL || $xp == NULL || $description == NULL || $difficulty == NULL) {
+                header("Location: ../admin.php?action=modifyRegimen&regimen=$regimen_id&status=error");
+            } else {
+                // Formulate the and run query to check if email exists in the database
+                $check_name = "SELECT * from workout_regimens WHERE regimen_name = '$name' AND regimen_id != $regimen_id"; 
+                $check_name_result = mysqli_query($dbc, $check_name);
+
+                if(mysqli_num_rows($check_name_result) > 0){
+                    header("Location: ../admin.php?action=modifyRegimen&regimen=$regimen_id&status=duplicate");
+                } else {
+                    // Prepared statement to insert
+                    $query = "UPDATE workout_regimens 
+                              SET regimen_name = ?, category_id = ?, xp_amount = ?, difficulty = ?, description = ?
+                              WHERE regimen_id = ?";
+
+                    $stmt = mysqli_prepare($dbc, $query);
+
+                    // Bind parameters
+                    mysqli_stmt_bind_param($stmt, 'siissi',
+                                $name, $category, $xp, $difficulty, $description, $regimen_id);
+
+                    // Execute and check result, return header
+                    // Execute the query
+                    mysqli_stmt_execute($stmt);
+
+                    // Optional: check for success
+                    if (mysqli_stmt_affected_rows($stmt) > 0) {
+                        header("Location: ../admin.php?action=modifyRegimen&regimen=$regimen_id&status=success");
+                    } else {
+                        header("Location: ../admin.php?action=modifyRegimen&regimen=$regimen_id&status=error");
+                    }
+                }
+            }
         } else {
             // Sequence is Set
             if(isset($_GET['r'])) {
