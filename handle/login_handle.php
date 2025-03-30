@@ -21,6 +21,7 @@ if(mysqli_num_rows($result) == 1){
 
     // Set username
 	$_SESSION["username"] = $row["user_name"];
+    $_SESSION["user_id"] = $row["user_id"];
 
     // Set role privledges
     $_SESSION["role"] = $row["role"];

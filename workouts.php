@@ -201,16 +201,56 @@ include('handle/mysqli_connect.php');
           
           <div class="side-content">
             <div class="dash-item">
-              <h1>Routines</h1>
-              <div style="height: 500px;">Custom routines here.</div>
+              <h1>Your Routines</h1>
+              <div class="routines">
+
+              <?php 
+
+                  $routineList = "SELECT * FROM custom_workouts WHERE user_id = ? ORDER BY workout_id";
+                  $stmt = mysqli_prepare($dbc, $routineList);
+                  
+                  if ($stmt) {
+                      mysqli_stmt_bind_param($stmt, 'i', $_SESSION["user_id"]);
+                      mysqli_stmt_execute($stmt);
+                      $result = mysqli_stmt_get_result($stmt);
+                      $numRows = mysqli_num_rows($result);
+
+                    if($numRows === 0) {
+                      echo "None";
+                    } else {
+                      while ($row = mysqli_fetch_assoc($result)) {
+
+                        echo "
+                          <div class='routine-card'>
+                            <div class='details'>
+                                <h3>{$row["workout_name"]}</h3>
+                                <span class='description'>{$row["description"]}</span>
+                            </div>
+                            <a class='select' href='viewroutine.php?routine={$row["workout_id"]}'>
+                              <i class='fa fa-play'></i>
+                            </a>
+                          </div>
+                        ";
+                      }
+                    }
+
+                  } else {
+                    echo 'Error retreiving routines! (Ref: err)';
+                  }
+              ?>
+
+                <a class='button' href='routine.php'>Create Routine</a>
+              </div>
+
+
             </div>
 
-            <div class="dash-item">
-              <h1>Badges</h1>
-              <div style="height: 350px;">4 Most Recent Collected Badges Here</div>
+              <div class="dash-item">
+                <h1>Badges</h1>
+                <div style="height: 350px;">4 Most Recent Collected Badges Here</div>
+              </div>
             </div>
           </div>
-      
       </div>
     </div>
     

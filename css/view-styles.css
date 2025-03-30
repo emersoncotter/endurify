@@ -48,7 +48,7 @@
     border-radius: 20px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.08);
     overflow: hidden;
-    margin-bottom: 24px;
+    margin-bottom: 12px;
     align-items: center;
   }
   
@@ -63,11 +63,7 @@
     position: relative;
     background-size: cover;
     background-position: center;
-  }
-  
-  .exercise-left img {
-    width: 64px;
-    height: 64px;
+    display: none;
   }
   
   .exercise-body {
@@ -112,6 +108,7 @@
     .exercise-left {
       width: 100%;
       height: 60px;
+      display: none;
     }
   
     .exercise-body {
