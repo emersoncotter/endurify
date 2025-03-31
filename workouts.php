@@ -203,9 +203,7 @@ include('handle/mysqli_connect.php');
             <div class="dash-item">
               <h1>Your Routines</h1>
               <div class="routines">
-
               <?php 
-
                   $routineList = "SELECT * FROM custom_workouts WHERE user_id = ? ORDER BY workout_id";
                   $stmt = mysqli_prepare($dbc, $routineList);
                   
@@ -216,7 +214,6 @@ include('handle/mysqli_connect.php');
                       $numRows = mysqli_num_rows($result);
 
                     if($numRows === 0) {
-                      echo "None";
                     } else {
                       while ($row = mysqli_fetch_assoc($result)) {
 
@@ -233,16 +230,13 @@ include('handle/mysqli_connect.php');
                         ";
                       }
                     }
-
                   } else {
                     echo 'Error retreiving routines! (Ref: err)';
                   }
               ?>
 
-                <a class='button' href='routine.php'>Create Routine</a>
+                <a class='button' href='modifyroutine.php?action=create'>Create Routine</a>
               </div>
-
-
             </div>
 
               <div class="dash-item">

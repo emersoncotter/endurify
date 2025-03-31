@@ -17,16 +17,16 @@ include('mysqli_connect.php');
         
 if($action == "createExercise") {
     // Value Checks
-    $exercise_name = !empty($_POST['name']) ? mysqli_real_escape_string($dbc, ucwords(trim($_POST['name']))) : NULL;
-    $difficulty = !empty($_POST['difficulty']) ? mysqli_real_escape_string($dbc, trim($_POST['difficulty'])) : NULL;
-    $duration = !empty($_POST['duration']) ? mysqli_real_escape_string($dbc, trim($_POST['duration'])) : NULL;
-    $short_desc = !empty($_POST['shorthand_description']) ? mysqli_real_escape_string($dbc, ucfirst(trim($_POST['shorthand_description']))) : NULL;
-    $description = !empty($_POST['description']) ? mysqli_real_escape_string($dbc, ucfirst(trim($_POST['description']))) : NULL;
+    $exercise_name = !empty($_POST['name']) ?  ucwords(trim($_POST['name'])) : NULL;
+    $difficulty = !empty($_POST['difficulty']) ?  trim($_POST['difficulty']) : NULL;
+    $duration = !empty($_POST['duration']) ?  trim($_POST['duration']) : NULL;
+    $short_desc = !empty($_POST['shorthand_description']) ?  ucfirst(trim($_POST['shorthand_description'])) : NULL;
+    $description = !empty($_POST['description']) ?  ucfirst(trim($_POST['description'])) : NULL;
     
     // Selection Checks
-    $category = ($_POST['category'] != '') ? trim(mysqli_real_escape_string($dbc, $_POST['category'])) : NULL;
-    $equipment = ($_POST['equipment'] != '') ? trim(mysqli_real_escape_string($dbc, $_POST['equipment'])) : NULL;
-    $muscle = ($_POST['muscle'] != '') ? trim(mysqli_real_escape_string($dbc, $_POST['muscle'])) : NULL;
+    $category = ($_POST['category'] != '') ? trim( $_POST['category']) : NULL;
+    $equipment = ($_POST['equipment'] != '') ? trim( $_POST['equipment']) : NULL;
+    $muscle = ($_POST['muscle'] != '') ? trim( $_POST['muscle']) : NULL;
 
     // Unfilled Form Message
     if ($exercise_name == NULL || $difficulty == NULL || $duration == NULL || $short_desc == NULL || $description == NULL || $category == NULL || $equipment == NULL || $muscle == NULL) {
@@ -60,13 +60,13 @@ if($action == "createExercise") {
     }
 } else if ($action == "createRegimen") {
     // Value Checks
-    $name = !empty($_POST['regimenName']) ? mysqli_real_escape_string($dbc, ucwords(trim($_POST['regimenName']))) : NULL;
-    $xp = !empty($_POST['regimenXp']) ? mysqli_real_escape_string($dbc, trim($_POST['regimenXp'])) : NULL;
-    $description = !empty($_POST['regimenDescription']) ? mysqli_real_escape_string($dbc, ucfirst(trim($_POST['regimenDescription']))) : NULL;
+    $name = !empty($_POST['regimenName']) ?  ucwords(trim($_POST['regimenName'])) : NULL;
+    $xp = !empty($_POST['regimenXp']) ?  trim($_POST['regimenXp']) : NULL;
+    $description = !empty($_POST['regimenDescription']) ?  ucfirst(trim($_POST['regimenDescription'])) : NULL;
 
     // Selection Checks
-    $category = ($_POST['regimenCategory'] != '') ? trim(mysqli_real_escape_string($dbc, $_POST['regimenCategory'])) : NULL;
-    $difficulty = ($_POST['regimenDifficulty'] != '') ? trim(mysqli_real_escape_string($dbc, $_POST['regimenDifficulty'])) : NULL;
+    $category = ($_POST['regimenCategory'] != '') ? trim( $_POST['regimenCategory']) : NULL;
+    $difficulty = ($_POST['regimenDifficulty'] != '') ? trim( $_POST['regimenDifficulty']) : NULL;
 
     // Unfilled Form Message
     if ($name == NULL || $category == NULL || $xp == NULL || $description == NULL || $difficulty == NULL) {
@@ -100,7 +100,7 @@ if($action == "createExercise") {
 } else if ($action == "modifyRegimen") {
     // Selecting Regimen
     if(!(isset($_GET["regimen"]))){
-        $regimen_id = ($_POST['modifyRegimenName'] != '') ? trim(mysqli_real_escape_string($dbc, $_POST['modifyRegimenName'])) : NULL;
+        $regimen_id = ($_POST['modifyRegimenName'] != '') ? trim( $_POST['modifyRegimenName']) : NULL;
         
         if ($regimen_id == NULL) {
             header("Location: ../admin.php?action=modifyRegimen&status=error");
@@ -119,8 +119,8 @@ if($action == "createExercise") {
     // Regimen Selected
     
     } else if (isset($_GET['sequence'])){
-        $regimen_id = ($_GET['regimen'] != '') ? trim(mysqli_real_escape_string($dbc, $_GET['regimen'])) : NULL;
-        $sequence = ($_GET['sequence'] != '') ? trim(mysqli_real_escape_string($dbc, $_GET['sequence'])) : NULL;
+        $regimen_id = ($_GET['regimen'] != '') ? trim( $_GET['regimen']) : NULL;
+        $sequence = ($_GET['sequence'] != '') ? trim( $_GET['sequence']) : NULL;
 
         if ($sequence == NULL) {
             header("Location: ../admin.php?action=modifyRegimen&regimen=$regimen_id&status=error");
@@ -141,16 +141,14 @@ if($action == "createExercise") {
                 }
             }
 
-
-
             // Value Checks
-            $name = !empty($_POST['regimenDetailName']) ? mysqli_real_escape_string($dbc, ucwords(trim($_POST['regimenDetailName']))) : NULL;
-            $xp = !empty($_POST['regimenDetailXp']) ? mysqli_real_escape_string($dbc, trim($_POST['regimenDetailXp'])) : NULL;
-            $description = !empty($_POST['regimenDetailDescription']) ? mysqli_real_escape_string($dbc, ucfirst(trim($_POST['regimenDetailDescription']))) : NULL;
+            $name = !empty($_POST['regimenDetailName']) ?  ucwords(trim($_POST['regimenDetailName'])) : NULL;
+            $xp = !empty($_POST['regimenDetailXp']) ?  trim($_POST['regimenDetailXp']) : NULL;
+            $description = !empty($_POST['regimenDetailDescription']) ?  ucfirst(trim($_POST['regimenDetailDescription'])) : NULL;
 
             // Selection Checks
-            $category = ($_POST['regimenDetailCategory'] != '') ? trim(mysqli_real_escape_string($dbc, $_POST['regimenDetailCategory'])) : NULL;
-            $difficulty = ($_POST['regimenDetailDifficulty'] != '') ? trim(mysqli_real_escape_string($dbc, $_POST['regimenDetailDifficulty'])) : NULL;
+            $category = ($_POST['regimenDetailCategory'] != '') ? trim( $_POST['regimenDetailCategory']) : NULL;
+            $difficulty = ($_POST['regimenDetailDifficulty'] != '') ? trim( $_POST['regimenDetailDifficulty']) : NULL;
 
             // Unfilled Form Message
             if ($name == NULL || $category == NULL || $xp == NULL || $description == NULL || $difficulty == NULL) {
@@ -204,13 +202,13 @@ if($action == "createExercise") {
             }
             
             // Value Checks
-            $rest = !empty($_POST['modifyRegimenRest']) ? mysqli_real_escape_string($dbc, trim($_POST['modifyRegimenRest'])) : NULL;
-            $reps = !empty($_POST['modifyRegimenReps']) ? mysqli_real_escape_string($dbc, trim($_POST['modifyRegimenReps'])) : NULL;
-            $sets = !empty($_POST['modifyRegimenSets']) ? mysqli_real_escape_string($dbc, trim($_POST['modifyRegimenSets'])) : NULL;
-            $notes = !empty($_POST['modifyRegimenNotes']) ? mysqli_real_escape_string($dbc, ucfirst(trim($_POST['modifyRegimenNotes']))) : NULL;
+            $rest = !empty($_POST['modifyRegimenRest']) ?  trim($_POST['modifyRegimenRest']) : NULL;
+            $reps = !empty($_POST['modifyRegimenReps']) ?  trim($_POST['modifyRegimenReps']) : NULL;
+            $sets = !empty($_POST['modifyRegimenSets']) ?  trim($_POST['modifyRegimenSets']) : NULL;
+            $notes = !empty($_POST['modifyRegimenNotes']) ?  ucfirst(trim($_POST['modifyRegimenNotes'])) : NULL;
             
             // Selection Checks
-            $exercise = ($_POST['modifyRegimenExercise'] != '') ? trim(mysqli_real_escape_string($dbc, $_POST['modifyRegimenExercise'])) : NULL;
+            $exercise = ($_POST['modifyRegimenExercise'] != '') ? trim( $_POST['modifyRegimenExercise']) : NULL;
 
             // Unfilled Form Message
             if ($rest == NULL || $reps == NULL || $sets == NULL || $notes == NULL || $exercise == NULL) {
