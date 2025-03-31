@@ -180,9 +180,9 @@
 
 .result-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(225px, .25fr));
+    grid-template-columns: repeat(auto-fit, minmax(200px, .25fr));
     gap: 20px;
-    justify-content: left;
+    justify-content: center;
 }
 
     .result-grid .card {
