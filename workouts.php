@@ -77,7 +77,7 @@ include('handle/mysqli_connect.php');
                   }
 
                   echo "
-                      <a href='workouts.php'>
+                      <a href='workouts.php#category'>
                         <div class='$class'>
                           <span>All</span>
                         </div>
@@ -157,45 +157,8 @@ include('handle/mysqli_connect.php');
                     } else {
                       echo 'No exercises found with current filter! (ref: err)';
                     }
-
-
-
-                
                 ?>
               </div>
-
-            
-
-            
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             </div>
           </div>
           

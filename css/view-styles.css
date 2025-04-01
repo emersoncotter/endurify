@@ -31,15 +31,19 @@
   .tag.Intermediate { background-color: #ffb24797; color: #ffffff; }
   .tag.Advanced { background-color: #ff696185; color: #ffffff; }
   
-  .xp {
+  .tag.xp {
     background-color: #e3efff;
     color: #2f89fc;
   }
   
-  .category {
+  .tag.category {
     background-color: #e0e0e0;
     color: #888;
   }
+
+  .difficulty.Beginner { background-color: #00d89e92; color: #ffffff; }
+  .difficulty.Intermediate { background-color: #ffb24797; color: #ffffff; }
+  .difficulty.Advanced { background-color: #ff696185; color: #ffffff; }
   
   /* Card layout */
   .exercise-row-card {
@@ -49,26 +53,35 @@
     box-shadow: 0 4px 12px rgba(0,0,0,0.08);
     overflow: hidden;
     margin-bottom: 12px;
-    align-items: center;
+    align-items: stretch;
   }
   
-  .exercise-left {
+  .exercise-image {
     width: 160px;
-    height: 160px;
-    background: linear-gradient(135deg, #00C6FF, #0072FF);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    position: relative;
+    min-height: 160px;
     background-size: cover;
     background-position: center;
-    display: none;
+    background-repeat: no-repeat;
+    flex-shrink: 0;
   }
   
+  .exercise-content-wrapper {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    align-items: center;
+  }
+
   .exercise-body {
     padding: 20px;
     flex-grow: 1;
+  }
+
+  .exercise-right {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 20px;
   }
   
   .exercise-title {
@@ -97,6 +110,8 @@
   .exercise-tags {
     display: flex;
     gap: 10px;
+    text-align: center;
+    flex-wrap: wrap;
   }
   
   /* Responsive */
@@ -105,14 +120,34 @@
       flex-direction: column;
     }
   
-    .exercise-left {
+    .exercise-image {
       width: 100%;
+      min-height: auto;
       height: 60px;
+    }
+
+    .exercise-tags {
+      display: flex;
+      gap: 5px;
+      align-items: center;
+      justify-content: left;
+      flex-wrap: wrap;
+    }
+
+    .exercise-tags .tag.category {
       display: none;
     }
-  
-    .exercise-body {
-      padding: 16px;
+
+    .exercise-content-wrapper {
+      flex-direction: column;
+      width: 100%;
+      padding: 8px;
+    }
+
+    .exercise-right {
+      width: 100%;
+      justify-content: center;
+      padding-right: 0px;
     }
   }
   

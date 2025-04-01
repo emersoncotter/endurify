@@ -112,7 +112,7 @@ if (empty($_SESSION['username'])) {
 
                       echo " 
                       <div class='exercise-row-card'>
-                        <div class='exercise-left' style=\"background-image: linear-gradient(135deg,rgba(0, 200, 255, 0.6),rgba(0, 115, 255, 0.6)), url('$img');\">
+                        <div class='exercise-left' style=\"display: none; background-image: linear-gradient(135deg,rgba(0, 200, 255, 0.6),rgba(0, 115, 255, 0.6)), url('$img');\">
                           
                         </div>
                         
