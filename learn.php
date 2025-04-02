@@ -68,7 +68,7 @@ if (empty($_SESSION['username'])) {
             <div class="dash-item">
               <h1 style='margin-bottom: 10px;'>Featured Courses</h1>
               <?php 
-                    $featuredCourseList = "SELECT c.*, ec.name as category_name FROM courses c JOIN exercise_categories ec ON c.category_id = ec.category_id WHERE featured = 1 ORDER BY category_id";
+                    $featuredCourseList = "SELECT c.*, ec.name as category_name FROM courses c JOIN exercise_categories ec ON c.category_id = ec.category_id WHERE featured = 1 ORDER BY difficulty";
                     $stmt = mysqli_prepare($dbc, $featuredCourseList);
                   
 
@@ -78,7 +78,7 @@ if (empty($_SESSION['username'])) {
                         $numRows = mysqli_num_rows($result);
 
                       if($numRows > 0) {
-                        echo "<div class='result-grid' style='justify-content: left;'>";
+                        echo "<div class='result-grid'>";
 
                         while ($row = mysqli_fetch_assoc($result)) {
 
@@ -96,7 +96,7 @@ if (empty($_SESSION['username'])) {
                             </div>
                             <div class='bottom'>
                                 <span class='xp'>{$row["xp_amount"]} xp</span>
-                                <a class='select {$row["difficulty"]}' href='viewregimen.php?regimen={$row["course_id"]}'>
+                                <a class='select {$row["difficulty"]}' href='viewcourse.php?course={$row["course_id"]}'>
                                   <i class='fa fa-play'></i>
                                 </a>
                             </div>
@@ -155,7 +155,7 @@ if (empty($_SESSION['username'])) {
                 <?php 
                   if(isset($_GET["filter"])) {
                     $filter = (int) $_GET['filter'];
-                    $courseList = "SELECT c.*, ec.name as category_name FROM courses c JOIN exercise_categories ec ON c.category_id = ec.category_id WHERE c.category_id = ? ORDER BY category_id";
+                    $courseList = "SELECT c.*, ec.name as category_name FROM courses c JOIN exercise_categories ec ON c.category_id = ec.category_id WHERE c.category_id = ? ORDER BY difficulty";
                     $stmt = mysqli_prepare($dbc, $courseList);
 
                     if ($stmt) {
@@ -163,7 +163,7 @@ if (empty($_SESSION['username'])) {
                       }
 
                   } else {
-                    $courseList = "SELECT c.*, ec.name as category_name FROM courses c JOIN exercise_categories ec ON c.category_id = ec.category_id ORDER BY category_id";
+                    $courseList = "SELECT c.*, ec.name as category_name FROM courses c JOIN exercise_categories ec ON c.category_id = ec.category_id ORDER BY difficulty";
                     $stmt = mysqli_prepare($dbc, $courseList);
                   }
 
@@ -198,7 +198,7 @@ if (empty($_SESSION['username'])) {
                                 </div>
                               </div>
                               <div class='exercise-right'>
-                                <a class='select {$row["difficulty"]}' href='viewregimen.php?regimen={$row["course_id"]}'>
+                                <a class='select {$row["difficulty"]}' href='viewcourse.php?course={$row["course_id"]}'>
                                   <i class='fa fa-play'></i>
                                 </a>
                               </div>
