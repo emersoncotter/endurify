@@ -12,7 +12,7 @@ include('handle/mysqli_connect.php');
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Endurify | Workouts</title>
+    <title>Workouts | Endurify</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -64,8 +64,6 @@ include('handle/mysqli_connect.php');
           <!-- Main Content -->
           <div class="main-content" id="category">
             <div class="dash-item">
-              <h2>Browse by Category</h2>
-
               <div class="category-selector">
                 <?php                       
                   $categories = mysqli_query($dbc, "SELECT category_id, name FROM exercise_categories ORDER BY category_id");
@@ -121,7 +119,7 @@ include('handle/mysqli_connect.php');
                         $result = mysqli_stmt_get_result($stmt);
                         $numRows = mysqli_num_rows($result);
 
-                        echo "<div class='result-header'> <h2>Workouts</h2>";
+                        echo "<div class='result-header'> <h2>Browse by Category</h2>";
 
                       if($numRows === 0) {
                         echo "<span class='result-count'>Showing $numRows results</span></div>";
@@ -164,7 +162,10 @@ include('handle/mysqli_connect.php');
           
           <div class="side-content">
             <div class="dash-item">
-              <h1>Your Routines</h1>
+              <div class="item-header">
+                <i class="fa fa-bullseye gradient-text"></i>
+                <h2 class="title">Your Routines</h2>
+              </div>
               <div class="routines">
               <?php 
                   $routineList = "SELECT * FROM custom_workouts WHERE user_id = ? ORDER BY workout_id";
@@ -203,7 +204,10 @@ include('handle/mysqli_connect.php');
             </div>
 
               <div class="dash-item">
-                <h1>Badges</h1>
+                <div class="item-header">
+                  <i class="fa fa-award gradient-text"></i>
+                  <h2 class="title">Badges</h2>
+                </div>
                 <div style="height: 350px;">4 Most Recent Collected Badges Here</div>
               </div>
             </div>

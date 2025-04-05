@@ -11,10 +11,10 @@ if (empty($_SESSION['username'])) {
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Endurify | Dashboard</title>
+    <title>Dashboard | Endurify</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <link rel="stylesheet" href="css/view-styles.css">
   </head>
   
   <body class="background-gradient">
@@ -43,13 +43,161 @@ if (empty($_SESSION['username'])) {
           <!-- Main Content -->
           <div class="main-content">
             <div class="dash-item">
-              <h1>Activity Feed</h1>
-              <div style="height: 450px;">Activity Feed Content Here.</div>
+              <div class="item-header">
+                <i class="fa fa-heart gradient-text"></i>
+                <h2 class="title">Recent Activity</h2>
+              </div>
+
+              <div class='exercise-row-card'>
+                  <div class='exercise-content-wrapper'>
+                    <div class='exercise-body'>
+                      <h2 class='exercise-title' style='color: black;'>Start your first workout or learning adventure to see it here!</h2>
+                      <p class='exercise-notes'>Power up your streak, rack up XP, and unlock your fitness potential! Head to the Workouts or Learn page to begin your next challenge.</p>
+                      <div class='exercise-tags'>
+                        <span class='tag difficulty Beginner'>Choose your difficulty!</span>
+                        <span class='tag xp'>Gain XP!</span>
+                        <span class='tag category'>Focus on your goals!</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
             </div>
 
             <div class="dash-item">
-              <h1>Challenge Hub</h1>
-              <div style="height: 450px;">Challenge Hub Content Here.</div>
+              <div class="item-header">
+                <i class="fa fa-users gradient-text"></i>
+                <h2 class="title">Community Feed</h2>
+              </div>
+              
+              <a href="viewregimen.php?regimen=3">
+                <div class='exercise-row-card'>
+                  <div class='exercise-image' style="background-image: linear-gradient(135deg,rgba(0, 200, 255, 0.6),rgba(0, 115, 255, 0.6)), url('media/regimens/strength.png');"></div>
+                  <div class='exercise-content-wrapper'>
+                    <div class='exercise-body'>
+                      <h2 class='exercise-title' style='color: black;'>Emerson C. finished a workout: Leg Strength Builder</h2>
+                      <p class='exercise-notes'>A lower-body program focused on building power, endurance, and functional strength.</p>
+                      <div class='exercise-tags'>
+                        <span class='tag difficulty Advanced'>Advanced</span>
+                        <span class='tag xp'>200 xp</span>
+                        <span class='tag category'>Strength</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </a>
+
+              <a href="viewcourse.php?course=26">
+                <div class='exercise-row-card'>
+                  <div class='exercise-image' style="background-image: linear-gradient(135deg,rgba(0, 200, 255, 0.6),rgba(0, 115, 255, 0.6)), url('media/regimens/cardio.png');"></div>
+                  <div class='exercise-content-wrapper'>
+                    <div class='exercise-body'>
+                      <h2 class='exercise-title' style='color: black;'>Nate T. completed a course: Foundations of Cardio Fitness</h2>
+                      <p class='exercise-notes'>Explore low-impact cardio methods to improve endurance.</p>
+                      <div class='exercise-tags'>
+                        <span class='tag difficulty Beginner'>Beginner</span>
+                        <span class='tag xp'>200 xp</span>
+                        <span class='tag category'>Cardio</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </a>
+
+              <a href="viewregimen.php?regimen=5">
+                <div class='exercise-row-card'>
+                  <div class='exercise-image' style="background-image: linear-gradient(135deg,rgba(0, 200, 255, 0.6),rgba(0, 115, 255, 0.6)), url('media/regimens/core.png');"></div>
+                  <div class='exercise-content-wrapper'>
+                    <div class='exercise-body'>
+                      <h2 class='exercise-title' style='color: black;'>Colin M. finished a workout: Core Stability Flow</h2>
+                      <p class='exercise-notes'>Mid-level exercises designed to challenge your balance and strengthen deep core muscles.</p>
+                      <div class='exercise-tags'>
+                        <span class='tag difficulty Intermediate'>Intermediate</span>
+                        <span class='tag xp'>150 xp</span>
+                        <span class='tag category'>Cardio</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </a>
+
+              <a href="viewcourse.php?course=33">
+                <div class='exercise-row-card'>
+                  <div class='exercise-image' style="background-image: linear-gradient(135deg,rgba(0, 200, 255, 0.6),rgba(0, 115, 255, 0.6)), url('media/regimens/balance.png');"></div>
+                  <div class='exercise-content-wrapper'>
+                    <div class='exercise-body'>
+                      <h2 class='exercise-title' style='color: black;'>Nate M. completed a course: Mastering Stability</h2>
+                      <p class='exercise-notes'>Challenge your body with single-leg and unstable-surface work.</p>
+                      <div class='exercise-tags'>
+                        <span class='tag difficulty Advanced'>Advanced</span>
+                        <span class='tag xp'>400 xp</span>
+                        <span class='tag category'>Strength</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </a>
+
+
+
+
+            </div>
+
+            <div class="dash-item">
+              <div class="item-header">
+                <i class="fa fa-medal gradient-text"></i>
+                <h2 class="title">Challenge Hub</h2>
+              </div>
+              
+              <div class='result-grid'>
+              <div class='card'>
+                <div class='top' style="background-image: linear-gradient(135deg,rgba(0, 200, 255, 0.6),rgba(0, 115, 255, 0.6)), url('media/regimens/cardio.png');">
+                  <div class='info'>
+                    <span class='difficulty Beginner'>Beginner</span>
+                  </div>
+                </div>
+                <div class='middle'>
+                  <h3>Get Moving!</h3>
+                  <span class='description'>Complete any one Cardio exercise for this week's beginner challenge. It's all about getting your heart rate up and building the habit!</span>
+                </div>
+                <div class='bottom'>
+                    <span class='xp'>200 xp</span>
+                </div>
+              </div>
+
+              
+              <div class='card'>
+                <div class='top' style="background-image: linear-gradient(135deg,rgba(0, 200, 255, 0.6),rgba(0, 115, 255, 0.6)), url('media/regimens/core.png');">
+                  <div class='info'>
+                    <span class='difficulty Intermediate'>Intermediate</span>
+                  </div>
+                </div>
+                <div class='middle'>
+                  <h3>Core Commitment</h3>
+                  <span class='description'>Complete at least one Core and one Strength exercise this week. You’re leveling up with more control, stability, and power!</span>
+                </div>
+                <div class='bottom'>
+                    <span class='xp'>400 xp</span>
+                </div>
+              </div>
+
+              
+              <div class='card'>
+                <div class='top' style="background-image: linear-gradient(135deg,rgba(0, 200, 255, 0.6),rgba(0, 115, 255, 0.6)), url('media/regimens/balance.png');">
+                  <div class='info'>
+                    <span class='difficulty Advanced'>Advanced</span>
+                  </div>
+                </div>
+                <div class='middle'>
+                  <h3>Full Body Focus</h3>
+                  <span class='description'>Complete one exercise each from Strength, Mobility, and Flexibility categories. Test your balance of force, movement, and recovery!</span>
+                </div>
+                <div class='bottom'>
+                    <span class='xp'>600 xp</span>
+                </div>
+              </div>
+
+              </div>
             </div>
           </div>
           
@@ -59,12 +207,18 @@ if (empty($_SESSION['username'])) {
             </div>
 
             <div class="dash-item">
-              <h1>Leaderboard</h1>
+              <div class="item-header">
+                <i class="fa fa-chart-simple gradient-text"></i>
+                <h2 class="title">Leaderboard</h2>
+              </div>
               <div style="height: 100px;">This is a long block to test scrolling.</div>
             </div>
 
             <div class="dash-item">
-              <h1>Daily Reward</h1>
+              <div class="item-header">
+                <i class="fa fa-gift gradient-text"></i>
+                <h2 class="title">Daily Reward</h2>
+              </div>
               <div style="height: 100px;">This is a long block to test scrolling.</div>
             </div>
           </div>

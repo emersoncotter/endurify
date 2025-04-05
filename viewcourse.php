@@ -19,7 +19,7 @@ include('handle/mysqli_connect.php');
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Endurify | View Workout</title>
+    <title>View Workout | Endurify</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/view-styles.css">

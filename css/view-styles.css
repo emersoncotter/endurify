@@ -139,7 +139,7 @@
       flex-wrap: wrap;
     }
 
-    .exercise-tags .tag.category {
+    .exercise-tags .tag.hide {
       display: none;
     }
 

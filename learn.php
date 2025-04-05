@@ -12,7 +12,7 @@ if (empty($_SESSION['username'])) {
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Endurify | Learn</title>
+    <title>Learn | Endurify</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/view-styles.css">
@@ -66,7 +66,10 @@ if (empty($_SESSION['username'])) {
           <!-- Main Content -->
           <div class="main-content">
             <div class="dash-item">
-              <h1 style='margin-bottom: 10px;'>Featured Courses</h1>
+              <div class="item-header">
+                <i class="fa fa-star gradient-text"></i>
+                <h2 class="title">Featured Courses</h2>
+              </div>
               <?php 
                     $featuredCourseList = "SELECT c.*, ec.name as category_name FROM courses c JOIN exercise_categories ec ON c.category_id = ec.category_id WHERE featured = 1 ORDER BY difficulty";
                     $stmt = mysqli_prepare($dbc, $featuredCourseList);
@@ -117,7 +120,10 @@ if (empty($_SESSION['username'])) {
             </div>
 
             <div class="dash-item" id="category">
-              <h1>Browse Courses</h1>
+                <div class="item-header">
+                  <i class="fa fa-book gradient-text"></i>
+                  <h2 class="title">Browse All Courses</h2>
+                </div>
               <div class="category-selector">
                 <?php                       
                   $categories = mysqli_query($dbc, "SELECT category_id, name FROM exercise_categories ORDER BY category_id");
@@ -194,7 +200,7 @@ if (empty($_SESSION['username'])) {
                                 <div class='exercise-tags'>
                                   <span class='tag difficulty {$row['difficulty']}'>{$row['difficulty']}</span>
                                   <span class='tag xp'>{$row['xp_amount']} xp</span>
-                                  <span class='tag category'>{$row['category_name']}</span>
+                                  <span class='tag category hide'>{$row['category_name']}</span>
                                 </div>
                               </div>
                               <div class='exercise-right'>
@@ -219,12 +225,18 @@ if (empty($_SESSION['username'])) {
           
           <div class="side-content">
             <div class="dash-item">
-              <h1>Progress</h1>
+              <div class="item-header">
+                <i class="fa fa-bullseye gradient-text"></i>
+                <h2 class="title">Learning Progress</h2>
+              </div>
               <div style="height: 100px;">Overall learning progress here.</div>
             </div>
 
             <div class="dash-item">
-              <h1>Badges</h1>
+                <div class="item-header">
+                  <i class="fa fa-award gradient-text"></i>
+                  <h2 class="title">Badges</h2>
+                </div>
               <div style="height: 150px;">4 Most Recent Collected Badges Here</div>
             </div>
           </div>

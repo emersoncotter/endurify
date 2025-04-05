@@ -11,7 +11,7 @@ if (empty($_SESSION['username'])) {
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Endurify | Profile</title>
+    <title>Profile | Endurify</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -43,7 +43,10 @@ if (empty($_SESSION['username'])) {
           <!-- Main Content -->
           <div class="main-content">
             <div class="dash-item">
-              <h1>Account Information</h1>
+              <div class="item-header">
+                <i class="fa fa-user gradient-text"></i>
+                <h2 class="title">Account Information</h2>
+              </div>
               <div style="height: 1000px;">Profile Information Here</div>
             </div>
           </div>

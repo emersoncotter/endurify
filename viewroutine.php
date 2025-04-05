@@ -39,7 +39,7 @@ if (empty($_SESSION['username'])) {
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Endurify | View Routine</title>
+    <title>View Routine | Endurify</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/view-styles.css">
