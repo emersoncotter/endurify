@@ -21,7 +21,12 @@ if(mysqli_num_rows($result) == 1){
 
     // Set username
 	$_SESSION["username"] = $row["user_name"];
+    
+    // Set user id
     $_SESSION["user_id"] = $row["user_id"];
+
+    // Set Streak Date
+    $_SESSION["streak_start_date"] = $row["streak_start_date"];
 
     // Set role privledges
     $_SESSION["role"] = $row["role"];

@@ -49,9 +49,8 @@ if (empty($_SESSION['username'])) {
           </div>
           
           <div class="side-content">
-            <div class="dash-item">
-              <h1>Learning Progress</h1>
-              <div style="height: 500px;">Learning Progress Here.</div>
+            <div class="dash-item profile">
+              <?php include('shared/profile-overview.php'); ?>
             </div>
 
             <div class="dash-item">
