@@ -57,8 +57,11 @@ if (empty($_SESSION['username'])) {
             </div>
 
             <div class="dash-item">
-              <h1>Badges</h1>
-              <div style="height: 350px;">4 Most Recent Collected Badges Here</div>
+              <div class="item-header">
+                <i class="fa fa-award gradient-text"></i>
+                <h2 class="title">Badges</h2>
+              </div>
+              <?php include('shared/badges.php'); ?>
             </div>
           </div>
       

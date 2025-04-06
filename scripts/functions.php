@@ -32,12 +32,18 @@ function getStreakWeek($streak_start_date) {
 
     $interval = $streakStart->diff($now);
 
-    // Total weeks in the streak (rounded down)
     $streakWeeks = floor($interval->days / 7);
 
     return $streakWeeks;
 }
 
+function getStreakDays($streak_start_date) {
+    $streakStart = new DateTime($streak_start_date);
+    $now = new DateTime();
+
+    $interval = $streakStart->diff($now);
+    return $interval->days;
+}
 
 
 ?>

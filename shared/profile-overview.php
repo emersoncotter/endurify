@@ -42,21 +42,21 @@ echo "<h1>$name</h1>";
 <div class="badge-container">
 <div class="badge badge-green">
     <i class="fa fa-trophy"></i>
-    <span>Level <?php echo $_SESSION["level"]; // TODO: pull level here ?></span>
+    <span>Level <?php echo $_SESSION["level"]; ?></span>
 </div>
 <div class="badge badge-blue">
     <i class="fa fa-fire"></i>
-    <span><?php echo getStreakWeek($_SESSION["streak_start_date"]); // TODO: pull streak weeks here ?> Week Streak</span>
+    <span><?php echo getStreakWeek($_SESSION["streak_start_date"]); ?> Week Streak</span>
 </div>
 </div>
 
 <div class="xp-container">
 <div class="xp-header">
     <span class="xp-label">XP Progress</span>
-    <span class="xp-needed"><span class="xp-earned"><?php echo $_SESSION["xp_into"]; // TODO: xp earned here ?></span> / <?php echo $_SESSION["xp_needed"]; // TODO: pull xp total here ?></span>
+    <span class="xp-needed"><span class="xp-earned"><?php echo $_SESSION["xp_into"]; ?></span> / <?php echo $_SESSION["xp_needed"]; ?></span>
 </div>
 <div class="xp-bar">
-    <div class="xp-fill" style="width: <?php echo $_SESSION["progress_percent"]; // TODO: level percentage here ?>%;"></div>
+    <div class="xp-fill" style="width: <?php echo $_SESSION["progress_percent"]; ?>%;"></div>
 </div>
 </div>
 

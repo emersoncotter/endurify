@@ -208,7 +208,7 @@ include('handle/mysqli_connect.php');
                   <i class="fa fa-award gradient-text"></i>
                   <h2 class="title">Badges</h2>
                 </div>
-                <div style="height: 350px;">4 Most Recent Collected Badges Here</div>
+                <?php include('shared/badges.php'); ?>
               </div>
             </div>
           </div>

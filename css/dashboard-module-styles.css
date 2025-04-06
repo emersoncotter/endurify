@@ -447,3 +447,92 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
     user-select: none;
 }
+
+/* Learning Progress Stats */
+.stat-grid {
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 10px;
+    margin-top: 30px;
+}
+
+.stat-card {
+    background-color: #fff;
+    padding: 30px 20px;
+    border-radius: 16px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+    transition: transform 0.2s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-2px);
+}
+
+.stat-number {
+    font-size: 32px;
+    font-weight: 700;
+    color: #111;
+}
+
+.stat-label {
+    margin-top: 6px;
+    font-size: 14px;
+    color: #444;
+}
+
+/* Badge Styles */
+.badge-grid {
+    margin-top: 0px;
+    margin-bottom: 10px;
+}
+
+.badge-card {
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.badge-card.earned {
+    box-shadow: 0 0 3px 2px rgba(31, 224, 192, 0.434), 0 0 10px 3px rgba(58, 139, 253, 0.33);
+  }
+
+.badge-card i {
+    font-size: 75px;
+}
+
+.badge-card .xp-container {
+    margin-top: 0px
+}
+
+.badge-card .xp-bar {
+    height: 10px;
+}
+
+.badge-title {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 4px;
+    margin-top: 4px;
+}
+
+.badge-subtext {
+    font-size: 13px;
+    color: #555;
+    margin-bottom: 12px;
+}
+
+.badges .button {
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
+@media (max-width: 370px) {
+    .stat-grid {
+        grid-template-columns: auto;
+    }
+}

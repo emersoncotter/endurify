@@ -229,7 +229,83 @@ if (empty($_SESSION['username'])) {
                 <i class="fa fa-bullseye gradient-text"></i>
                 <h2 class="title">Learning Progress</h2>
               </div>
-              <div style="height: 100px;">Overall learning progress here.</div>
+
+              <?php 
+
+                require_once 'scripts/functions.php';
+
+                // Get user from database to update every time this is loaded
+                $query = "SELECT * FROM users WHERE user_id = ?";
+                $stmt = mysqli_prepare($dbc, $query);
+                mysqli_stmt_bind_param($stmt, 'i', $_SESSION['user_id']);
+                mysqli_stmt_execute($stmt);
+                $result = mysqli_stmt_get_result($stmt);
+
+                if ($row = mysqli_fetch_assoc($result)) {
+                    // Get from database
+                    $_SESSION["xp"] = $row["xp"];
+
+                    // Calculate level info off XP amount
+                    $_SESSION["streak_days"] = getStreakDays($_SESSION["streak_start_date"]);
+                }
+
+                $query = "SELECT * FROM user_progress WHERE user_id = ? AND status = 'completed'";
+                $stmt = mysqli_prepare($dbc, $query);
+                mysqli_stmt_bind_param($stmt, 'i', $_SESSION['user_id']);
+                mysqli_stmt_execute($stmt);
+                $result = mysqli_stmt_get_result($stmt);
+
+                if ($row = mysqli_fetch_assoc($result)) {
+                    // Get from database
+                    $_SESSION['courses_completed'] = mysqli_num_rows($result);
+                } else {
+                  $_SESSION['courses_completed'] = 0;
+                }
+
+                $query = "SELECT SUM(lessons_completed) AS total_lessons FROM user_progress WHERE user_id = ?";
+                $stmt = mysqli_prepare($dbc, $query);
+                mysqli_stmt_bind_param($stmt, 'i', $_SESSION['user_id']);
+                mysqli_stmt_execute($stmt);
+                $result = mysqli_stmt_get_result($stmt);
+
+                if ($row = mysqli_fetch_assoc($result)) {
+                    $_SESSION['lessons_completed'] = $row['total_lessons'] ?? 0;
+                }
+
+
+              ?>
+
+              <div class="xp-container">
+              <div class="xp-header">
+                  <span class="xp-label">Weekly Target</span>
+                  <span class="xp-needed"><span class="xp-earned"><?php echo number_format($_SESSION['courses_completed']); ?></span> / <?php echo "5 lessons"; ?></span>
+              </div>
+              <div class="xp-bar">
+                  <div class="xp-fill" style="width: <?php echo ($_SESSION['courses_completed']/5*100); ?>%;"></div>
+              </div>
+              </div>
+              
+              <div class="stat-grid">
+              <div class="stat-card">
+                <div class="stat-number"><?php echo number_format($_SESSION["streak_days"]); ?></div>
+                <div class="stat-label">day streak</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-number"><?php echo number_format($_SESSION['lessons_completed']); ?></div>
+                <div class="stat-label">lessons completed</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-number"><?php echo number_format($_SESSION['courses_completed']); ?></div>
+                <div class="stat-label">courses finished</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-number"><?php echo number_format($_SESSION["xp"]); ?></div>
+                <div class="stat-label">xp earned</div>
+              </div>
+            </div>
+
+
+
             </div>
 
             <div class="dash-item">
@@ -237,7 +313,7 @@ if (empty($_SESSION['username'])) {
                   <i class="fa fa-award gradient-text"></i>
                   <h2 class="title">Badges</h2>
                 </div>
-              <div style="height: 150px;">4 Most Recent Collected Badges Here</div>
+                <?php include('shared/badges.php'); ?>
             </div>
           </div>
       
