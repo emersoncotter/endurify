@@ -257,7 +257,7 @@ if (empty($_SESSION['username'])) {
 
             </div>
 
-            <div class="dash-item">
+            <div class="dash-item" id="reward">
               <div class="item-header">
                 <i class="fa fa-gift gradient-text"></i>
                 <h2 class="title">Daily Reward</h2>

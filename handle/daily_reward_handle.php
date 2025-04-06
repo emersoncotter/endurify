@@ -21,8 +21,8 @@ if ($xpAmount > 0 && $xpAmount <= 100) {
         exit;
     }
 
-    header("Location: ../dashboard.php?status=success");
+    header("Location: ../dashboard.php?status=success#reward");
 } else {
-    header("Location: ../dashboard.php?status=failure");
+    header("Location: ../dashboard.php?status=failure#reward");
 }
 ?>

@@ -15,6 +15,13 @@
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/header-styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <!-- Icon Links -->
+    <link rel="icon" type="image/png" href="/media/icons/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/media/icons/favicon.svg" />
+    <link rel="shortcut icon" href="/media/icons/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/media/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/media/icons/site.webmanifest" />
 </head>
 <body>
     

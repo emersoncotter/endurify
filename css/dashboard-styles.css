@@ -24,14 +24,14 @@
 
 .dash-content {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     flex-direction: row;
     column-gap: 30px;
     margin-top: 20px;
 }
 
 .main-content {
-    flex: calc(75% - 30px);
+    flex: calc(75% - 33px);
     display: flex;
     width: 100%;
     flex-direction: column;
