@@ -68,11 +68,6 @@ include('handle/mysqli_connect.php');
             </script>
 
         </div>
-
-        <div class="dash-item">
-            <h1>Database Status</h1>
-            <div style="height: 100px;">Database Information Here</div>
-        </div>
         </div>        
           <!-- Main Content -->
         <div class="main-content">

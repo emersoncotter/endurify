@@ -203,7 +203,7 @@ include('handle/mysqli_connect.php');
               </div>
             </div>
 
-              <div class="dash-item">
+              <div class="dash-item work-in-progress">
                 <div class="item-header">
                   <i class="fa fa-award gradient-text"></i>
                   <h2 class="title">Badges</h2>

@@ -1,7 +1,7 @@
 <?php 
 
 require_once 'scripts/functions.php'; 
-include('handle/mysqli_connect.php');
+include_once('handle/mysqli_connect.php');
 
 // Get user from database to update every time this is loaded
 $query = "SELECT * FROM users WHERE user_id = ?";

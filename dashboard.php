@@ -206,7 +206,7 @@ if (empty($_SESSION['username'])) {
               <?php include('shared/profile-overview.php'); ?>
             </div>
 
-            <div class="dash-item">
+            <div class="dash-item work-in-progress">
               <div class="item-header">
                 <i class="fa fa-chart-simple gradient-text"></i>
                 <h2 class="title">Weekly Leaderboard</h2>
