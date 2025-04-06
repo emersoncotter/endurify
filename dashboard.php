@@ -66,6 +66,64 @@ if (empty($_SESSION['username'])) {
 
             <div class="dash-item">
               <div class="item-header">
+                <i class="fa fa-medal gradient-text"></i>
+                <h2 class="title">Challenge Hub</h2>
+              </div>
+              
+              <div class='result-grid'>
+              <div class='card'>
+                <div class='top' style="background-image: linear-gradient(135deg,rgba(0, 200, 255, 0.6),rgba(0, 115, 255, 0.6)), url('media/regimens/cardio.png');">
+                  <div class='info'>
+                    <span class='difficulty Beginner'>Beginner</span>
+                  </div>
+                </div>
+                <div class='middle'>
+                  <h3>Get Moving!</h3>
+                  <span class='description'>Complete any one Cardio exercise or lesson for this week's beginner challenge. It's all about getting your heart rate up and building the habit!</span>
+                </div>
+                <div class='bottom'>
+                    <span class='xp'>200 xp</span>
+                </div>
+              </div>
+
+              
+              <div class='card'>
+                <div class='top' style="background-image: linear-gradient(135deg,rgba(0, 200, 255, 0.6),rgba(0, 115, 255, 0.6)), url('media/regimens/core.png');">
+                  <div class='info'>
+                    <span class='difficulty Intermediate'>Intermediate</span>
+                  </div>
+                </div>
+                <div class='middle'>
+                  <h3>Core Commitment</h3>
+                  <span class='description'>Complete at least one Core and one Strength exercise or lesson this week. You’re leveling up with more control, stability, and power!</span>
+                </div>
+                <div class='bottom'>
+                    <span class='xp'>400 xp</span>
+                </div>
+              </div>
+
+              
+              <div class='card'>
+                <div class='top' style="background-image: linear-gradient(135deg,rgba(0, 200, 255, 0.6),rgba(0, 115, 255, 0.6)), url('media/regimens/balance.png');">
+                  <div class='info'>
+                    <span class='difficulty Advanced'>Advanced</span>
+                  </div>
+                </div>
+                <div class='middle'>
+                  <h3>Full Body Focus</h3>
+                  <span class='description'>Complete one exercise or lesson each from Strength, Mobility, and Flexibility categories. Test your balance of force, movement, and recovery!</span>
+                </div>
+                <div class='bottom'>
+                    <span class='xp'>600 xp</span>
+                </div>
+              </div>
+
+              </div>
+            </div>
+
+
+            <div class="dash-item">
+              <div class="item-header">
                 <i class="fa fa-users gradient-text"></i>
                 <h2 class="title">Community Feed</h2>
               </div>
@@ -143,62 +201,7 @@ if (empty($_SESSION['username'])) {
 
             </div>
 
-            <div class="dash-item">
-              <div class="item-header">
-                <i class="fa fa-medal gradient-text"></i>
-                <h2 class="title">Challenge Hub</h2>
-              </div>
-              
-              <div class='result-grid'>
-              <div class='card'>
-                <div class='top' style="background-image: linear-gradient(135deg,rgba(0, 200, 255, 0.6),rgba(0, 115, 255, 0.6)), url('media/regimens/cardio.png');">
-                  <div class='info'>
-                    <span class='difficulty Beginner'>Beginner</span>
-                  </div>
-                </div>
-                <div class='middle'>
-                  <h3>Get Moving!</h3>
-                  <span class='description'>Complete any one Cardio exercise or lesson for this week's beginner challenge. It's all about getting your heart rate up and building the habit!</span>
-                </div>
-                <div class='bottom'>
-                    <span class='xp'>200 xp</span>
-                </div>
-              </div>
-
-              
-              <div class='card'>
-                <div class='top' style="background-image: linear-gradient(135deg,rgba(0, 200, 255, 0.6),rgba(0, 115, 255, 0.6)), url('media/regimens/core.png');">
-                  <div class='info'>
-                    <span class='difficulty Intermediate'>Intermediate</span>
-                  </div>
-                </div>
-                <div class='middle'>
-                  <h3>Core Commitment</h3>
-                  <span class='description'>Complete at least one Core and one Strength exercise or lesson this week. You’re leveling up with more control, stability, and power!</span>
-                </div>
-                <div class='bottom'>
-                    <span class='xp'>400 xp</span>
-                </div>
-              </div>
-
-              
-              <div class='card'>
-                <div class='top' style="background-image: linear-gradient(135deg,rgba(0, 200, 255, 0.6),rgba(0, 115, 255, 0.6)), url('media/regimens/balance.png');">
-                  <div class='info'>
-                    <span class='difficulty Advanced'>Advanced</span>
-                  </div>
-                </div>
-                <div class='middle'>
-                  <h3>Full Body Focus</h3>
-                  <span class='description'>Complete one exercise or lesson each from Strength, Mobility, and Flexibility categories. Test your balance of force, movement, and recovery!</span>
-                </div>
-                <div class='bottom'>
-                    <span class='xp'>600 xp</span>
-                </div>
-              </div>
-
-              </div>
-            </div>
+            
           </div>
           
           <div class="side-content">
