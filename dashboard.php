@@ -158,7 +158,7 @@ if (empty($_SESSION['username'])) {
                 </div>
                 <div class='middle'>
                   <h3>Get Moving!</h3>
-                  <span class='description'>Complete any one Cardio exercise for this week's beginner challenge. It's all about getting your heart rate up and building the habit!</span>
+                  <span class='description'>Complete any one Cardio exercise or lesson for this week's beginner challenge. It's all about getting your heart rate up and building the habit!</span>
                 </div>
                 <div class='bottom'>
                     <span class='xp'>200 xp</span>
@@ -174,7 +174,7 @@ if (empty($_SESSION['username'])) {
                 </div>
                 <div class='middle'>
                   <h3>Core Commitment</h3>
-                  <span class='description'>Complete at least one Core and one Strength exercise this week. You’re leveling up with more control, stability, and power!</span>
+                  <span class='description'>Complete at least one Core and one Strength exercise or lesson this week. You’re leveling up with more control, stability, and power!</span>
                 </div>
                 <div class='bottom'>
                     <span class='xp'>400 xp</span>
@@ -190,7 +190,7 @@ if (empty($_SESSION['username'])) {
                 </div>
                 <div class='middle'>
                   <h3>Full Body Focus</h3>
-                  <span class='description'>Complete one exercise each from Strength, Mobility, and Flexibility categories. Test your balance of force, movement, and recovery!</span>
+                  <span class='description'>Complete one exercise or lesson each from Strength, Mobility, and Flexibility categories. Test your balance of force, movement, and recovery!</span>
                 </div>
                 <div class='bottom'>
                     <span class='xp'>600 xp</span>
@@ -209,9 +209,52 @@ if (empty($_SESSION['username'])) {
             <div class="dash-item">
               <div class="item-header">
                 <i class="fa fa-chart-simple gradient-text"></i>
-                <h2 class="title">Leaderboard</h2>
+                <h2 class="title">Weekly Leaderboard</h2>
               </div>
-              <div style="height: 100px;">This is a long block to test scrolling.</div>
+              
+              <div class="leaderboard-module">
+                <ul class="leaderboard-list">
+                  <li class="leaderboard-item">
+                    <i class="fa fa-award gold"></i>
+                    <span class="user-badge gold">S</span>
+                    <div class="user-info">
+                      <strong>Nate T.</strong>
+                      <span>Level 12</span>
+                    </div>
+                    <span class="user-xp">1250 xp</span>
+                  </li>
+                  <li class="leaderboard-item">
+                    <i class="fa fa-award silver"></i>
+                    <span class="user-badge silver">M</span>
+                    <div class="user-info">
+                      <strong>Colin M.</strong>
+                      <span>Level 7</span>
+                    </div>
+                    <span class="user-xp">1120 xp</span>
+                  </li>
+                  <li class="leaderboard-item">
+                    <i class="fa fa-award bronze"></i>
+                    <span class="user-badge bronze">A</span>
+                    <div class="user-info">
+                      <strong>Emerson C.</strong>
+                      <span>Level 9</span>
+                    </div>
+                    <span class="user-xp">980 xp</span>
+                  </li>
+                  <li class="leaderboard-item">
+                  <i class="fa fa-award blue"></i>
+                    <span class="user-badge blue">E</span>
+                    <div class="user-info">
+                      <strong>Nate M.</strong>
+                      <span>Level 6</span>
+                    </div>
+                    <span class="user-xp">850 xp</span>
+                  </li>
+                </ul>
+              </div>
+
+
+
             </div>
 
             <div class="dash-item">
@@ -219,7 +262,15 @@ if (empty($_SESSION['username'])) {
                 <i class="fa fa-gift gradient-text"></i>
                 <h2 class="title">Daily Reward</h2>
               </div>
-              <div style="height: 100px;">This is a long block to test scrolling.</div>
+
+              <div class="daily-reward-container">
+                <div class="daily-reward-icon">75 XP</div>
+
+                <form action="handle/daily_reward_handle.php" method="post">
+                  <input type="hidden" name="amount" value="75">
+                  <button class="button" <?= (isset($_GET["status"]) && $_GET["status"] === 'success') ? 'disabled' : '' ?> type="submit"><?= (isset($_GET["status"]) && $_GET["status"] === 'success') ? 'Collected' : 'Collect' ?></button>
+                </form>
+              </div>
             </div>
           </div>
       

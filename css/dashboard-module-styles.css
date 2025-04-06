@@ -344,3 +344,106 @@
     display: block;
     text-align: center;
 }
+
+
+/* || Leaderboard Styles */
+
+.leaderboard-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.leaderboard-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    margin-bottom: 16px;
+}
+
+.leaderboard-item i {
+    font-size: 2em;
+}
+
+    .leaderboard-item i.gold { color: #f3c400; }
+    .leaderboard-item i.silver { color: #c0c0c0; }
+    .leaderboard-item i.bronze { color: #cd7f32; }
+    .leaderboard-item i.blue { visibility: hidden; }
+
+.user-badge {
+    width: 60px;
+    min-width: 60px;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 26px;
+    font-weight: bold;
+    border: 0px solid white;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.25);
+    user-select: none;
+}
+
+    .user-badge.gold { background-color: #f3c400; }
+    .user-badge.silver { background-color: #c0c0c0; }
+    .user-badge.bronze { background-color: #cd7f32; }
+    .user-badge.blue { background-color: #2f89fc; }
+
+.user-info {
+    flex-grow: 1;
+}
+
+.user-info strong {
+    display: block;
+    font-size: 1.35em;
+}
+
+.user-info span {
+    font-size: 1.2em;
+    color: #666;
+}
+
+.user-xp {
+    font-size: 1.2em;
+}
+  
+/* Daily Reward Styles */
+.daily-reward-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.daily-reward-container .button {
+    width: 175px;
+    text-align: center;
+    font-size: 1em;
+}
+
+.daily-reward-container .button:disabled {
+    background-color: #1c659c;
+    cursor: default;
+    transition: none;
+}
+
+.daily-reward-icon {
+    width: 175px;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    background: linear-gradient(90deg, #2F89FC 0%, #30E3CA 80%);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3.25em;
+    font-weight: bold;
+    border: 4px solid white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+    user-select: none;
+}
