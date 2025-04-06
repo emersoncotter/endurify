@@ -219,7 +219,7 @@ if (empty($_SESSION['username'])) {
                 <ul class="leaderboard-list">
                   <li class="leaderboard-item">
                     <i class="fa fa-award gold"></i>
-                    <span class="user-badge gold">S</span>
+                    <span class="user-badge gold">NT</span>
                     <div class="user-info">
                       <strong>Nate T.</strong>
                       <span>Level 12</span>
@@ -228,7 +228,7 @@ if (empty($_SESSION['username'])) {
                   </li>
                   <li class="leaderboard-item">
                     <i class="fa fa-award silver"></i>
-                    <span class="user-badge silver">M</span>
+                    <span class="user-badge silver">CM</span>
                     <div class="user-info">
                       <strong>Colin M.</strong>
                       <span>Level 7</span>
@@ -237,7 +237,7 @@ if (empty($_SESSION['username'])) {
                   </li>
                   <li class="leaderboard-item">
                     <i class="fa fa-award bronze"></i>
-                    <span class="user-badge bronze">A</span>
+                    <span class="user-badge bronze">EC</span>
                     <div class="user-info">
                       <strong>Emerson C.</strong>
                       <span>Level 9</span>
@@ -246,7 +246,7 @@ if (empty($_SESSION['username'])) {
                   </li>
                   <li class="leaderboard-item">
                   <i class="fa fa-award blue"></i>
-                    <span class="user-badge blue">E</span>
+                    <span class="user-badge blue">NM</span>
                     <div class="user-info">
                       <strong>Nate M.</strong>
                       <span>Level 6</span>
